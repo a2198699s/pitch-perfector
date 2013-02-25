@@ -17,12 +17,15 @@ Making it work
 --------------
 
 To clone the git repository:
+
     git clone https://github.com/glasgow-bio/qwt-example
 
 To build:
+
     cd qwt-example
     qmake
     make
 
 To run (assuming you are logged into the RPi over ssh and no X-server is running):
+
     startx ./QwtExample
