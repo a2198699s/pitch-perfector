@@ -6,7 +6,7 @@ A simple example program using Qt/Qwt widgets to be used as a base for students 
 Qt is a cross platform framework for developing graphical applications, for more information please visit the links below:
 * [Qt Homepage](http://qt-project.org/)
 * [Qt 4.8 Class List](http://qt-project.org/doc/qt-4.8/classes.html)
-* [Wikpedia](http://en.wikipedia.org/wiki/Qt_(framework))
+* [Wikpedia](http://en.wikipedia.org/wiki/Qt_%28framework%29)
 * [Signals and Slots](http://qt-project.org/doc/qt-4.8/signalsandslots.html)
 
 Qwt is a technical widget library based on Qt, please see:
