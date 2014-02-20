@@ -2,12 +2,14 @@
 
 QT       += core gui
 
+CONFIG          += qt warn_on debug
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QwtExample
 
 LIBS += -lqwt -lm
 
-HEADERS += window.h
+HEADERS += window.h adcreader.h
 
-SOURCES += main.cpp window.cpp
+SOURCES += main.cpp window.cpp adcreader.cpp

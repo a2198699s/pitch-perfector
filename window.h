@@ -8,6 +8,8 @@
 
 #include <QBoxLayout>
 
+#include "adcreader.h"
+
 // class definition 'Window'
 class Window : public QWidget
 {
@@ -17,6 +19,8 @@ class Window : public QWidget
 public:
 	Window(); // default constructor - called when a Window is declared without arguments
 
+	~Window();
+
 	void timerEvent( QTimerEvent * );
 
 public slots:
@@ -24,15 +28,14 @@ public slots:
 
 // internal variables for the window class
 private:
-  // graphical elements from the Qwt library - http://qwt.sourceforge.net/annotated.html
-	QwtKnob      knob;
-	QwtThermo    thermo;
-	QwtPlot      plot;
-	QwtPlotCurve curve;
+	QwtKnob      *knob;
+	QwtThermo    *thermo;
+	QwtPlot      *plot;
+	QwtPlotCurve *curve;
 
 	// layout elements from Qt itself http://qt-project.org/doc/qt-4.8/classes.html
-	QVBoxLayout  vLayout;  // vertical layout
-	QHBoxLayout  hLayout;  // horizontal layout
+	QVBoxLayout  *vLayout;  // vertical layout
+	QHBoxLayout  *hLayout;  // horizontal layout
 
 	static const int plotDataSize = 100;
 
@@ -42,6 +45,8 @@ private:
 
 	double gain;
 	int count;
+
+	ADCreader *adcreader;
 };
 
 #endif // WINDOW_H
