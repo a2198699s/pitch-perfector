@@ -1,5 +1,5 @@
 #include "window.h"
-#include "adcreader.h"
+// #include "adcreader.h"
 
 #include <cmath>  // for sine stuff
 
@@ -55,16 +55,16 @@ Window::Window() : gain(5), count(0)
 	// At the moment it doesn't do anything else than
 	// running in an endless loop and which prints out "tick"
 	// every second.
-	adcreader = new ADCreader();
-	adcreader->start();
+//	adcreader = new ADCreader();
+//	adcreader->start();
 }
 
 Window::~Window() {
 	// tells the thread to no longer run its endless loop
-	adcreader->quit();
+//	adcreader->quit();
 	// wait until the run method has terminated
-	adcreader->wait();
-	delete adcreader;
+//	adcreader->wait();
+//	delete adcreader;
 }
 
 void Window::timerEvent( QTimerEvent * )
