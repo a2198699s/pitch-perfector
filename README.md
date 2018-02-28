@@ -1,18 +1,15 @@
 QwtExample
 ===========
 
-A simple example program using Qt/Qwt widgets to be used as a base for students doing Raspberry Pi data acquisition.
-
-Qt is a cross platform framework for developing graphical applications, for more information please visit the links below:
-* [Qt5 Homepage](https://www.qt.io/)
-* [Wikpedia](http://en.wikipedia.org/wiki/Qt_%28framework%29)
-
-Qwt is a technical widget library based on Qt, please see:
-* [Qwt Hompage](http://qwt.sourceforge.net/)
-
+A simple example program using Qt/Qwt widgets to be used as a base for students doing Raspberry Pi data acquisition. It also creates a Thread which could be used to aquire the data with the help of poll/select.
 
 Making it work
 --------------
+
+Install QT5 development files and the Qwt development libraries:
+
+    apt-get install libqwt-qt5-dev
+
 
 To clone the git repository:
 
