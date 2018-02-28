@@ -3,6 +3,8 @@ QwtExample
 
 A simple example program using Qt/Qwt widgets to be used as a base for students doing Raspberry Pi data acquisition. It also creates a Thread which could be used to aquire the data with the help of poll/select.
 
+![alt tag](screenshot.png)
+
 Making it work
 --------------
 
