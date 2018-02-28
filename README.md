@@ -6,9 +6,10 @@ A simple example program using Qt/Qwt widgets to be used as a base for students 
 Making it work
 --------------
 
-Install QT5 development files and the Qwt development libraries:
+Install the QT5 and Qwt development packages:
 
-    apt-get install libqwt-qt5-dev
+   apt-get install qtdeclarative5-dev-tools
+   apt-get install libqwt-qt5-dev
 
 
 To clone the git repository:
