@@ -26,6 +26,7 @@ Sliding DFT (allegedly faster than fft methods for real-time, looks promising) -
 
 A similar project for real-time frequency spectrums from a microphone input (used fftw)
 cava - https://github.com/karlstav/cava
+cava info on mic input - https://github.com/karlstav/cava/issues/162
 
 Linear Predictive Coding (alternative to fourier transform used for audio and speech)
 Found it here - https://www.raspberrypi.org/forums/viewtopic.php?t=178963
