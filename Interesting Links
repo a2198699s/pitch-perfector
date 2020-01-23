@@ -30,3 +30,5 @@ cava - https://github.com/karlstav/cava
 Linear Predictive Coding (alternative to fourier transform used for audio and speech)
 Found it here - https://www.raspberrypi.org/forums/viewtopic.php?t=178963
 c++ package - https://github.com/ccrma/sndtools
+
+Input audio signals into c++ - https://stackoverflow.com/questions/2916113/best-practice-for-c-audio-capture-api-under-linux
