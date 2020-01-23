@@ -24,6 +24,9 @@ FFTW Package (Most popular on stackoverflow for very fast fft)- http://www.fftw.
 Intel's FFT Package (possibly faster than fftw but might only be for intel chips) - https://software.intel.com/en-us/mkl/features/fft
 Sliding DFT (allegedly faster than fft methods for real-time, looks promising) - https://github.com/bronsonp/SlidingDFT
 
+A similar project for real-time frequency spectrums from a microphone input (used fftw)
+cava - https://github.com/karlstav/cava
+
 Linear Predictive Coding (alternative to fourier transform used for audio and speech)
 Found it here - https://www.raspberrypi.org/forums/viewtopic.php?t=178963
 c++ package - https://github.com/ccrma/sndtools
