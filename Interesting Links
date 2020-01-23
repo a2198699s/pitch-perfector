@@ -17,6 +17,8 @@ General - https://stackoverflow.com/questions/6663222/doing-fft-in-realtime
         - https://stackoverflow.com/questions/5255474/fast-fourier-transform
         - https://stackoverflow.com/questions/2881583/how-to-extract-semi-precise-frequencies-from-a-wav-file-using-fourier-transforms/2885833#2885833
 
+Processing a stream of data - https://stackoverflow.com/questions/43479528/how-can-i-perform-a-realtime-fft-on-sdl2-audio-stream-data
+
 FFTW Package (Most popular on stackoverflow for very fast fft)- http://www.fftw.org/
 Intel's FFT Package (possibly faster than fftw but might only be for intel chips) - https://software.intel.com/en-us/mkl/features/fft
 Sliding DFT (allegedly faster than fft methods for real-time, looks promising ) - https://github.com/bronsonp/SlidingDFT
