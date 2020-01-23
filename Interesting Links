@@ -7,3 +7,13 @@ Tutorial - https://learn.adafruit.com/adafruit-i2s-mems-microphone-breakout
 
 Outputs
 Low-cost I2S DAC - https://datasheets.maximintegrated.com/en/ds/MAX5556.pdf
+
+Real-Time Fourier Transform Info
+General - https://stackoverflow.com/questions/6663222/doing-fft-in-realtime
+        - https://dsp.stackexchange.com/questions/24375/fastest-implementation-of-fft-in-c
+        - https://stackoverflow.com/questions/5255474/fast-fourier-transform
+        - https://stackoverflow.com/questions/2881583/how-to-extract-semi-precise-frequencies-from-a-wav-file-using-fourier-transforms/2885833#2885833
+        
+FFTW Package (Most popular on stackoverflow for very fast fft)- http://www.fftw.org/
+Intel's FFT Package (possibly faster than fftw but might only be for intel chips) - https://software.intel.com/en-us/mkl/features/fft
+Sliding DFT (allegedly faster than fft methods for real-time, looks promising ) - https://github.com/bronsonp/SlidingDFT
