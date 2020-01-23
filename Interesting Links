@@ -1,19 +1,12 @@
 Microphone
 ECM vs MEMS - https://forum.digikey.com/t/electret-condenser-ecm-vs-mems-microphone/447
+MEMS microphone - https://www.digikey.co.uk/product-detail/en/knowles/SPH0645LM4H-B/423-1405-1-ND/5332432
+ECM microphone - https://uk.farnell.com/kingstate/kecg2740pbj/microphone-miniature-electret/dp/1299885?gclid=Cj0KCQiApaXxBRDNARIsAGFdaB-anaPAnRTFl64_IKWHwxIl5Ra9cySgF3G2dUmcUPD1o1tzWWn2KTUaAttSEALw_wcB&gross_price=true&mckv=zUnljybf_dc|pcrid|78108376509|&CMP=KNC-GUK-GEN-SHOPPING-1299885
 
 I2S
+I2S protocol sheet - on moodle
 Breakout board - https://www.adafruit.com/product/3006
 Tutorial - https://learn.adafruit.com/adafruit-i2s-mems-microphone-breakout
 
 Outputs
 Low-cost I2S DAC - https://datasheets.maximintegrated.com/en/ds/MAX5556.pdf
-
-Real-Time Fourier Transform Info
-General - https://stackoverflow.com/questions/6663222/doing-fft-in-realtime
-        - https://dsp.stackexchange.com/questions/24375/fastest-implementation-of-fft-in-c
-        - https://stackoverflow.com/questions/5255474/fast-fourier-transform
-        - https://stackoverflow.com/questions/2881583/how-to-extract-semi-precise-frequencies-from-a-wav-file-using-fourier-transforms/2885833#2885833
-        
-FFTW Package (Most popular on stackoverflow for very fast fft)- http://www.fftw.org/
-Intel's FFT Package (possibly faster than fftw but might only be for intel chips) - https://software.intel.com/en-us/mkl/features/fft
-Sliding DFT (allegedly faster than fft methods for real-time, looks promising ) - https://github.com/bronsonp/SlidingDFT
