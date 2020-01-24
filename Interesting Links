@@ -34,6 +34,8 @@ Found it here - https://www.raspberrypi.org/forums/viewtopic.php?t=178963
 c++ package - https://github.com/ccrma/sndtools
 
 Gammatone Filters for vocoding - https://github.com/mmmaat/libgammatone
+an analogue vocoder - http://musicfromouterspace.com/analogsynth_new/VOCODER2013/VOCODER2013.php
+implementation theory as iirs - https://www.pdn.cam.ac.uk/other-pages/cnbh/files/publications/SVOSAnnexC1988.pdf
 
 Input audio signals into c++ - https://stackoverflow.com/questions/2916113/best-practice-for-c-audio-capture-api-under-linux
                              - https://wiki.linuxaudio.org/wiki/raspberrypi (includes overclocking info)
