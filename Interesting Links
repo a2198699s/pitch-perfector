@@ -33,6 +33,8 @@ Linear Predictive Coding (alternative to fourier transform used for audio and sp
 Found it here - https://www.raspberrypi.org/forums/viewtopic.php?t=178963
 c++ package - https://github.com/ccrma/sndtools
 
+Gammatone Filters for vocoding - https://github.com/mmmaat/libgammatone
+
 Input audio signals into c++ - https://stackoverflow.com/questions/2916113/best-practice-for-c-audio-capture-api-under-linux
                              - https://wiki.linuxaudio.org/wiki/raspberrypi (includes overclocking info)
                              
