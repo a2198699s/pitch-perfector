@@ -7,6 +7,7 @@ I2S
 I2S protocol sheet - on moodle
 Breakout board - https://www.adafruit.com/product/3006
 Tutorial - https://learn.adafruit.com/adafruit-i2s-mems-microphone-breakout
+Spec - https://www.sparkfun.com/datasheets/BreakoutBoards/I2SBUS.pdf
 
 Outputs
 Low-cost I2S DAC - https://datasheets.maximintegrated.com/en/ds/MAX5556.pdf
@@ -34,3 +35,9 @@ c++ package - https://github.com/ccrma/sndtools
 
 Input audio signals into c++ - https://stackoverflow.com/questions/2916113/best-practice-for-c-audio-capture-api-under-linux
                              - https://wiki.linuxaudio.org/wiki/raspberrypi (includes overclocking info)
+                             
+                             
+Breakout board PCB - https://github.com/adafruit/Adafruit-I2S-Microphone-Breakout-PCB/blob/master/Adafruit%20I2S%20Mic%20SPK0415HM4H.brd
+
+
+
