@@ -1,15 +1,25 @@
 #include <iostream>
-#include <SFML/Audio.hpp>
+#include <SFML/Audio/Music.hpp>
+ 
+//#include <>
 
-using namespace std;
+
+
 int main() 
 {
-    cout << "Welcome to Pitch Perfector!\n";
-    cout << "This code has been over-written on the Raspberry Pi\n";
+    std::cout << "Welcome to Pitch Perfector!!\n";
+    std::cout << "This code has been over-written on the Raspberry Pi\n";
     
+    //SoundBuffer buffer;
     sf::Music music;
-    if (!music.openFromFile("music.wav")) 
+    std::cout << "HERE\n";
+    if (!music.openFromFile("TSwift.ogg")){
+	std::cout << "ERROR\n";
         return -1; // error
+    }
+    music.openFromFile("TSwift.ogg");
+    std::cout << "Playing\n";
     music.play();
+    std::cin.ignore();
     return 0;
 }
