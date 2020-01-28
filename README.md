@@ -2,7 +2,7 @@
 A microphone application which performs real-time pitch shifting
 
 ## System Diagram
-![System Diagram](Documentation/Images/Schematic.PNG)
+![System Diagram](Documentation/Images/Schematic/Schematic.PNG)
 
 The **ECM microphone** converts the vocal (from ~100Hz up to ~3.5kHz) input into an analoge signal  
   
