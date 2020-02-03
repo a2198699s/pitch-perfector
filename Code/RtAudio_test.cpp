@@ -31,7 +31,9 @@ int main()
   parameters.deviceId = dac.getDefaultOutputDevice();
   parameters.nChannels = 2;
   parameters.firstChannel = 0;
-  unsigned int sampleRate = 44100;
+  //unsigned int sampleRate = 4000; // sounds like a geiger counter
+  unsigned int sampleRate = 44100; //  sounds like a normal low f synth
+  //unsigned int sampleRate = 96000; // sounds like flies
   unsigned int bufferFrames = 256; // 256 sample frames
   double data[2];
   try {
