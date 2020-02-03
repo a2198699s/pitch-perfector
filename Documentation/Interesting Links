@@ -51,3 +51,5 @@ Jack Audio  - http://x37v.info/projects/jackcpp/
             - https://jackaudio.org/applications/
 
 RtAudio - http://www.music.mcgill.ca/~gary/rtaudio/
+
+running Jack from boot - https://github.com/overtone/overtone/wiki/Installing-and-starting-jack
