@@ -1,0 +1,10 @@
+Things we've installed:
+
+SFML - sudo apt-get install sfml
+  complile main.o compile sfml.o and link
+  
+JACK Audio Connection Kit - sudo apt-get install jackd
+
+RtAudio - sudo apt-get install librtaudio-dev
+
+fftw - sudo apt-get install fftw3
