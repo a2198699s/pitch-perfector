@@ -46,3 +46,6 @@ Breakout board PCB - https://github.com/adafruit/Adafruit-I2S-Microphone-Breakou
 Including Headers - https://www.learncpp.com/cpp-tutorial/header-files/
 
 fft gpu and comiple instructions - https://www.raspberrypi.org/forums/viewtopic.php?t=115841
+
+Jack Audio  - http://x37v.info/projects/jackcpp/
+            - https://jackaudio.org/applications/
