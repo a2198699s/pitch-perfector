@@ -18,10 +18,10 @@ jobs:
     - name: make distcheck
       run: make distcheck
     
-    - name: clang-tidy check
-      uses: muxee/clang-tidy-action@0.0.1-rc1
-    - name: clang-format lint
-      uses: DoozyX/clang-format-lint-action@v0.5
+#    - name: clang-tidy check
+#      uses: muxee/clang-tidy-action@0.0.1-rc1
+#    - name: clang-format lint
+#      uses: DoozyX/clang-format-lint-action@v0.5
       # with:
         # Source folder to check formatting
         # source: Code/* # optional, default is .
