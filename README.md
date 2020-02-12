@@ -13,11 +13,7 @@ Install the QT5 and Qwt development packages:
     apt-get install libqwt-qt5-dev
 ```
 
-To clone the git repository:
-
-```
-    git clone https://github.com/glasgow-bio/qwt-example
-```
+To clone this git repository.
 
 To build:
 
