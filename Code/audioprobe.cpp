@@ -13,7 +13,7 @@ int main()
     if ( info.probed == true ) {
       // Print, for example, the maximum number of output channels for each device
       std::cout << "device = " << i;
-      std::cout << ": maximum output channels = " << info.outputChannels << "\n";
+      std::cout << ": maximum output channels = " << info.inputChannels << "\n";
     }
   }
   return 0;
