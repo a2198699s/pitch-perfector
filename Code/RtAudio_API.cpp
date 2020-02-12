@@ -46,7 +46,8 @@ int main()
     exit( 0 );
   }
   
-  std::cout <<"/nAPI: " << dac.GetCurrentApi()
+  //std::cout <<"/nAPI: " << dac.RtAudio::Api::
+  std::cout << dac.getCurrentApi();
   
   char input;
   std::cout << "\nPlaying ... press <enter> to quit.\n";
