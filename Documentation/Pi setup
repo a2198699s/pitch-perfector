@@ -8,6 +8,11 @@ RtAudio - sudo apt-get install librtaudio-dev
 
 fftw - sudo apt-get install fftw3
 
+I2S: Followed tutorial from adafruit - https://learn.adafruit.com/adafruit-i2s-mems-microphone-breakout/raspberry-pi-wiring-and-test
+    Installed new kernel
+   
+rt kernel: [Not applied yet] “sudo apt-get install linux-rt”
+
 compile tips:
     g++ -c main.cpp
     g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
