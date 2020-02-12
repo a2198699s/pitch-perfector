@@ -15,4 +15,4 @@ rt kernel: [Not applied yet] “sudo apt-get install linux-rt”
 
 compile tips:
     g++ -c main.cpp -I<path to include files>
-    g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
+    g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system -lrtaudio
