@@ -8,6 +8,8 @@ RtAudio - sudo apt-get install librtaudio-dev
 
 fftw - sudo apt-get install fftw3
 
+gpu fft - https://www.raspberrypi.org/blog/accelerating-fourier-transforms-using-the-gpu/
+
 I2S: Followed tutorial from adafruit - https://learn.adafruit.com/adafruit-i2s-mems-microphone-breakout/raspberry-pi-wiring-and-test
     Installed new kernel
    
