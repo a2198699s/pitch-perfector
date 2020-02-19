@@ -43,7 +43,7 @@
 #include <errno.h>
 #include <unistd.h>
 
-#include "gpio-sysfs.h"
+#include "readin.h"
 
 #define POLL_TIMEOUT (3 * 1000) /* 3 seconds */
 
