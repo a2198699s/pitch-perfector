@@ -31,14 +31,14 @@ int main()
 
   // Open a stream during RtAudio instantiation
   try {
-    audio = new RtAudio();
+    audio = new RtAudio(device, channels, device, channels, RTAUDIO_FLOAT64,
+                        sampleRate, &bufferSize, nBuffers);
   }
   catch (RtError &error) {
     error.printMessage();
     exit(EXIT_FAILURE);
   }
- audio->openStream(device, channels, device, channels, RTAUDIO_FLOAT64,
-                        sampleRate, &bufferSize, nBuffers);
+ // audio->openStream();
   try {
     // Set the stream callback function
     audio->setStreamCallback(&scale, NULL);
