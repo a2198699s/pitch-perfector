@@ -17,6 +17,12 @@ rt kernel: [Not applied yet] “sudo apt-get install linux-rt”
 
 Jack daemon must be running in background before using rtAudio:
     'jackd -r -d alsa -r 44100'
+    
+Qt5 
+X
+bernds QWT example
+    apt-get install qtdeclarative5-dev-tools
+    apt-get install libqwt-qt5-dev
 
 compile tips:
     g++ -c main.cpp -I<path to include files>
