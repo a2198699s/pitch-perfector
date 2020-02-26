@@ -37,9 +37,9 @@ int main()
   unsigned int bufferBytes, bufferFrames = 512;
   RtAudio::StreamParameters iParams, oParams;
   iParams.deviceId = 3; // first available device
-  iParams.nChannels = 2;
+  iParams.nChannels = 1;
   oParams.deviceId = 0; // first available device
-  oParams.nChannels = 2;
+  oParams.nChannels = 1;
   try {
     adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT32, 44100, &bufferFrames, &inout, (void *)&bufferBytes );
   }
