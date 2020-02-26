@@ -1,15 +1,28 @@
-#include "RtAudio.h"
+#include <RtAudio.h>
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
-#include <cstring>
+#include <cstring> 
+using namespace std;
 // Pass-through function.
+
+ofstream outputFile("audio_out.txt");
+
+
 int inout( void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames,
            double streamTime, RtAudioStreamStatus status, void *data )
 {
+
   // Since the number of input and output channels is equal, we can do
   // a simple buffer copy operation here.
   if ( status ) std::cout << "Stream over/underflow detected." << std::endl;
   unsigned long *bytes = (unsigned long *) data;
+  float *buffer  = (float *) inputBuffer;
+  float *buffer2 = (float *) outputBuffer; 
+
+  for (int x=0; x < nBufferFrames; x++) {
+    outputFile << buffer[x] << "\n";
+  }
   memcpy( outputBuffer, inputBuffer, *bytes );
   return 0;
 }
@@ -28,7 +41,7 @@ int main()
   oParams.deviceId = 0; // first available device
   oParams.nChannels = 2;
   try {
-    adac.openStream( &oParams, &iParams, RTAUDIO_SINT32, 44100, &bufferFrames, &inout, (void *)&bufferBytes );
+    adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT32, 44100, &bufferFrames, &inout, (void *)&bufferBytes );
   }
   catch ( RtAudioError& e ) {
     e.printMessage();
@@ -49,5 +62,6 @@ int main()
   }
  cleanup:
   if ( adac.isStreamOpen() ) adac.closeStream();
+  outputFile.close();
   return 0;
 }
