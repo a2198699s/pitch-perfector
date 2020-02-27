@@ -55,3 +55,5 @@ RtAudio - http://www.music.mcgill.ca/~gary/rtaudio/
 running Jack from boot - https://github.com/overtone/overtone/wiki/Installing-and-starting-jack
 
 JackAPI - https://jackaudio.org/api/
+
+FFTW examples - http://www2.math.uu.se/~figueras/Other/text/fftw_tutorial.pdf
