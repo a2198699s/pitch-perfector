@@ -9,41 +9,53 @@ using namespace std;
 // Pass-through function.
 
 ofstream outputFile("audio_out.txt");
-
-
-
+ofstream outData("out_data.txt");
 
 int inout( void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames,
            double streamTime, RtAudioStreamStatus status, void *data )
 {
-
+  fftw_complex *out;
+  double *in;
+  fftw_plan my_plan;
   // Since the number of input and output channels is equal, we can do
   // a simple buffer copy operation here.
   if ( status ) std::cout << "Stream over/underflow detected." << std::endl;
   unsigned long *bytes = (unsigned long *) data;
-  float *buffer  = (float *) inputBuffer;
-  float *buffer2 = (float *) outputBuffer;
+  double *audio_in  = (double *) inputBuffer;
+  // float *audio_out = (float *) outputBuffer; 
+  int signedNBufferFrames = (int) nBufferFrames;
 
-  // fftw_complex *in, *out;
-  // fftw_plan = my_plan
-  // in = (fftw_complex*) inputBuffer;
-  // fftw_complex *fft_out = (fftw_complex*) outputBuffer;
 
-  int i = 0;
-  int N = *bytes;
-  fftw_complex *in, *out;
-  fftw_plan my_plan;
+  in = (double *) fftw_malloc(sizeof(double)*signedNBufferFrames);
+  out = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*signedNBufferFrames);
+  my_plan = fftw_plan_dft_r2c_1d(signedNBufferFrames, in, out, FFTW_ESTIMATE);
 
-  in = (fftw_complex*) fftw_malloc(sizeof(fftw_complex)*N);
-  out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex)*N);
-  memcpy(in, inputBuffer, *bytes);
-  my_plan = fftw_plan_dft_1d(N, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
+
+
+  memcpy(in, audio_in, *bytes);
   fftw_execute(my_plan);
 
-  for (int x=0; x < N; x++) {
-    outputFile << in[x];
+
+    for (int x=0; x < nBufferFrames; x++) {
+    outputFile << out[x][0] << " ";
   }
-  outputFile << endl;
+  outputFile << "\n" << endl;
+  // fftw_free(in)
+  // fftw_destroy_plan(my_plan);
+
+
+
+  // for (int x=0; x < nBufferFrames; x++) {
+  //   outputFile << in[x];
+  //   outData << out[x];
+
+  // }
+  // outputFile << endl;
+  // outData << endl;
+
+  // //destroy plan and buffers?
+  fftw_destroy_plan(my_plan);
+  fftw_free(in); fftw_free(out);
 
   memcpy( outputBuffer, inputBuffer, *bytes );
   return 0;
@@ -59,7 +71,7 @@ int main()
   unsigned int bufferBytes, bufferFrames = 512;
   RtAudio::StreamParameters iParams, oParams;
   iParams.deviceId = 3; // first available device
-  iParams.nChannels = 1;
+  iParams.nChannels = 2;
   oParams.deviceId = 0; // first available device
   oParams.nChannels = 1;
   try {
@@ -85,5 +97,6 @@ int main()
  cleanup:
   if ( adac.isStreamOpen() ) adac.closeStream();
   outputFile.close();
+  outData.close();
   return 0;
 }
