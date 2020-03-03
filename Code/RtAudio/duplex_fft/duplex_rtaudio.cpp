@@ -19,7 +19,19 @@ class fft {
     fftw_complex *out;
     int flag;
     fftw_plan my_plan;
-    void execute();  
+
+    fft(int nBufferFrames) {
+	in = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
+	out = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
+	my_plan = fftw_plan_dft_r2c_1d(nBufferFrames, in, out, FFTW_MEASURE);
+    };
+
+
+    void executefft(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
+	memcpy(in, (double *)inputBuffer, *(unsigned long*)data);
+	fftw_execute(my_plan);
+    };
+  
 };
 
 int inout( void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames,
