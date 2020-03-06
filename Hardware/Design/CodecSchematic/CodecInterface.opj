@@ -14,7 +14,7 @@
     (DRC_View_Output "FALSE")
     (DRC_Preserved_Waived "FALSE")
     (DRC_Run_Electrical_Rules "TRUE")
-    (DRC_Run_Physical_Rules "FALSE")
+    (DRC_Run_Physical_Rules "TRUE")
     (DRC_Report_File "M:\ORCAD\DESIGN\CODECINTERFACE.DRC")
     (DRC_Check_Ports "FALSE")
     (DRC_Check_Off-Page_Connectors "FALSE")
@@ -42,10 +42,56 @@
     (DRC_Visible_Power_pins "FALSE")
     (DRC_Report_Unused_Part_Packages "TRUE")
     (DRC_Check_Name_Prop_For_HierBlocks "TRUE")
-    (DRC_Run_Physical_Custom_DRC "FALSE"))
-  (Folder "Outputs")
+    (DRC_Run_Physical_Custom_DRC "FALSE")
+    (Netlist_TAB "0")
+    ("Create Allegro Netlist" "TRUE")
+    ("Allegro Netlist Directory" "allegro")
+    ("View Allegro Netlist Files" "FALSE")
+    ("Allegro Netlist Create DCF File" "FALSE")
+    ("Update Allegro Board" "TRUE")
+    ("Allegro Netlist Input Board File"
+       "M:\OrCad\Design\allegro\codec_board_with_nets - Copy.brd")
+    ("Allegro Netlist Output Board File"
+       "M:\OrCad\Design\allegro\codec_board_newcaps.brd")
+    ("Allegro Netlist Remove Etch" "FALSE")
+    ("Allegro Netlist Place Changed Component" "ALWAYS_REPLACE")
+    ("Allegro Netlist Open Board in Allegro" "ORCAD")
+    ("Allegro Setup Backup Versions" "3")
+    ("Allegro Setup Ignore Constraints" "FALSE")
+    ("Allegro Setup Part Type Length" "31")
+    ("Allegro Netlist Combine Property String" "PCB Footprint")
+    ("Allegro Netlist Ignore Fixed Property" "FALSE")
+    ("Allegro Netlist User Defined Property" "FALSE"))
+  (Folder "Outputs"
+    (File ".\codecinterface.drc"
+      (Type "Report"))
+    (File ".\allegro\pstxnet.dat"
+      (Type "Report")
+      (DisplayName "pstxnet.dat"))
+    (File ".\allegro\pstxprt.dat"
+      (Type "Report")
+      (DisplayName "pstxprt.dat"))
+    (File ".\allegro\pstchip.dat"
+      (Type "Report")
+      (DisplayName "pstchip.dat")))
   (Folder "Referenced Projects")
   (PartMRUSelector
+    (LM317_H
+      (FullPartName "LM317_H.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\REGULATOR.OLB")
+      (DeviceIndex "0"))
+    (LM217/TO
+      (FullPartName "LM217/TO.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\REGULATOR.OLB")
+      (DeviceIndex "0"))
+    (LM2930/TO
+      (FullPartName "LM2930/TO.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\REGULATOR.OLB")
+      (DeviceIndex "0"))
+    (LM2931-5.0/SO
+      (FullPartName "LM2931-5.0/SO.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\REGULATOR.OLB")
+      (DeviceIndex "0"))
     (2MMCONN4
       (FullPartName "2MMCONN4.Normal")
       (LibraryName "Q:\ALLEGRO\PCB_LIB\PROJECTS_V2.OLB")
@@ -90,12 +136,13 @@
       (FullPartName "CON50A.Normal")
       (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
       (DeviceIndex "0")))
-  (LastUsedLibraryBrowseDirectory "Q:\allegro\PCB_LIB")
+  (LastUsedLibraryBrowseDirectory "C:\Cadence\SPB_17.2\tools\capture\library")
   (MPSSessionName "2198699s")
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Select "Design Resources" ".\codecinterface.dsn"))
+      (Path "Outputs")
+      (Select "Design Resources"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
@@ -106,9 +153,10 @@
       (Type "COrSchematicDoc")
       (Frame
         (Placement "44 0 1 -1 -1 -8 -31 52 979 52 231")
-        (Scroll "-17 0")
-        (Zoom "87")
+        (Scroll "0 253")
+        (Zoom "174")
         (Occurrence "/"))
       (Path "M:\ORCAD\DESIGN\CODECINTERFACE.DSN")
       (Schematic "SCHEMATIC1")
-      (Page "PAGE1"))))
+      (Page "PAGE1")))
+  (ISPCBBASICLICENSE "false"))
