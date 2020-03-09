@@ -1,0 +1,29 @@
+Things we've installed:
+
+SFML - sudo apt-get install sfml
+  
+JACK Audio Connection Kit - sudo apt-get install jackd
+
+RtAudio - sudo apt-get install librtaudio-dev
+
+fftw - sudo apt-get install fftw3
+
+gpu fft - https://www.raspberrypi.org/blog/accelerating-fourier-transforms-using-the-gpu/
+
+I2S: Followed tutorial from adafruit - https://learn.adafruit.com/adafruit-i2s-mems-microphone-breakout/raspberry-pi-wiring-and-test
+    Installed new kernel
+   
+rt kernel: [Not applied yet] “sudo apt-get install linux-rt”
+
+Jack daemon must be running in background before using rtAudio:
+    'jackd -r -d alsa -r 44100'
+    
+Qt5 
+X
+bernds QWT example
+    apt-get install qtdeclarative5-dev-tools
+    apt-get install libqwt-qt5-dev
+
+compile tips:
+    g++ -c main.cpp -I<path to include files>
+    g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system -lrtaudio

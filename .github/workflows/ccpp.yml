@@ -1,0 +1,33 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
+    - name: make check
+      run: make check
+    - name: make distcheck
+      run: make distcheck
+    
+#    - name: clang-tidy check
+#      uses: muxee/clang-tidy-action@0.0.1-rc1
+#    - name: clang-format lint
+#      uses: DoozyX/clang-format-lint-action@v0.5
+      # with:
+        # Source folder to check formatting
+        # source: Code/* # optional, default is .
+        # Folder to exclude from formatting check
+        # exclude: # optional, default is none
+        # List of extensions to check
+        # extensions: # optional, default is c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx
+        # Version of clang-format
+        # clangFormatVersion: # optional, default is 9
