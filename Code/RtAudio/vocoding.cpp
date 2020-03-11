@@ -37,29 +37,46 @@ class vocoder {
   public:
     float baseFreq;
     int samplerate;
-    int[] scaleFreqs;
+    int bufferSize
+    float FreqRes;
+    int* scaleFreqs [8];
     float newFreq;
+    string Note; 
     fftw_complex* FourierTransform;
 
-    //what should be constructed?
-    vocoder(int samplerate_input, int[] scaleFreqs_input) {
+    vocoder(int samplerate_input, int bufferSize_input, int* scaleFreqs_input [8]) {
       this->samplerate = samplerate_input;
-      //hertz per sample?
       this->scaleFreqs = scaleFreqs_input;
-      
+      this->bufferSize = bufferSize_input;
+      //hertz per sample?
+      this->FreqRes = samplerate/bufferSize;
     };
+
+
+    float SampleToFreq(int sample) {
+      float freq = this->FreqRes * sample;
+      return freq;
+    };
+
+    string FreqToNote(float Freq) {
+      //convert frequncy to a numeric note
+
+      return note
+    };
+
 
     void pitchShift_setup(fftw_complex* fft_spectrum) {
       this->FourierTransform = fft_spectrum;
+      this->baseFreq = SampleToFreq(distance(FourierTransform, max_element(FourierTransform+1, FourierTransform[bufferSize])));
+      this->Note = FreqToNote(this->baseFreq);
 
       //peaks are defined as larger than the 2 bins on either side
-      peaks
-      baseFreq = 
-
+      //peaks =
 
       //find nearest note (newFreq)
 
     };
+
 
     void pitchShift{
       //perform pitch shift??
