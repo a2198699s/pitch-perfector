@@ -23,7 +23,7 @@ int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_
   int midpoint = (lowest_index + highest_index)/2;
   
   //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
-  if *note > (*NotesInKey[midpoint] - ((*NotesInKey[midpoint])-(*NotesInKey[midpoint-1])))  and *note < ((*NotesInKey[midpoint]) + ((*NotesInKey[midpoint]) + (*NotesInKey[midpoint+1]))) {
+  if *note > (*NotesInKey[midpoint] - ((*NotesInKey[midpoint])-(*NotesInKey[midpoint-1]))/2)  and *note < ((*NotesInKey[midpoint]) + ((*NotesInKey[midpoint+1]) - (*NotesInKey[midpoint]))/2) {
     return *NearestNote[midpoint];
   };
 
@@ -39,6 +39,7 @@ int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_
 
 };
 
+// uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
 int noteFinder(float* NotesInKey, float* note, int highest_index, int lowest_index) {
   
   //edge cases
@@ -49,7 +50,7 @@ int noteFinder(float* NotesInKey, float* note, int highest_index, int lowest_ind
     return highest_index;
   };
 
-  binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index)
+  binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index);
 
 };
 
@@ -114,10 +115,12 @@ class vocoder {
     //   return note
     // };
 
-    float NearestNote(float freq) {
+    float NearestNote(float* freq) {
       //find nearest note for and distance in which direction direction...
       //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
-      newNote = freq
+
+      newFrequency = noteFinder(&C_Major, freq, 7, 0);
+      return newFrequency;
 
     };
 
@@ -132,9 +135,13 @@ class vocoder {
       this->baseFreq = SampleToFreq(baseSample);
 
       // find nearest note and distance to it
-      this->newFreq = NearestNote(baseFreq);
+      //THIS GIVES AN INDEX!!!
+      this->newFreq = C_Major[NearestNote(&baseFreq)];
+      float difference = (this->newFreq) - (this->baseFreq);
+      //how many bins is this??
+      int binDifference = difference*(this->FreqRes);
 
-      this->Note = FreqToNote(this->baseFreq);
+      //output note here?
 
       //peaks are defined as larger than the 2 bins on either side??
 
