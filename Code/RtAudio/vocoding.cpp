@@ -24,7 +24,7 @@ int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_
   
   //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
   if *note > (*NotesInKey[midpoint] - ((*NotesInKey[midpoint])-(*NotesInKey[midpoint-1]))/2)  and *note < ((*NotesInKey[midpoint]) + ((*NotesInKey[midpoint+1]) - (*NotesInKey[midpoint]))/2) {
-    return *NearestNote[midpoint];
+    return *NotesInKey[midpoint];
   };
 
   else {
@@ -40,8 +40,12 @@ int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_
 };
 
 // uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
-int noteFinder(float* NotesInKey, float* note, int highest_index, int lowest_index) {
-  
+int noteFinder(float* NotesInKey, float* note) {
+
+  //initial values for recursion
+  int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
+  int lowest_index = 0;  
+
   //edge cases
   if *note < *NotesInKey[lowest_index] {
     return lowest_index;
@@ -50,7 +54,8 @@ int noteFinder(float* NotesInKey, float* note, int highest_index, int lowest_ind
     return highest_index;
   };
 
-  binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index);
+  //use binary search to find nearest note
+  return binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index);
 
 };
 
@@ -119,12 +124,17 @@ class vocoder {
       //find nearest note for and distance in which direction direction...
       //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
 
-      newFrequency = noteFinder(&C_Major, freq, 7, 0);
+      newFrequency = noteFinder(&C_Major, freq);
       return newFrequency;
 
     };
 
+    int peakfinder(fftw_complex* fftspect){
 
+
+    };
+
+    // for sure this needs cleaning up
     void pitchShift_setup(fftw_complex* fft_spectrum) {
       this->FourierTransform = fft_spectrum;
 
@@ -143,13 +153,33 @@ class vocoder {
 
       //output note here?
 
+      //Find all peaks to preserve the envelope
       //peaks are defined as larger than the 2 bins on either side??
 
     };
 
 
-    void pitchShift{
-      //perform pitch shift??
+    void pitchShift(int binDifference) {
+      //perform pitch shift
+
+      //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
+
+      // //sudo code here:
+
+      // int zero_array = zeros for length of bindifference!
+      // if binDifference <= 0 {
+      //   memcpy(*FourierTransform,*FourierTransform[binDifference:end]+zeros_Array, size);
+      // }
+      // else {
+      //   memcpy(*FourierTransform,[zeros_array]+*FourierTransform[0:end-binDifference]);
+      // }
+      
+      //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
+      //FourierTransform = FourierTransform+(binDifference*sizeof(fft_complex));
+      // ...
+
+
+
     };
    
 };
