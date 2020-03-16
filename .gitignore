@@ -2,3 +2,5 @@
 *.o
 GPIO/
 qwt-example/
+moc_*
+.qmake*
