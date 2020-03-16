@@ -26,10 +26,14 @@ Window::Window() : gain(5), count(0)
 	{
 		xData[index] = index;
 		yData[index] = gain * sin( M_PI * index/50 );
+		xData2[index] = index; 
+		yData2[index] = 0;
 	}
 
 	curve = new QwtPlotCurve;
 	plot = new QwtPlot;
+	curve2 = new QwtPlotCurve;
+	plot2 = new QwtPlot;
 	// make a plot curve from the data and attach it to the plot
 	curve->setSamples(xData, yData, plotDataSize);
 	curve->attach(plot);
@@ -37,6 +41,11 @@ Window::Window() : gain(5), count(0)
 	plot->replot();
 	plot->show();
 
+	curve2->setSamples(xData2, yData2, plotDataSize);
+	curve2->attach(plot2);
+
+	plot2->replot();
+	plot2->show();
 
 	// set up the layout - knob above thermometer
 	vLayout = new QVBoxLayout;
@@ -47,6 +56,9 @@ Window::Window() : gain(5), count(0)
 	hLayout = new QHBoxLayout;
 	hLayout->addLayout(vLayout);
 	hLayout->addWidget(plot);
+
+	hLayout->addWidget(plot2);
+
 
 	setLayout(hLayout);
 
@@ -65,17 +77,23 @@ Window::~Window() {
 
 void Window::timerEvent( QTimerEvent * )
 {
-	double inVal = gain * sin( M_PI * count/50.0 );
 	++count;
 
 	// add the new input to the plot
 	memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
-	yData[plotDataSize-1] = aStreamer->dataPoint;
+	yData[plotDataSize-1] = aStreamer->inputData[plotDataSize-1];
 	curve->setSamples(xData, yData, plotDataSize);
 	plot->replot();
 
+	// Fill ydata2 up with the real part of fftw_complex.
+	for ( int i=0; i<plotDataSize; ++i ) {
+		yData2[i] = aStreamer->outputData[i][0];
+	}
+	curve2->setSamples(xData2, yData2, plotDataSize);
+	plot2->replot();
+
 	// set the thermometer value
-	thermo->setValue( inVal + 10 );
+	// thermo->setValue( inVal + 10 );
 }
 
 
