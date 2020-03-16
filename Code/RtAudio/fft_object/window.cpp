@@ -50,11 +50,7 @@ Window::Window() : gain(5), count(0)
 
 	setLayout(hLayout);
 
-	// This is a demo for a thread which can be
-	// used to read from the ADC asynchronously.
-	// At the moment it doesn't do anything else than
-	// running in an endless loop and which prints out "tick"
-	// every second.
+	// starts the audio streamer thread
 	aStreamer = new audioStreamer();
 	aStreamer->start();
 }

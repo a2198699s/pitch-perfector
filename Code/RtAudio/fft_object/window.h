@@ -22,8 +22,6 @@ public:
 	~Window();
 
 	void timerEvent( QTimerEvent * );
-	audioStreamer *aStreamer;
-
 public slots:
 	void setGain(double gain);
 
@@ -46,7 +44,7 @@ private:
 
 	double gain;
 	int count;
-
+	audioStreamer *aStreamer;
 };
 
 #endif // WINDOW_H

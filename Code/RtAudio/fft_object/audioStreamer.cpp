@@ -33,13 +33,16 @@ void audioStreamer::run()
 		cout << "opened\n";
 	}
 	catch ( RtAudioError& e ) {
-				cout << "couldn't open\n";
+		cout << "couldn't open\n";
 		e.printMessage();
 		exit( 0 );
 	}
 	try {
-		cout << "starting stream\n";
 		adac.startStream();
+		char input;
+		std::cout << "\nRunning ... press <enter> to quit.\n";
+		std::cin.get(input);
+		// Stop the stream.
 		if (!running) adac.stopStream();
 	}
 	catch ( RtAudioError& e ) {
