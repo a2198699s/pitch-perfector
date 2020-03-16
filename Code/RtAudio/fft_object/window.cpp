@@ -19,14 +19,14 @@ Window::Window() : gain(5), count(0)
 	thermo->setFillBrush( QBrush(Qt::red) );
 	//thermo->setRange(0, 20);
 	thermo->show();
-
+	int Fs = 44100;
 
 	// set up the initial plot data
 	for( int index=0; index<plotDataSize; ++index )
 	{
 		xData[index] = index;
 		yData[index] = gain * sin( M_PI * index/50 );
-		xData2[index] = index; 
+		xData2[index] = (Fs/plotDataSize)*index; 
 		yData2[index] = 0;
 	}
 
@@ -91,9 +91,6 @@ void Window::timerEvent( QTimerEvent * )
 	}
 	curve2->setSamples(xData2, yData2, plotDataSize);
 	plot2->replot();
-
-	// set the thermometer value
-	// thermo->setValue( inVal + 10 );
 }
 
 
