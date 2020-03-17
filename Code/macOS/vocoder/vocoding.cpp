@@ -23,15 +23,15 @@ int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_
   int midpoint = (lowest_index + highest_index)/2;
 
   //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
-  if (*note > (*NotesInKey[midpoint] - ((*NotesInKey[midpoint])-(*NotesInKey[midpoint-1]))/2))  and (*note < ((*NotesInKey[midpoint]) + ((*NotesInKey[midpoint+1]) - (*NotesInKey[midpoint]))/2)) {
-    return *NotesInKey[midpoint];
+  if (*note > (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2))  and (*note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)) {
+    return NotesInKey[midpoint];
   };
 
   else {
-    if (*note < *NotesInKey[midpoint]) {
+    if (*note < NotesInKey[midpoint]) {
       highest_index = midpoint;
     };
-    if (*note > *NotesInKey[midpoint]) {
+    if (*note > NotesInKey[midpoint]) {
       lowest_index = midpoint;
     };
     return binary_search(NotesInKey, note, highest_index, lowest_index);
@@ -47,10 +47,10 @@ int noteFinder(float* NotesInKey, float* note) {
   int lowest_index = 0;
 
   //edge cases
-  if (*note < *NotesInKey[lowest_index]) {
+  if (*note < NotesInKey[lowest_index]) {
     return lowest_index;
   };
-  if (*note > *NotesInKey[highest_index]) {
+  if (*note > NotesInKey[highest_index]) {
     return highest_index;
   };
 
