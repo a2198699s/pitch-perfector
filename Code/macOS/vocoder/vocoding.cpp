@@ -95,12 +95,12 @@ class vocoder {
     int samplerate;
     int bufferSize;
     float FreqRes;
-    float* scaleFreqs[8];
+    float* scaleFreqs;
     float newFreq;
     string Note;
     fftw_complex* FourierTransform;
 
-    vocoder(int samplerate_input, int bufferSize_input, int* scaleFreqs_input [8]) {
+    vocoder(int samplerate_input, int bufferSize_input, float* scaleFreqs_input) {
       this->samplerate = samplerate_input;
       this->scaleFreqs = scaleFreqs_input;
       this->bufferSize = bufferSize_input;
