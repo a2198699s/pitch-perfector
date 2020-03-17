@@ -124,7 +124,7 @@ class vocoder {
       //find nearest note for and distance in which direction direction...
       //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
 
-      newFrequency = noteFinder(&C_Major, freq);
+      int newFrequency = noteFinder(&C_Major, freq);
       return newFrequency;
 
     };
