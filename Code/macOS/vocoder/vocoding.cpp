@@ -17,49 +17,6 @@ const float C_Major[] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88,
 //void* ObjectPointers = {&, &, &};
 
 
-int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index) {
-//recursive binary searching
-
-  int midpoint = (lowest_index + highest_index)/2;
-
-  //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
-  if (*note > (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)) {
-    return NotesInKey[midpoint];
-  }
-
-  else {
-    if (*note < NotesInKey[midpoint]) {
-      highest_index = midpoint;
-    };
-    if (*note > NotesInKey[midpoint]) {
-      lowest_index = midpoint;
-    };
-    return binary_search(NotesInKey, note, highest_index, lowest_index);
-  };
-
-};
-
-// uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
-int noteFinder(float* NotesInKey, float* note) {
-
-  //initial values for recursion
-  int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
-  int lowest_index = 0;
-
-  //edge cases
-  if (*note < NotesInKey[lowest_index]) {
-    return lowest_index;
-  };
-  if (*note > NotesInKey[highest_index]) {
-    return highest_index;
-  };
-
-  //use binary search to find nearest note
-  return binary_search(NotesInKey, note, highest_index, lowest_index);
-
-};
-
-
 class fft {
   public:
     int nBufferFrames;
@@ -106,6 +63,49 @@ class vocoder {
       this->bufferSize = bufferSize_input;
       //hertz per sample?
       this->FreqRes = samplerate/bufferSize;
+    };
+
+
+    int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index) {
+    //recursive binary searching
+
+      int midpoint = (lowest_index + highest_index)/2;
+
+      //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
+      if (*note > (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)) {
+        return NotesInKey[midpoint];
+      }
+
+      else {
+        if (*note < NotesInKey[midpoint]) {
+          highest_index = midpoint;
+        };
+        if (*note > NotesInKey[midpoint]) {
+          lowest_index = midpoint;
+        };
+        return binary_search(NotesInKey, note, highest_index, lowest_index);
+      };
+
+    };
+
+    // uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
+    int noteFinder(float* NotesInKey, float* note) {
+
+      //initial values for recursion
+      int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
+      int lowest_index = 0;
+
+      //edge cases
+      if (*note < NotesInKey[lowest_index]) {
+        return lowest_index;
+      };
+      if (*note > NotesInKey[highest_index]) {
+        return highest_index;
+      };
+
+      //use binary search to find nearest note
+      return binary_search(NotesInKey, note, highest_index, lowest_index);
+
     };
 
 
