@@ -66,7 +66,7 @@ class vocoder {
     };
 
 
-    int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index) {
+    int binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
     //recursive binary searching
 
       int midpoint = (lowest_index + highest_index)/2;
@@ -89,7 +89,7 @@ class vocoder {
     };
 
     // uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
-    int noteFinder(float* NotesInKey, float* note) {
+    int noteFinder(const float* NotesInKey, float* note) {
 
       //initial values for recursion
       int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
@@ -124,7 +124,7 @@ class vocoder {
       //find nearest note for and distance in which direction direction...
       //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
 
-      int newFrequency = noteFinder(&C_Major, freq);
+      int newFrequency = noteFinder(C_Major, freq);
       return newFrequency;
 
     };
