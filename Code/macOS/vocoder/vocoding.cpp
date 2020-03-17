@@ -28,13 +28,13 @@ int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_
   };
 
   else {
-    if *note < *NotesInKey[midpoint] {
+    if (*note < *NotesInKey[midpoint]) {
       highest_index = midpoint;
     };
-    if *note > *NotesInKey[midpoint] {
+    if (*note > *NotesInKey[midpoint]) {
       lowest_index = midpoint;
     };
-    return binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index);
+    return binary_search(NotesInKey, note, highest_index, lowest_index);
   };
 
 };
@@ -47,15 +47,15 @@ int noteFinder(float* NotesInKey, float* note) {
   int lowest_index = 0;
 
   //edge cases
-  if *note < *NotesInKey[lowest_index] {
+  if (*note < *NotesInKey[lowest_index]) {
     return lowest_index;
   };
-  if *note > *NotesInKey[highest_index]{
+  if (*note > *NotesInKey[highest_index]) {
     return highest_index;
   };
 
   //use binary search to find nearest note
-  return binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index);
+  return binary_search(NotesInKey, note, highest_index, lowest_index);
 
 };
 
@@ -91,9 +91,9 @@ class fft {
 class vocoder {
   public:
     float baseFreq;
-    int baseSample
+    int baseSample;
     int samplerate;
-    int bufferSize
+    int bufferSize;
     float FreqRes;
     float* scaleFreqs[8];
     float newFreq;
