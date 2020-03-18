@@ -66,7 +66,7 @@ class vocoder {
     };
 
 
-    int binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
+    static int binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
     //recursive binary searching
 
       int midpoint = (lowest_index + highest_index)/2;
@@ -89,7 +89,7 @@ class vocoder {
     };
 
     // uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
-    int noteFinder(const float* NotesInKey, float* note) {
+    static int noteFinder(const float* NotesInKey, float* note) {
 
       //initial values for recursion
       int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
@@ -120,7 +120,7 @@ class vocoder {
     //   return note
     // };
 
-    float NearestNote(float* freq) {
+    int NearestNote(float* freq) {
       //find nearest note for and distance in which direction direction...
       //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
 
@@ -129,17 +129,17 @@ class vocoder {
 
     };
 
-    int peakfinder(fftw_complex* fftspect){
-
-
-    };
+    //int peakfinder(fftw_complex* fftspect){
+    //};
 
     // for sure this needs cleaning up
     void pitchShift_setup(fftw_complex* fft_spectrum) {
       this->FourierTransform = fft_spectrum;
 
       //find sample no of highest peak excluding first sample(DC component)
-      this->baseSample = distance(FourierTransform, max_element(FourierTransform+1, FourierTransform[bufferSize]));
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!NEED TO CHECK THIS IS USING THE REAL COMPONENTS AND NOT THE COMPLEX ONES!!!!!!!!!!!!!!!!!!!!!!!
+      this->baseSample = distance(FourierTransform, max_element(FourierTransform, FourierTransform + (sizeof(FourierTransform)/sizeof(FourierTransform[0]))));
 
       // find freqency of highest peak
       this->baseFreq = SampleToFreq(baseSample);
@@ -149,9 +149,11 @@ class vocoder {
       this->newFreq = C_Major[NearestNote(&baseFreq)];
       float difference = (this->newFreq) - (this->baseFreq);
       //how many bins is this??
-      int binDifference = difference*(this->FreqRes);
+      //NEED to round this to int...
+      int binDifference = (int) difference*(this->FreqRes);
 
       //output note here?
+      //std::cout << difference << '\n' << binDifference;
 
       //Find all peaks to preserve the envelope
       //peaks are defined as larger than the 2 bins on either side??
@@ -165,20 +167,22 @@ class vocoder {
       //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
 
       // //sudo code here:
-
-      // int zero_array = zeros for length of bindifference!
-      // if binDifference <= 0 {
-      //   memcpy(*FourierTransform,*FourierTransform[binDifference:end]+zeros_Array, size);
+      int size = sizeof(*FourierTransform)/sizeof(*FourierTransform[0]);
+      // int zero_array[binDifference] = {0}; //for length of bindifference!
+      // if (binDifference <= 0) {
+      //   memcpy(*FourierTransform,*FourierTransform[binDifference:end]+zero_array, size);
       // }
       // else {
-      //   memcpy(*FourierTransform,[zeros_array]+*FourierTransform[0:end-binDifference]);
-      // }
+      //   memcpy(*FourierTransform,[zero_array]+*FourierTransform[0:end-binDifference]);
+      // };
 
       //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
-      //FourierTransform = FourierTransform+(binDifference*sizeof(fft_complex));
-      // ...
-
-
+      if (binDifference <= 0) {
+        FourierTransform = FourierTransform+binDifference;
+        for (int i = size-binDifference; i < size; i++) {
+          *FourierTransform[i] = 0;
+        };
+      }
 
     };
 
