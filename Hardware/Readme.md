@@ -1,3 +1,5 @@
-This directory contains the OrCad (schematic) and Allegro (PCB) design files for the microphone input stage
 
-Possibly include some output alternative to the PWM audio jack on the Pi
+
+As part of this project an Audio Codec PCB was designed. Unfortunately, due to unforseen circumstances (COVID-19), the fabrication process was interrupted.
+
+This README will explore the features and advantages of the custom audio PCB design for this project.A
