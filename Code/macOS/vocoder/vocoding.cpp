@@ -183,6 +183,13 @@ class vocoder {
           *FourierTransform[i] = 0;
         };
       }
+      else {
+        FourierTransform = FourierTransform-binDifference;
+        for (int i = 0; i < binDifference ; i++) {
+          *FourierTransform[i] = 0;
+        }
+
+      }
 
     };
 
