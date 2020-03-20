@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <fftw3.h>
-// #include "fft.h"
+
 using namespace std;
 
 ofstream outputFile("audio_out.txt");
@@ -63,6 +63,7 @@ class vocoder {
     int baseSample;
     int samplerate;
     int bufferSize;
+    int binDifference;
     float FreqRes;
     float* scaleFreqs;
     float newFreq;
@@ -162,7 +163,7 @@ class vocoder {
       float difference = (this->newFreq) - (this->baseFreq);
       //how many bins is this??
       //NEED to round this to int...
-      int binDifference = (int) difference*(this->FreqRes);
+      binDifference = (int) difference*(this->FreqRes);
 
       //output note here?
       //std::cout << difference << '\n' << binDifference;
@@ -173,7 +174,7 @@ class vocoder {
     };
 
 
-    void pitchShift(int binDifference) {
+    void pitchShift() {
       //perform pitch shift
 
       //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
@@ -209,8 +210,18 @@ class vocoder {
 
 class dispatch  {
   public:
+    fft fourierPtr;
+    vocoder vocodePtr;
+
+    dispatch(fft* fourier_obj, vocoder* vocoder_obj){
+      fourierPtr = fourier_obj;
+      vocodePtr = vocoder_obj;
+    };
+
     static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
-      fft *fourier = (fft *) data;
+      fft *fourier = (fft *) data->fourierPtr;
+      vocoder* vocode = (vocoder*) data->vocodePtr;
+
       double *input = (double *) inputBuffer;
       fourier->executefft(input);
 
@@ -220,8 +231,13 @@ class dispatch  {
       }
       inputFile << "\n";
 
+      vocoder->pitchShift_setup(fourier->out);
+      vocoder->pitchShift();
+
+      fourier->executeInverse_fft(vocoder->FourierTransform);
+
       //return audio to output buffer for playback
-      memcpy(outputBuffer, inputBuffer, sizeof(double)*nBufferFrames);
+      memcpy(outputBuffer, fourier->inverse_out, sizeof(double)*nBufferFrames);
       return 0;
     };
 };
@@ -244,13 +260,14 @@ int main() {
 
   // Instantiate FFT Class (and others)
   //do we need a dispatch object?
-  dispatch dispatcher;
   int signed_bufferFrames = (int) bufferFrames;
   fft fourier = fft(signed_bufferFrames);
+  vocoder vocode = vocoder(44100,bufferFrames,&C_Major);
+  dispatch dispatcher = dispatch(&fourier, &vocode);
 
 
   try {
-    adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, 44100, &bufferFrames, &dispatch::caller , (void *)&fourier );
+    adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, 44100, &bufferFrames, &dispatch::caller , (void *)&dispatcher );
   }
   catch ( RtAudioError& e ) {
     e.printMessage();
