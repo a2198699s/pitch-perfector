@@ -219,8 +219,9 @@ class dispatch  {
     };
 
     static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
-      fft *fourier = (fft *) data->fourierPtr;
-      vocoder* vocode = (vocoder*) data->vocodePtr;
+      dispatch dispatchPtr = (dispatch*) data;
+      fft *fourier = (fft *) dispatchPtr->fourierPtr;
+      vocoder* vocode = (vocoder*) dispatchPtr->vocodePtr;
 
       double *input = (double *) inputBuffer;
       fourier->executefft(input);
@@ -231,10 +232,10 @@ class dispatch  {
       }
       inputFile << "\n";
 
-      vocoder->pitchShift_setup(fourier->out);
-      vocoder->pitchShift();
+      vocode->pitchShift_setup(fourier->out);
+      vocode->pitchShift();
 
-      fourier->executeInverse_fft(vocoder->FourierTransform);
+      fourier->executeInverse_fft(vocode->FourierTransform);
 
       //return audio to output buffer for playback
       memcpy(outputBuffer, fourier->inverse_out, sizeof(double)*nBufferFrames);
