@@ -20,7 +20,7 @@ The top and bottom traces of the PCB, which were used to print the board, is sho
 The PCB which was printed (with a scaling problem) is shown below with some example components added. This board was used as a practice for soldering before the reprinted version was ready. 
 
 <p align="center">
-<img src="Design/Images/PCB.jpg" alt="Codec" width=300>
+<img src="Design/Images/PCB.jpg.jpg" alt="Codec" width=300>
 </p>
 
 ### Codec Choice
@@ -42,7 +42,7 @@ An ECM was chosen for audio input into the system for increased sensitivity. The
 A transformer was required to reduce the 3.3V supplied by the Raspberry Pi, which also powers the codec, to ~1.9V for the digital core of the codec. A variable transformer from the store was used in order to do this. The output voltage depends on the choice of resistors placed at the output and adjust pins. The transformer was tested on some prototype board, this test can be seen in the image below. It was wired into the Raspberry Pi and the output voltage was measured using a multimeter and the resistor values were fine-tuned by reducing the adjust pin resistance by adding extra resistors until the correct voltage was output.
 
 <p align="center">
-<img src="Design/Images/TransformerTesting.jpg" alt="test" width=300>
+<img src="Design/Images/TransformerTesting.jpg.jpg" alt="test" width=300>
 </p>
 
 
