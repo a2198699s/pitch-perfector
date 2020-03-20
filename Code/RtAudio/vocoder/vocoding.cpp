@@ -65,7 +65,7 @@ class vocoder {
     int bufferSize;
     int binDifference;
     float FreqRes;
-    float* scaleFreqs;
+    float* scaleFreqs[8];
     float newFreq;
     string Note;
     fftw_complex* FourierTransform;
@@ -210,8 +210,8 @@ class vocoder {
 
 class dispatch  {
   public:
-    fft fourierPtr;
-    vocoder vocodePtr;
+    fft* fourierPtr;
+    vocoder* vocodePtr;
 
     dispatch(fft* fourier_obj, vocoder* vocoder_obj){
       fourierPtr = fourier_obj;
@@ -219,7 +219,7 @@ class dispatch  {
     };
 
     static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
-      dispatch dispatchPtr = (dispatch*) data;
+      dispatch* dispatchPtr = (dispatch*) data;
       fft *fourier = (fft *) dispatchPtr->fourierPtr;
       vocoder* vocode = (vocoder*) dispatchPtr->vocodePtr;
 
@@ -263,7 +263,7 @@ int main() {
   //do we need a dispatch object?
   int signed_bufferFrames = (int) bufferFrames;
   fft fourier = fft(signed_bufferFrames);
-  vocoder vocode = vocoder(44100,bufferFrames,&C_Major);
+  vocoder vocode = vocoder(44100, bufferFrames, C_Major);
   dispatch dispatcher = dispatch(&fourier, &vocode);
 
 
