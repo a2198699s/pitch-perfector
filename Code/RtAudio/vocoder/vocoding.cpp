@@ -1,4 +1,4 @@
-#include <RtAudio.h>
+#include "RtAudio.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -13,65 +13,29 @@ ofstream inputFile("input_data.txt");
 //C major scale starting at C4 in Hertz (does this need to be referenced differently as a constant?)
 const float C_Major[] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
 
-//make structure to hold pointers to multiple objects and pass pointer to structure 
+//make structure to hold pointers to multiple objects and pass pointer to structure
 //void* ObjectPointers = {&, &, &};
 
 
-int binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index) {
-//recursive binary searching
-  
-  int midpoint = (lowest_index + highest_index)/2;
-  
-  //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
-  if *note > (*NotesInKey[midpoint] - ((*NotesInKey[midpoint])-(*NotesInKey[midpoint-1]))/2)  and *note < ((*NotesInKey[midpoint]) + ((*NotesInKey[midpoint+1]) - (*NotesInKey[midpoint]))/2) {
-    return *NotesInKey[midpoint];
-  };
-
-  else {
-    if *note < *NotesInKey[midpoint] {
-      highest_index = midpoint;
-    };
-    if *note > *NotesInKey[midpoint] {
-      lowest_index = midpoint;
-    };
-    return binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index);
-  };
-
-};
-
-// uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
-int noteFinder(float* NotesInKey, float* note) {
-
-  //initial values for recursion
-  int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
-  int lowest_index = 0;  
-
-  //edge cases
-  if *note < *NotesInKey[lowest_index] {
-    return lowest_index;
-  };
-  if *note > *NotesInKey[highest_index]{
-    return highest_index;
-  };
-
-  //use binary search to find nearest note
-  return binary_search(float* NotesInKey, float* note, int highest_index, int lowest_index);
-
-};
-
-
-class fft {        
+class fft {
   public:
     int nBufferFrames;
     double *in;
     fftw_complex *out;
-    int flag;
+    fftw_complex* inverse_in;
+    double* inverse_out;
     fftw_plan my_plan;
+    fftw_plan inverse_plan;
 
     fft(int nBufferFrames) {
       in = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
       out = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
       my_plan = fftw_plan_dft_r2c_1d(nBufferFrames, in, out, FFTW_MEASURE);
+
+      inverse_in = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
+      inverse_out = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
+      inverse_plan = fftw_plan_dft_c2r_1d(nBufferFrames, inverse_in, inverse_out, FFTW_MEASURE);
+
       this->nBufferFrames = nBufferFrames; //need to set as object variable or it wont exist outwith this function!
     };
 
@@ -80,6 +44,11 @@ class fft {
       memcpy(in, inputBuffer, sizeof(double)*nBufferFrames );
       fftw_execute(my_plan);
     };
+
+    void executeInverse_fft(fftw_complex* fourierSpectrum){
+      memcpy(inverse_in, fourierSpectrum, sizeof(fftw_complex)*nBufferFrames);
+      fftw_execute(inverse_plan);
+    }
 };
 
 // class inverse_fft {
@@ -91,21 +60,64 @@ class fft {
 class vocoder {
   public:
     float baseFreq;
-    int baseSample
+    int baseSample;
     int samplerate;
-    int bufferSize
+    int bufferSize;
     float FreqRes;
-    float* scaleFreqs[8];
+    float* scaleFreqs;
     float newFreq;
-    string Note; 
+    string Note;
     fftw_complex* FourierTransform;
 
-    vocoder(int samplerate_input, int bufferSize_input, int* scaleFreqs_input [8]) {
+    vocoder(int samplerate_input, int bufferSize_input, float* scaleFreqs_input) {
       this->samplerate = samplerate_input;
       this->scaleFreqs = scaleFreqs_input;
       this->bufferSize = bufferSize_input;
       //hertz per sample?
       this->FreqRes = samplerate/bufferSize;
+    };
+
+
+    static int binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
+    //recursive binary searching
+
+      int midpoint = (lowest_index + highest_index)/2;
+
+      //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
+      if (*note > (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)) {
+        return NotesInKey[midpoint];
+      }
+
+      else {
+        if (*note < NotesInKey[midpoint]) {
+          highest_index = midpoint;
+        };
+        if (*note > NotesInKey[midpoint]) {
+          lowest_index = midpoint;
+        };
+        return binary_search(NotesInKey, note, highest_index, lowest_index);
+      };
+
+    };
+
+    // uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
+    static int noteFinder(const float* NotesInKey, float* note) {
+
+      //initial values for recursion
+      int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
+      int lowest_index = 0;
+
+      //edge cases
+      if (*note < NotesInKey[lowest_index]) {
+        return lowest_index;
+      };
+      if (*note > NotesInKey[highest_index]) {
+        return highest_index;
+      };
+
+      //use binary search to find nearest note
+      return binary_search(NotesInKey, note, highest_index, lowest_index);
+
     };
 
 
@@ -120,26 +132,26 @@ class vocoder {
     //   return note
     // };
 
-    float NearestNote(float* freq) {
+    int NearestNote(float* freq) {
       //find nearest note for and distance in which direction direction...
       //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
 
-      newFrequency = noteFinder(&C_Major, freq);
+      int newFrequency = noteFinder(C_Major, freq);
       return newFrequency;
 
     };
 
-    int peakfinder(fftw_complex* fftspect){
-
-
-    };
+    //int peakfinder(fftw_complex* fftspect){
+    //};
 
     // for sure this needs cleaning up
     void pitchShift_setup(fftw_complex* fft_spectrum) {
       this->FourierTransform = fft_spectrum;
 
       //find sample no of highest peak excluding first sample(DC component)
-      this->baseSample = distance(FourierTransform, max_element(FourierTransform+1, FourierTransform[bufferSize]));
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!NEED TO CHECK THIS IS USING THE REAL COMPONENTS AND NOT THE COMPLEX ONES!!!!!!!!!!!!!!!!!!!!!!!
+      this->baseSample = distance(FourierTransform, max_element(FourierTransform, FourierTransform + (sizeof(FourierTransform)/sizeof(FourierTransform[0]))));
 
       // find freqency of highest peak
       this->baseFreq = SampleToFreq(baseSample);
@@ -149,9 +161,11 @@ class vocoder {
       this->newFreq = C_Major[NearestNote(&baseFreq)];
       float difference = (this->newFreq) - (this->baseFreq);
       //how many bins is this??
-      int binDifference = difference*(this->FreqRes);
+      //NEED to round this to int...
+      int binDifference = (int) difference*(this->FreqRes);
 
       //output note here?
+      //std::cout << difference << '\n' << binDifference;
 
       //Find all peaks to preserve the envelope
       //peaks are defined as larger than the 2 bins on either side??
@@ -165,29 +179,37 @@ class vocoder {
       //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
 
       // //sudo code here:
-
-      // int zero_array = zeros for length of bindifference!
-      // if binDifference <= 0 {
-      //   memcpy(*FourierTransform,*FourierTransform[binDifference:end]+zeros_Array, size);
+      int size = sizeof(*FourierTransform)/sizeof(*FourierTransform[0]);
+      // int zero_array[binDifference] = {0}; //for length of bindifference!
+      // if (binDifference <= 0) {
+      //   memcpy(*FourierTransform,*FourierTransform[binDifference:end]+zero_array, size);
       // }
       // else {
-      //   memcpy(*FourierTransform,[zeros_array]+*FourierTransform[0:end-binDifference]);
-      // }
-      
+      //   memcpy(*FourierTransform,[zero_array]+*FourierTransform[0:end-binDifference]);
+      // };
+
       //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
-      //FourierTransform = FourierTransform+(binDifference*sizeof(fft_complex));
-      // ...
-
-
+      if (binDifference <= 0) {
+        FourierTransform = FourierTransform+binDifference;
+        for (int i = size-binDifference; i < size; i++) {
+          *FourierTransform[i] = 0;
+        };
+      }
+      else {
+        FourierTransform = FourierTransform-binDifference;
+        for (int i = 0; i < 0-binDifference ; i++) {
+          *FourierTransform[i] = 0;
+        };
+      };
 
     };
-   
+
 };
 
 
 class dispatch  {
   public:
-    static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) { 
+    static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
       fft *fourier = (fft *) data;
       double *input = (double *) inputBuffer;
       fourier->executefft(input);
@@ -213,7 +235,7 @@ int main() {
     exit( 0 );
   }
   // Set the same number of channels for both input and output.
-  unsigned int bufferBytes, bufferFrames = 512; // samples/Fs = bufferTime 
+  unsigned int bufferBytes, bufferFrames = 512; // samples/Fs = bufferTime
   RtAudio::StreamParameters iParams, oParams;
   iParams.deviceId = 3; // first available device
   iParams.nChannels = 1;
@@ -221,11 +243,11 @@ int main() {
   oParams.nChannels = 1;
 
   // Instantiate FFT Class (and others)
-  //do we need a dispatch object? 
+  //do we need a dispatch object?
   dispatch dispatcher;
   int signed_bufferFrames = (int) bufferFrames;
   fft fourier = fft(signed_bufferFrames);
-  
+
 
   try {
     adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, 44100, &bufferFrames, &dispatch::caller , (void *)&fourier );
