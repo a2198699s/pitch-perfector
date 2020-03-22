@@ -20,11 +20,11 @@ This new shifted value is then output to a **speaker**
 
 ## Software
 
-The project software README can be accessed from the following link: [Software](Code/README.md#Software)
+The project software README can be accessed from the following link: [Software](https://github.com/a2198699s/pitch-perfector/tree/master/Code#software)
 
 ## Hardware 
 
-The project hardware README can be accessed from the following link: [Hardware](Hardware/README.md#Hardware)
+The project hardware README can be accessed from the following link: [Hardware](https://github.com/a2198699s/pitch-perfector/tree/master/Hardware#hardware)
 
 ## The Team
 
