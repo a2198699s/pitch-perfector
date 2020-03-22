@@ -1,4 +1,4 @@
-# Project Hardware
+# Hardware
 
 As part of this project an Audio Codec PCB was designed. Unfortunately, due to unforseen circumstances (COVID-19), the fabrication process was interrupted. The PCB which was designed will be discussed below alongside some images. The alternative, non-custom, hardware which was adopted by the project is also described below.
 
