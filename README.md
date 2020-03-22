@@ -1,8 +1,8 @@
 # Pitch Perfector
-A microphone application which performs real-time pitch shifting
+A Raspberry Pi real-time pitch-shifting microphone project.
+Stay Tuned...
 
-## System Diagram
-![System Diagram](Documentation/Images/Schematic/Schematic.PNG)
+## System Overview
 
 The **ECM microphone** converts the vocal (from ~100Hz up to ~3.5kHz) input into an analoge signal  
   
@@ -14,4 +14,24 @@ The **I2S ADC** converts this to I2S format which is understood by the Raspberry
   
 **Pitch shifting** then shifts the frequency components of the signal using phase vocoding so they match the note input by the GUI or to a predetermined scale value  
   
-This new shifted value is then output to a **speaker**  
+This new shifted value is then output to a **speaker** 
+
+![System Diagram](Documentation/Images/Schematic/Schematic.PNG)
+
+## Software
+
+The project software README can be accessed from the following link: [Software](Code/README.md#Software)
+
+## Hardware 
+
+The project hardware README can be accessed from the following link: [Hardware](Hardware/README.md#Hardware)
+
+## The Team
+
+Twitter: @PerfectorPitch
+
+Members: Andrew (left), Hanoz (middle), Noah (right)
+
+![Presentation](Documentation/InitialPitch/Presentation.jpg)
+
+
