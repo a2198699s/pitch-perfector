@@ -1,4 +1,4 @@
-# Pitch Perfector
+![Logo](Documentation/Logo.jpg)
 
 A Raspberry Pi real-time pitch-shifting microphone project.
 Stay Tuned...
