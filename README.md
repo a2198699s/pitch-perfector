@@ -39,6 +39,6 @@ Members: Andrew (left), Hanoz (middle), Noah (right)
 
 ## Licence
 
-For licencing information see [Licence](LICENCE.md)
+For licencing information see [Licence](https://github.com/a2198699s/pitch-perfector/blob/master/LICENSE)
 
 
