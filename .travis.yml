@@ -1,16 +1,7 @@
-install: 
-- make get-deps
+dist: trusty
+sudo: false
+language: cpp
 
-language: 
-- cpp
-
-compiler:
-  - gcc
-  - clang
-
-os:
-- linux
-
-#script:
-#  - make
-#  - make test
+script: 
+- cmake .
+- cmake --build . -- -j2
