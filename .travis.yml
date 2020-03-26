@@ -1,3 +1,16 @@
-language: node_js
-node_js:
- - "node"
+install: 
+- make get-deps
+
+language: 
+- cpp
+
+compiler:
+  - gcc
+  - clang
+
+os:
+- linux
+
+#script:
+#  - make
+#  - make test
