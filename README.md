@@ -37,4 +37,8 @@ Members: Andrew (left), Hanoz (middle), Noah (right)
 
 ![Presentation](Documentation/InitialPitch/Presentation.jpg)
 
+## Licence
+
+For licencing information see [Licence](LICENCE.md)
+
 
