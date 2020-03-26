@@ -1,6 +1,9 @@
 # Pitch Perfector
+
 A Raspberry Pi real-time pitch-shifting microphone project.
 Stay Tuned...
+
+[![Build Status](https://travis-ci.com/a2198699s/pitch-perfector.svg?branch=master)](https://travis-ci.com/a2198699s/pitch-perfector)
 
 ## System Overview
 
