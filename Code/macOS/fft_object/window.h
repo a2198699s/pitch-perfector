@@ -1,10 +1,10 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include <qwt/qwt_thermo.h>
-#include <qwt/qwt_knob.h>
-#include <qwt/qwt_plot.h>
-#include <qwt/qwt_plot_curve.h>
+#include </usr/local/Cellar/qwt/6.1.4/lib/qwt.framework/Headers/qwt_thermo.h>
+#include </usr/local/Cellar/qwt/6.1.4/lib/qwt.framework/Headers/qwt_knob.h>
+#include </usr/local/Cellar/qwt/6.1.4/lib/qwt.framework/Headers/qwt_plot.h>
+#include </usr/local/Cellar/qwt/6.1.4/lib/qwt.framework/Headers/qwt_plot_curve.h>
 
 #include <QBoxLayout>
 

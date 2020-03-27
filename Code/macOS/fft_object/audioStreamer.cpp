@@ -1,11 +1,11 @@
 #include "audioStreamer.h"
 #include <QDebug>
-#include <RtAudio.h>
+#include </usr/local/include/rtaudio/RtAudio.h>
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <cstring>
-#include <fftw3.h>
+#include </usr/local/include/fftw3.h>
 #include "fft.h"
 using namespace std;
 
@@ -17,7 +17,7 @@ void audioStreamer::run()
 		exit( 0 );
 	}
 
-	unsigned int bufferFrames = 512; // samples/Fs = bufferTime 
+	unsigned int bufferFrames = 512; // samples/Fs = bufferTime
 	RtAudio::StreamParameters iParams, oParams;
 	iParams.deviceId = 3; // first available device
 	iParams.nChannels = 1;
@@ -63,8 +63,3 @@ void audioStreamer::quit()
 	running = false;
 	exit(0);
 }
-
-
-
-
-

@@ -3,13 +3,13 @@
 #define AUDIOSTREAMER_H
 
 #include <QThread>
-#include <fftw3.h>
+#include </usr/local/include/fftw3.h>
 
 class audioStreamer : public QThread
 {
 public:
-	audioStreamer() { 
-		running = 0; 
+	audioStreamer() {
+		running = 0;
 		inputData = (double *)malloc(sizeof(double)*512);
 		outputData = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*512);
 	};

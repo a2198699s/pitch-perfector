@@ -1,6 +1,6 @@
-#include <RtAudio.h>
+#include </usr/local/include/rtaudio/RtAudio.h>
 
-class fft {        
+class fft {
   public:
     int nBufferFrames;
     double *in;

@@ -1,7 +1,7 @@
-#include <fftw3.h>
+#include </usr/local/include/fftw3.h>
 #include "fft.h"
 #include <cstring>
-#include <RtAudio.h>
+#include </usr/local/include/rtaudio/RtAudio.h>
 
 
 fft::fft(int nBufferFrames) {
@@ -17,7 +17,7 @@ void fft::executefft(double *inputBuffer) {
 };
 
 // Static declared in header.
-int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) { 
+int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
     fft *fourier = (fft *) data;
     double *input = (double *) inputBuffer;
     fourier->executefft(input);
