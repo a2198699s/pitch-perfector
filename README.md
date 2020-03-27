@@ -31,7 +31,7 @@ The project hardware README can be accessed from the following link: [Hardware](
 
 ## The Team
 
-Twitter: @PerfectorPitch
+Twitter: [@PerfectorPitch](https://twitter.com/PerfectorPitch)
 
 Members: Andrew (left), Hanoz (middle), Noah (right)
 
