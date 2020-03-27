@@ -6,7 +6,8 @@ JACK Audio Connection Kit - sudo apt-get install jackd
 
 RtAudio - sudo apt-get install librtaudio-dev
 
-fftw - sudo apt-get install fftw3
+//fftw - sudo apt-get install fftw3
+sudo apt-get install libfftw3-dev libfftw3-doc
 
 gpu fft - https://www.raspberrypi.org/blog/accelerating-fourier-transforms-using-the-gpu/
 
