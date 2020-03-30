@@ -6,7 +6,7 @@
 
 //add a peak finder to this class?
 
-vocoder::vocoder(int samplerate_input, int bufferSize_input, float* scaleFreqs_input) {
+vocoder::vocoder(int samplerate_input, int bufferSize_input, void* scaleFreqs_input) {
   this->samplerate = samplerate_input;
   this->scaleFreqs = scaleFreqs_input;
   this->bufferSize = bufferSize_input;
