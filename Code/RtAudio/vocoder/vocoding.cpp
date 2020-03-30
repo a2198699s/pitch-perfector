@@ -65,18 +65,18 @@ class vocoder {
     int bufferSize;
     int binDifference;
     float FreqRes;
-    float* scaleFreqs[8];
+    void* scaleFreqs;
     float newFreq;
     string Note;
     fftw_complex* FourierTransform;
 
-    vocoder(int samplerate_input, int bufferSize_input, float* scaleFreqs_input) {
+    vocoder(int samplerate_input, int bufferSize_input, void* scaleFreqs_input) {
       this->samplerate = samplerate_input;
       this->scaleFreqs = scaleFreqs_input;
       this->bufferSize = bufferSize_input;
       //hertz per sample?
       this->FreqRes = samplerate/bufferSize;
-    };
+    }
 
 
     static int binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
@@ -254,16 +254,16 @@ int main() {
   // Set the same number of channels for both input and output.
   unsigned int bufferBytes, bufferFrames = 512; // samples/Fs = bufferTime
   RtAudio::StreamParameters iParams, oParams;
-  iParams.deviceId = 3; // first available device
-  iParams.nChannels = 1;
+  iParams.deviceId = 0; // first available device
+  iParams.nChannels = 2;
   oParams.deviceId = 0; // first available device
-  oParams.nChannels = 1;
+  oParams.nChannels = 2;
 
   // Instantiate FFT Class (and others)
   //do we need a dispatch object?
   int signed_bufferFrames = (int) bufferFrames;
   fft fourier = fft(signed_bufferFrames);
-  vocoder vocode = vocoder(44100, bufferFrames, C_Major);
+  vocoder vocode = vocoder(44100, bufferFrames, (void*) C_Major);
   dispatch dispatcher = dispatch(&fourier, &vocode);
 
 
