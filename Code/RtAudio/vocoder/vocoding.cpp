@@ -57,6 +57,7 @@ class fft {
 
 // };
 
+//issue with void ptr probably, will need to check in testting!
 class vocoder {
   public:
     float baseFreq;
