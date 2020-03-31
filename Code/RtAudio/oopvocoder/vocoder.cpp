@@ -4,11 +4,14 @@
 #include "vocoder.h"
 #include <fftw3.h>
 
+using namespace std;
+
 //add a peak finder to this class?
 
 vocoder::vocoder(int samplerate_input, int bufferSize_input, void* scaleFreqs_input) {
   this->samplerate = samplerate_input;
-  this->scaleFreqs = scaleFreqs_input;
+  this->scaleFreqs = (float*) malloc(sizeof(float)*8);
+  this->scaleFreqs = (float*) scaleFreqs_input;
   this->bufferSize = bufferSize_input;
   //hertz per sample?
   this->FreqRes = samplerate/bufferSize;
@@ -89,7 +92,7 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   float difference = (this->newFreq) - (this->baseFreq);
   //how many bins is this??
   //NEED to round this to int...
-  int binDifference = (int) difference*(this->FreqRes);
+  this->binDifference = (int) difference*(this->FreqRes);
 
   //output note here?
   //std::cout << difference << '\n' << binDifference;
@@ -100,7 +103,7 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
 };
 
 
-void vocoder::pitchShift(int binDifference) {
+void vocoder::pitchShift() {
   //perform pitch shift
   //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
 
@@ -108,14 +111,14 @@ void vocoder::pitchShift(int binDifference) {
 
   //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
   if (binDifference <= 0) {
-    FourierTransform = FourierTransform+binDifference;
-    for (int i = size-binDifference; i < size; i++) {
+    FourierTransform = FourierTransform+this->binDifference;
+    for (int i = size-this->binDifference; i < size; i++) {
       *FourierTransform[i] = 0;
     };
   }
   else {
-    FourierTransform = FourierTransform-binDifference;
-    for (int i = 0; i < 0-binDifference ; i++) {
+    FourierTransform = FourierTransform-this->binDifference;
+    for (int i = 0; i < 0-this->binDifference ; i++) {
       *FourierTransform[i] = 0;
     };
   };

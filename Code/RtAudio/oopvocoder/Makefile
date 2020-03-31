@@ -1,3 +1,4 @@
 vocode: vocoding.cpp
 	g++ -c vocoding.cpp -I/usr/local/include/rtaudio
-	g++ -o vocode vocoding.o -lrtaudio -lfftw3
+	g++ -c vocoder.cpp
+	g++ -o vocode vocoding.o vocoder.o -lrtaudio -lfftw3

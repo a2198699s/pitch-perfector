@@ -8,9 +8,10 @@ class vocoder {
     int samplerate;
     int bufferSize;
     float FreqRes;
-    void* scaleFreqs;
+    float* scaleFreqs;
     float newFreq;
-    string Note;
+    int binDifference;
+    //string Note;
     fftw_complex* FourierTransform;
 
     vocoder(int samplerate_input, int bufferSize_input, void* scaleFreqs_input);
@@ -19,6 +20,5 @@ class vocoder {
     float SampleToFreq(int sample);
     int NearestNote(float* freq);
     void pitchShift_setup(fftw_complex* fft_spectrum);
-    void pitchShift(int binDifference);
-
+    void pitchShift();
 };
