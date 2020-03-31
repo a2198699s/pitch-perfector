@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <algorithm>
 #include <cstring>
 #include <fftw3.h>
 
