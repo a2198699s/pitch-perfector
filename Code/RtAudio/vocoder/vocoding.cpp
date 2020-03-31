@@ -1,4 +1,4 @@
-#include "RtAudio.h"
+#include <RtAudio.h>
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -172,24 +172,9 @@ class vocoder {
 
 
     void pitchShift() {
-      //perform pitch shift
-
-      //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
-
-      // //sudo code here:
-      int size = sizeof(*FourierTransform)/sizeof(*FourierTransform[0]);
-      // int zero_array[binDifference] = {0}; //for length of bindifference!
-      // if (binDifference <= 0) {
-      //   memcpy(*FourierTransform,*FourierTransform[binDifference:end]+zero_array, size);
-      // }
-      // else {
-      //   memcpy(*FourierTransform,[zero_array]+*FourierTransform[0:end-binDifference]);
-      // };
-
-      //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
       if (binDifference <= 0) {
         FourierTransform = FourierTransform+binDifference;
-        for (int i = size-binDifference; i < size; i++) {
+        for (int i = bufferSize-binDifference; i < bufferSize; i++) {
           *FourierTransform[i] = 0;
         };
       }
@@ -199,9 +184,7 @@ class vocoder {
           *FourierTransform[i] = 0;
         };
       };
-
     };
-
 };
 
 
