@@ -52,12 +52,6 @@ class fft {
     }
 };
 
-// class inverse_fft {
-//   // best to inherit a base fftclass with an abstract transform method?
-//   // will add as seperate plan in fft class and add an execute inverse fft method
-
-// };
-
 //issue with void ptr probably, will need to check in testting!
 class vocoder {
   public:
@@ -74,11 +68,12 @@ class vocoder {
 
     vocoder(int samplerate_input, int bufferSize_input, void* scaleFreqs_input) {
       this->samplerate = samplerate_input;
+      this->scaleFreqs = (float*) malloc(sizeof(float)*8);
       this->scaleFreqs = (float*) scaleFreqs_input;
       this->bufferSize = bufferSize_input;
       //hertz per sample?
       this->FreqRes = samplerate/bufferSize;
-    }
+    };
 
 
     static int binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
@@ -256,10 +251,10 @@ int main() {
   // Set the same number of channels for both input and output.
   unsigned int bufferBytes, bufferFrames = 512; // samples/Fs = bufferTime
   RtAudio::StreamParameters iParams, oParams;
-  iParams.deviceId = 3; // first available device
-  iParams.nChannels = 1;
-  oParams.deviceId = 0; // first available device
-  oParams.nChannels = 1;
+  iParams.deviceId = 0; // first available device
+  iParams.nChannels = 2;
+  oParams.deviceId = 1; // first available device
+  oParams.nChannels = 2;
 
   // Instantiate FFT Class (and others)
   //do we need a dispatch object?
