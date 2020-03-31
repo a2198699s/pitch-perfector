@@ -251,10 +251,10 @@ int main() {
   // Set the same number of channels for both input and output.
   unsigned int bufferBytes, bufferFrames = 512; // samples/Fs = bufferTime
   RtAudio::StreamParameters iParams, oParams;
-  iParams.deviceId = 0; // first available device
-  iParams.nChannels = 2;
-  oParams.deviceId = 1; // first available device
-  oParams.nChannels = 2;
+  iParams.deviceId = 3; // first available device
+  iParams.nChannels = 1;
+  oParams.deviceId = 0; // first available device
+  oParams.nChannels = 1;
 
   // Instantiate FFT Class (and others)
   //do we need a dispatch object?
