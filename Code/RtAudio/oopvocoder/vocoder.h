@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <fftw3.h>
 
+
 class vocoder {
   public:
     float baseFreq;
