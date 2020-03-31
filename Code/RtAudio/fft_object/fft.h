@@ -3,14 +3,18 @@
 class fft {        
   public:
     int nBufferFrames;
-    double *in;
+    double* in;
     fftw_complex *out;
-    int flag;
+    fftw_complex* inverse_in;
+    double* inverse_out;
     fftw_plan my_plan;
+    fftw_plan inverse_plan;
 
     fft(int nBufferFrames);
-    void executefft(double *inputBuffer);
+    void executefft(double* inputBuffer);
+    void executeInverse_fft(fftw_complex* fourierSpectrum);
 };
+
 
 class Dispatch  {
   public:
