@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include "vocoder.h"
