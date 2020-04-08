@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include "vocoder.h"
@@ -18,7 +19,7 @@ vocoder::vocoder(int samplerate_input, int bufferSize_input, void* scaleFreqs_in
 };
 
 
-static int vocoder::binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
+int vocoder::binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
 //recursive binary searching
 
   int midpoint = (lowest_index + highest_index)/2;
@@ -40,7 +41,7 @@ static int vocoder::binary_search(const float* NotesInKey, float* note, int high
 };
 
 // uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
-static int vocoder::noteFinder(const float* NotesInKey, float* note) {
+int vocoder::noteFinder(const float* NotesInKey, float* note) {
 
   //initial values for recursion
   int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
@@ -68,7 +69,7 @@ int vocoder::NearestNote(float* freq) {
   //find nearest note for and distance to it
   //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
 
-  int newFrequency = noteFinder(C_Major, freq);
+  int newFrequency = noteFinder(this->scaleFreqs, freq);
   return newFrequency;
 };
 
@@ -88,7 +89,7 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
 
   // find nearest note and distance to it
   //THIS GIVES AN INDEX!!!
-  this->newFreq = C_Major[NearestNote(&baseFreq)];
+  this->newFreq = this->scaleFreqs[NearestNote(&baseFreq)];
   float difference = (this->newFreq) - (this->baseFreq);
   //how many bins is this??
   //NEED to round this to int...
@@ -122,6 +123,4 @@ void vocoder::pitchShift() {
       *FourierTransform[i] = 0;
     };
   };
-};
-
 };
