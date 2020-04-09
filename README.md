@@ -1,15 +1,15 @@
-![Logo](Documentation/Logo.jpg)
+![Logo](Documentation/LogoSmall.jpg)
+
+[![Build Status](https://travis-ci.com/a2198699s/pitch-perfector.svg?branch=master)](https://travis-ci.com/a2198699s/pitch-perfector)
 
 A Raspberry Pi real-time pitch-shifting microphone project.
 Stay Tuned...
 
-[![Build Status](https://travis-ci.com/a2198699s/pitch-perfector.svg?branch=master)](https://travis-ci.com/a2198699s/pitch-perfector)
-
 ## System Overview
 
-The **ECM microphone** converts the vocal (from ~100Hz up to ~3.5kHz) input into an analoge signal  
+The **MEMS microphone** converts the vocal (from ~100Hz up to ~3.5kHz) input into an analoge signal  
   
-The **I2S ADC** converts this to I2S format which is understood by the Raspberry Pi with a datarate of 240kbps   
+The **I2S ADC** in the Adafruit microphone converts this audio to I2S format which is understood by the Raspberry Pi with a datarate of 240kbps   
   
 **Digital filtering** is then performed on the input using an IIR filter implemented in C++  
   
@@ -21,21 +21,8 @@ This new shifted value is then output to a **speaker**
 
 ![System Diagram](Documentation/Images/Schematic/Schematic.PNG)
 
-## Software
+For more information, see the project [Wiki](https://github.com/a2198699s/pitch-perfector/wiki)
 
-The project software README can be accessed from the following link: [Software](https://github.com/a2198699s/pitch-perfector/tree/master/Code#software)
-
-## Hardware 
-
-The project hardware README can be accessed from the following link: [Hardware](https://github.com/a2198699s/pitch-perfector/tree/master/Hardware#hardware)
-
-## The Team
-
-Twitter: [@PerfectorPitch](https://twitter.com/PerfectorPitch)
-
-Members: Andrew (left), Hanoz (middle), Noah (right)
-
-![Presentation](Documentation/InitialPitch/Presentation.jpg)
 
 ## Licence
 
