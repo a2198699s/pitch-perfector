@@ -1,4 +1,4 @@
-![Logo](Documentation/Logo.jpg)
+![Logo](Documentation/LogoSmall.jpg)
 
 A Raspberry Pi real-time pitch-shifting microphone project.
 Stay Tuned...
