@@ -21,21 +21,8 @@ This new shifted value is then output to a **speaker**
 
 ![System Diagram](Documentation/Images/Schematic/Schematic.PNG)
 
-## Software
+For more information, see the project [Wiki](https://github.com/a2198699s/pitch-perfector/wiki)
 
-The project software README can be accessed from the following link: [Software](https://github.com/a2198699s/pitch-perfector/tree/master/Code#software)
-
-## Hardware 
-
-The project hardware README can be accessed from the following link: [Hardware](https://github.com/a2198699s/pitch-perfector/tree/master/Hardware#hardware)
-
-## The Team
-
-Twitter: [@PerfectorPitch](https://twitter.com/PerfectorPitch)
-
-Members: Andrew (left), Hanoz (middle), Noah (right)
-
-![Presentation](Documentation/InitialPitch/Presentation.jpg)
 
 ## Licence
 
