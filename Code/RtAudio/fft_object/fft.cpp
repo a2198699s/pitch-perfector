@@ -27,11 +27,29 @@ void fft::executeInverse_fft(fftw_complex* fourierSpectrum){
     fftw_execute(inverse_plan);
 };
 
+
+Dispatch::Dispatch(fft* fourier_obj){
+    fourierPtr = fourier_obj;
+    // vocodePtr = vocoder_obj;
+};
+
 // Static declared in header.
-int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) { 
-    fft *fourier = (fft *) data;
+int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
+    Dispatch* dispatchPtr = (Dispatch*) data;
+    fft *fourier = dispatchPtr->fourierPtr;
+    // Vocoder* vocode = dispatchPtr->vocodePtr;
+
     double *input = (double *) inputBuffer;
     fourier->executefft(input);
-    memcpy(outputBuffer, inputBuffer, sizeof(double)*nBufferFrames);
+    fourier->executeInverse_fft(fourier->out);
+    memcpy(outputBuffer, fourier->inverse_out, sizeof(double)*nBufferFrames);
+
+    // vocode->pitchShift_setup(fourier->out);
+    // vocode->pitchShift();
+
+    // fourier->executeInverse_fft(fourier->out);
+
+    //return audio to output buffer for playback
+    // memcpy(outputBuffer, fourier->inverse_out, sizeof(double)*nBufferFrames);
     return 0;
 };

@@ -1,4 +1,5 @@
 #include <RtAudio.h>
+// # include "vocoder.h"
 
 class fft {        
   public:
@@ -18,5 +19,11 @@ class fft {
 
 class Dispatch  {
   public:
+    fft* fourierPtr;
+    // Vocoder* vocodePtr;
+
+    Dispatch(fft* fourier_obj);
     static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data);
 };
+
+
