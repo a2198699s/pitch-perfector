@@ -18,6 +18,8 @@ class fft {
     double* removeComplexPart(fftw_complex* fourierSpectrum, int size);
     double findClosestNote(double notes[], int n, double target);
     double getClosest(double val1, double val2, double target);
+    int FrequencyToIndex(double frequency);
+    void shiftFrequencySpectrum(int shift);
 };
 
 

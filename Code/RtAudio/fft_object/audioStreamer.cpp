@@ -36,7 +36,7 @@ void audioStreamer::run()
   	Dispatch dispatcher = Dispatch(&fourier);
 	running = true;
 	try {
-		adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, 44100, &bufferFrames, &Dispatch::caller, (void *)&dispatcher );
+		adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, samplingRate, &bufferFrames, &Dispatch::caller, (void *)&dispatcher );
 		cout << "opened\n";
 	}
 	catch ( RtAudioError& e ) {

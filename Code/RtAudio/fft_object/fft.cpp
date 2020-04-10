@@ -2,6 +2,7 @@
 #include <cstring>
 #include <RtAudio.h>
 #include <algorithm>
+#include <math.h>
 #include "fft.h"
 #include "vocoder.h"
 
@@ -41,7 +42,7 @@ int fft::peakFinder(fftw_complex* fourierSpectrum){
     double* realSpectrum = this->removeComplexPart(fourierSpectrum, nBufferFrames);
     int max = 0;
     int maxIndex = 0;
-    double frequencyResolution = 44100/512;
+    double frequencyResolution = 44100/nBufferFrames;
     for (int i=0; i<nBufferFrames; ++i) {
         if (realSpectrum[i] > max) {
             max = realSpectrum[i];
@@ -100,36 +101,40 @@ double fft::findClosestNote(double notes[], int n, double target) {
     return notes[mid]; 
 } 
 
+int fft::FrequencyToIndex(double frequency) {
+    float frequencyResolution = 44100/nBufferFrames;
+    return round(frequency/frequencyResolution);
+}
 
+void fft::shiftFrequencySpectrum(int shift) { 
+    if (shift >= 0) {
+        memmove(this->out+shift, this->out, sizeof(fftw_complex)*(nBufferFrames-shift));
+    }
+    else {
+        memmove(this->out, this->out-shift, sizeof(fftw_complex)*(nBufferFrames+shift)); 
+    }
+}
 
 Dispatch::Dispatch(fft* fourier_obj){
     fourierPtr = fourier_obj;
-    // vocodePtr = vocoder_obj;
 };
 
 // Static declared in header.
 int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
     Dispatch* dispatchPtr = (Dispatch*) data;
     fft *fourier = dispatchPtr->fourierPtr;
-    // Vocoder* vocode = dispatchPtr->vocodePtr;
 	double cMajor[8] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
 
     double *input = (double *) inputBuffer;
     fourier->executefft(input);
     double peakFrequency = fourier->peakFinder(fourier->out);
-    // cout << peakFrequency << "\n";
     double closestNoteFrequency = fourier->findClosestNote(cMajor, 8, peakFrequency);
     float difference = closestNoteFrequency - peakFrequency;
-    cout << difference << "\n";
+    int differenceIndex = fourier->FrequencyToIndex(difference);
+    // cout << "Peak: " << peakFrequency << " Closest: " << closestNoteFrequency << " Difference: " << difference << " Freq Difference: " << differenceIndex << "\n";
+    fourier->shiftFrequencySpectrum(differenceIndex);
     fourier->executeInverse_fft(fourier->out);
     memcpy(outputBuffer, fourier->inverse_out, sizeof(double)*nBufferFrames);
 
-    // vocode->pitchShift_setup(fourier->out);
-    // vocode->pitchShift();
-
-    // fourier->executeInverse_fft(fourier->out);
-
-    //return audio to output buffer for playback
-    // memcpy(outputBuffer, fourier->inverse_out, sizeof(double)*nBufferFrames);
     return 0;
 };
