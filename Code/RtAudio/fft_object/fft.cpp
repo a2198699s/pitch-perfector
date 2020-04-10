@@ -1,6 +1,7 @@
 #include <fftw3.h>
 #include <cstring>
 #include <RtAudio.h>
+#include <algorithm>
 #include "fft.h"
 #include "vocoder.h"
 
@@ -28,6 +29,79 @@ void fft::executeInverse_fft(fftw_complex* fourierSpectrum){
 };
 
 
+double* fft::removeComplexPart(fftw_complex* fourierSpectrum, int size){
+    double* realPart = (double *) fftw_malloc(sizeof(double)*size);
+    for (int i=0; i<size; ++i){
+        realPart[i] = fourierSpectrum[i][0];
+    }
+    return realPart;
+}
+
+int fft::peakFinder(fftw_complex* fourierSpectrum){
+    double* realSpectrum = this->removeComplexPart(fourierSpectrum, nBufferFrames);
+    int max = 0;
+    int maxIndex = 0;
+    double frequencyResolution = 44100/512;
+    for (int i=0; i<nBufferFrames; ++i) {
+        if (realSpectrum[i] > max) {
+            max = realSpectrum[i];
+            maxIndex = i;
+        }
+    }
+    return maxIndex * frequencyResolution;
+}
+
+double fft::getClosest(double val1, double val2, double target) { 
+    if (target - val1 >= val2 - target) 
+        return val2; 
+    else
+        return val1; 
+} 
+
+// Adapted from https://www.geeksforgeeks.org/find-closest-number-array/
+// Returns the note closest to target in notes[] 
+double fft::findClosestNote(double notes[], int n, double target) { 
+    // Corner cases 
+    if (target <= notes[0]) 
+        return notes[0]; 
+    if (target >= notes[n - 1]) 
+        return notes[n - 1]; 
+  
+    // Doing binary search 
+    int i = 0, j = n, mid = 0; 
+    while (i < j) { 
+        mid = (i + j) / 2; 
+  
+        if (notes[mid] == target) 
+            return notes[mid]; 
+  
+        /* If target is less than array element, 
+            then search in left */
+        if (target < notes[mid]) { 
+  
+            // If target is greater than previous 
+            // to mid, return closest of two 
+            if (mid > 0 && target > notes[mid - 1]) 
+                return getClosest(notes[mid - 1], 
+                                  notes[mid], target); 
+            /* Repeat for left half */
+            j = mid; 
+        } 
+        // If target is greater than mid 
+        else { 
+            if (mid < n - 1 && target < notes[mid + 1]) 
+                return getClosest(notes[mid], 
+                                  notes[mid + 1], target); 
+            // update i 
+            i = mid + 1;  
+        } 
+    } 
+    // Only single element left after search 
+    return notes[mid]; 
+} 
+
+
+
 Dispatch::Dispatch(fft* fourier_obj){
     fourierPtr = fourier_obj;
     // vocodePtr = vocoder_obj;
@@ -38,9 +112,15 @@ int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBuffer
     Dispatch* dispatchPtr = (Dispatch*) data;
     fft *fourier = dispatchPtr->fourierPtr;
     // Vocoder* vocode = dispatchPtr->vocodePtr;
+	double cMajor[8] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
 
     double *input = (double *) inputBuffer;
     fourier->executefft(input);
+    double peakFrequency = fourier->peakFinder(fourier->out);
+    // cout << peakFrequency << "\n";
+    double closestNoteFrequency = fourier->findClosestNote(cMajor, 8, peakFrequency);
+    float difference = closestNoteFrequency - peakFrequency;
+    cout << difference << "\n";
     fourier->executeInverse_fft(fourier->out);
     memcpy(outputBuffer, fourier->inverse_out, sizeof(double)*nBufferFrames);
 

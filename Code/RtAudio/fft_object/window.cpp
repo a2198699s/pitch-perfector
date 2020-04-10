@@ -86,20 +86,22 @@ void Window::timerEvent( QTimerEvent * )
 	plot->replot();
 
 	// Fill ydata2 up with the real part of fftw_complex.
-	// for ( int i=0; i<plotDataSize; ++i ) {
-	// 	// if (aStreamer->inverseOut[i] < 0) {
-	// 	// 	yData2[i] = 0;
-	// 	// 	continue;
-	// 	// }
-	// 	yData2[i] = aStreamer->inverseOut[i] * aStreamer->inverseOut[i];
-	// }
-
-
-	memmove( yData2, yData2+1, (plotDataSize-1) * sizeof(double) );
-	yData2[plotDataSize-1] = aStreamer->inverseOut[plotDataSize-1];	
+	for ( int i=0; i<plotDataSize; ++i ) {
+		if (aStreamer->outputData[i][0] < 0) {
+			yData2[i] = 0;
+			continue;
+		}
+		yData2[i] = aStreamer->outputData[i][0] * aStreamer->outputData[i][0];
+	}
 	curve2->setSamples(xData2, yData2, plotDataSize);
-	plot2->replot();
+	plot2->replot();	
 }
+
+// 	memmove( yData2, yData2+1, (plotDataSize-1) * sizeof(double) );
+// 	yData2[plotDataSize-1] = aStreamer->inverseOut[plotDataSize-1];	
+// 	curve2->setSamples(xData2, yData2, plotDataSize);
+// 	plot2->replot();
+// }
 
 
 // this function can be used to change the gain of the A/D internal amplifier

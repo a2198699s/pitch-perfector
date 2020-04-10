@@ -50,7 +50,7 @@ void audioStreamer::run()
 		std::cout << "\nRunning ... press <enter> to quit.\n";
 		inputData = fourier.in;
 		outputData = fourier.out;
-		inverseOut = fourier.inverse_out;
+		// inverseOut = fourier.inverse_out;
 		std::cin.get(input);
 		// Stop the stream.
 		if (!running) adac.stopStream();

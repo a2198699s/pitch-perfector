@@ -14,6 +14,10 @@ class fft {
     fft(int nBufferFrames);
     void executefft(double* inputBuffer);
     void executeInverse_fft(fftw_complex* fourierSpectrum);
+    int peakFinder(fftw_complex* fourierSpectrum);
+    double* removeComplexPart(fftw_complex* fourierSpectrum, int size);
+    double findClosestNote(double notes[], int n, double target);
+    double getClosest(double val1, double val2, double target);
 };
 
 
