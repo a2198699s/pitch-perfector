@@ -44,15 +44,15 @@ int vocoder::binary_search(const float* NotesInKey, float* note, int highest_ind
 int vocoder::noteFinder(const float* NotesInKey, float* note) {
 
   //initial values for recursion
-  int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
+  int highest_index = 7;
   int lowest_index = 0;
 
-  //edge cases
+  //corner cases
   if (*note < NotesInKey[lowest_index]) {
-    return lowest_index;
+    return NotesInKey[lowest_index];
   };
   if (*note > NotesInKey[highest_index]) {
-    return highest_index;
+    return NotesInKey[highest_index];
   };
 
   //use binary search to find nearest note
