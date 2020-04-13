@@ -113,7 +113,7 @@ void vocoder::pitchShift() {
   //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
   if (binDifference <= 0) {
     FourierTransform = FourierTransform+this->binDifference;
-    for (int i = size-this->binDifference; i < bufferSize; i++) {
+    for (int i = bufferSize-this->binDifference; i < bufferSize; i++) {
       *FourierTransform[i] = 0;
     };
   }

@@ -1,8 +1,7 @@
-#include <fftw3.h>
 #include "fft.h"
+#include <fftw3.h>
 #include <cstring>
 #include <RtAudio.h>
-
 
 fft::fft(int nBufferFrames) {
     in = (double *) fftw_malloc(sizeof(double)*nBufferFrames);

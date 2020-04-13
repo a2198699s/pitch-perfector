@@ -1,6 +1,7 @@
 #include <RtAudio.h>
+#include <fftw3.h>
 
-class fft {        
+class fft {
   public:
     int nBufferFrames;
     double *in;
