@@ -27,14 +27,6 @@ double* sinGen(){
   return sinwave;
 };
 
-//find spectrums of
-// fftw_complex* spectrumGen(double* signalIn){
-//   //fftw_complex fftSpect;
-//   fft fourier = fft(512);
-//   fourier.executefft(signalIn);
-//   return fourier.out;
-// };
-
 int main(){
   //set up
   double* testSignal = (double*) malloc(sizeof(double*)*(buffersize));
