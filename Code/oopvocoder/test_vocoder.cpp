@@ -14,26 +14,26 @@ using namespace std;
 const float C_Major[] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
 
 //generate sin waves and create sample dataset
-double* sinGen(){
+double sinGen(){
   double sinwave[512] = {0};
   for (int i=0; i<512; i++) {
     sinwave[i] = (double)(sin(i * 1) + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
   }
-  return sinwave;
+  return sinwave[0];
 }
 
 //find spectrums of
-fftw_complex spectrumGen(double* signalIn){
+fftw_complex* spectrumGen(double* signalIn){
   fftw_complex fftSpect;
   fft fourier = fft(512);
-  fourier.excecutefft(signalIn);
+  fourier.executefft(signalIn);
   return fourier.out;
 };
 
 int main(){
   //set up
-  float testSignal = sinGen();
-  fftw_complex testSpectrum = spectrumGen(testSignal);
+  double testSignal = sinGen();
+  fftw_complex* testSpectrum = spectrumGen(&testSignal);
   vocoder vocodeObj = vocoder(44100, 512, (void*) C_Major);
 
   vocodeObj.pitchShift_setup((fftw_complex*) testSpectrum);
