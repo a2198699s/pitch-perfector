@@ -60,7 +60,6 @@ float vocoder::SampleToFreq(int sample) {
 };
 
 
-// for sure this needs cleaning up
 void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   this->FourierTransform = fft_spectrum;
   //take real part
@@ -75,19 +74,13 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   this->baseFreq = SampleToFreq(this->baseSample);
 
   // find nearest note and distance to it
-  //THIS GIVES AN INDEX!!!
   this->newFreq = noteFinder(this->scaleFreqs, &this->baseFreq);
   this->difference = (this->newFreq) - (this->baseFreq);
-  //how many bins is this??
-  //NEED to round this to int...
+  //distance in samples
   this->binDifference = (int) difference/(this->FreqRes);
 
-  //output note here?
-  //std::cout << difference << '\n' << binDifference;
-
-  //Find all peaks to preserve the envelope
+  //Find all peaks to preserve the envelope? alt. method
   //peaks are defined as larger than the 2 bins on either side??
-
 };
 
 
