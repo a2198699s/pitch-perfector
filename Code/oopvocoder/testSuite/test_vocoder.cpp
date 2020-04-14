@@ -11,6 +11,7 @@ using namespace std;
 
 ofstream timesignal("timesig.txt");
 ofstream spectrumIn("spectIn.txt");
+ofstream realSpectrum("real_spect.txt");
 ofstream spectrumOut("spectOut.txt");
 
 //test Key
@@ -89,6 +90,13 @@ cout << '\n' << "Test Pitch Shift Setup" << '\n';
   cout << "freq difference: " << vocodeObj.difference << '\n';
   cout << "bin difference: " << vocodeObj.binDifference << '\n';
 
+//test pitchShift
+cout << '\n' << "test pitch shift" << '\n';
+  vocodeObj.pitchShift();
+
+  //test shifting
+  fftw_complex* shiftedFFT = vocodeObj.FourierTransform;
+
   // vocodeObj.pitchShift_setup(testSpectrum);
   // vocodeObj.pitchShift();
   // fftw_complex* outSpectrum = vocodeObj.FourierTransform;
@@ -96,11 +104,12 @@ cout << '\n' << "Test Pitch Shift Setup" << '\n';
 
 
 
-  //outputs
+  //output plots
   for (int i = 0; i < buffersize; i++){
     timesignal << (testSignal[i]) << '\n';
     spectrumIn << (*testSpectrum[i]) << '\n';
-    spectrumOut << (vocodeObj.RealFourier[i]) << '\n';
+    realSpectrum << (vocodeObj.RealFourier[i]) << '\n';
+    spectrumOut << (*shiftedFFT[i]) << '\n';
   };
   //cout << **outSpectrum << '\n';
 

@@ -88,19 +88,17 @@ void vocoder::pitchShift() {
   //perform pitch shift
   //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
 
-  //int size = sizeof(*FourierTransform)/sizeof(*FourierTransform[0]);
-
   //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
-  if (binDifference <= 0) {
-    FourierTransform = FourierTransform+this->binDifference;
-    for (int i = bufferSize-this->binDifference; i < bufferSize; i++) {
-      *FourierTransform[i] = 0;
+  if (this->binDifference <= 0) {
+    this->FourierTransform = (this->FourierTransform)+(this->binDifference);
+    for (int i = bufferSize-(this->binDifference); i < bufferSize; i++) {
+      FourierTransform[i][0] = 0;
     };
   }
   else {
-    FourierTransform = FourierTransform-this->binDifference;
-    for (int i = 0; i < 0-this->binDifference ; i++) {
-      *FourierTransform[i] = 0;
+    FourierTransform = FourierTransform-(this->binDifference);
+    for (int i = 0; i < 0-(this->binDifference) ; i++) {
+      FourierTransform[i][0] = 0;
     };
   };
 };

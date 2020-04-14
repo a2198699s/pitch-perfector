@@ -2,8 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 timesig = np.loadtxt('timesig.txt', delimiter = '\n')
-spectrumIn = abs(np.loadtxt('spectIn.txt', delimiter = '\n'))
-spectrumOut = abs(np.loadtxt('spectOut.txt', delimiter = '\n'))
+spectrumIn = np.loadtxt('spectIn.txt', delimiter = '\n')
+realSpectrum = np.loadtxt('real_spect.txt', delimiter = '\n')
+spectrumOut = np.loadtxt('spectOut.txt', delimiter = '\n')
 
 pyspec = abs(np.fft.fft(timesig))
 
@@ -18,10 +19,14 @@ plt.plot(spectrumIn)
 plt.title('Initial Freq Spectrum')
 
 plt.figure(3)
+plt.plot(realSpectrum)
+plt.title('real Spectrum')
+
+plt.figure(4)
 plt.plot(spectrumOut)
 plt.title('Shifted Spectrum')
 
-plt.figure(4)
+plt.figure(5)
 plt.plot(pyspec)
 plt.title('python spectrum')
 
