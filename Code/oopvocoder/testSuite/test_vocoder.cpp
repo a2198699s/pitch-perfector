@@ -23,7 +23,7 @@ const int buffersize = 2048*2;
 double* sinGen(){
   static double sinwave[buffersize] = {0};
   for (int i=0; i<buffersize; i++) {
-    sinwave[i] = (double) (10*sin(2 * 3.1415 * ((float)i/(float)44100) * 800)); // + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
+    sinwave[i] = (double) (10*sin(2 * 3.1415 * ((float)i/(float)44100) * 300)); // + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
   }
   return sinwave;
 };
@@ -108,6 +108,8 @@ cout << '\n' << "test pitch shift" << '\n';
 
 
 //End to end test & performance benchmarking
+
+
 
 
   return 0;
