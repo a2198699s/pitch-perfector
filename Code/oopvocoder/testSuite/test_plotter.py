@@ -15,19 +15,19 @@ plt.plot(timesig)
 plt.title('time series signal')
 
 plt.figure(2)
-plt.plot(spectrumIn)
+plt.plot(x_axis, spectrumIn)
 plt.title('Initial Freq Spectrum')
 
 plt.figure(3)
-plt.plot(realSpectrum)
+plt.plot(x_axis, realSpectrum)
 plt.title('real Spectrum')
 
 plt.figure(4)
-plt.plot(spectrumOut)
+plt.plot(x_axis, spectrumOut)
 plt.title('Shifted Spectrum')
 
 plt.figure(5)
-plt.plot(pyspec)
+plt.plot(x_axis, pyspec)
 plt.title('python spectrum')
 
 plt.show()

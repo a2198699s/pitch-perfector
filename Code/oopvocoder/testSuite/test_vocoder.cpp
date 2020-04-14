@@ -23,7 +23,7 @@ const int buffersize = 2048;
 double* sinGen(){
   static double sinwave[buffersize] = {0};
   for (int i=0; i<buffersize; i++) {
-    sinwave[i] = (double) (10*sin(2 * 3.14 * i/44100 * 320)); // + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
+    sinwave[i] = (double) (10*sin(2 * 3.14 * i/44100 * 100)); // + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
   }
   return sinwave;
 };
