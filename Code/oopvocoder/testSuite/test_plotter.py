@@ -5,6 +5,7 @@ timesig = np.loadtxt('timesig.txt', delimiter = '\n')
 spectrumIn = np.loadtxt('spectIn.txt', delimiter = '\n')
 realSpectrum = np.loadtxt('real_spect.txt', delimiter = '\n')
 spectrumOut = np.loadtxt('spectOut.txt', delimiter = '\n')
+inverseOut = np.loadtxt('inverseOut.txt', delimiter = '\n')
 
 pyspec = abs(np.fft.fft(timesig))
 
@@ -27,6 +28,10 @@ plt.plot(x_axis, spectrumOut)
 plt.title('Shifted Spectrum')
 
 plt.figure(5)
+plt.plot(inverseOut)
+plt.title('Inverse fft')
+
+plt.figure(6)
 plt.plot( pyspec)
 plt.title('python spectrum')
 

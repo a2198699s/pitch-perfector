@@ -13,6 +13,7 @@ ofstream timesignal("timesig.txt");
 ofstream spectrumIn("spectIn.txt");
 ofstream realSpectrum("real_spect.txt");
 ofstream spectrumOut("spectOut.txt");
+ofstream inverseOut("inverseOut.txt");
 
 //test Key
 const float C_Major[] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
@@ -23,7 +24,7 @@ const int buffersize = 1024*8;
 double* sinGen(){
   static double sinwave[buffersize] = {0};
   for (int i=0; i<buffersize; i++) {
-    sinwave[i] = (double) (10*sin(2 * 3.1415 * ((float)i/(float)44100) * 420)); // + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
+    sinwave[i] = (double) (10*sin(2 * 3.1415 * ((float)i/(float)44100) * 800)); // + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
   }
   return sinwave;
 };
@@ -97,6 +98,9 @@ cout << '\n' << "test pitch shift" << '\n';
   //test shifting
   fftw_complex* shiftedFFT = vocodeObj.FourierTransform;
 
+//test reconstruction
+fourier.executeInverse_fft(shiftedFFT);
+double* inversefft = fourier.inverse_out;
 
 //output plots
   for (int i = 0; i < buffersize; i++){
@@ -104,6 +108,7 @@ cout << '\n' << "test pitch shift" << '\n';
     spectrumIn << (testSpectrum[i][0]) << '\n';
     realSpectrum << (vocodeObj.RealFourier[i]) << '\n';
     spectrumOut << (shiftedFFT[i][0]) << '\n';
+    inverseOut << (inversefft[i]) << '\n';
   };
 
 
