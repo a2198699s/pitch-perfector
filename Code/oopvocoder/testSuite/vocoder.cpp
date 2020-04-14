@@ -1,7 +1,5 @@
 #include <cstdlib>
 #include <algorithm>
-#include <fstream>
-#include <iostream>
 #include "vocoder.h"
 #include <fftw3.h>
 
@@ -15,6 +13,7 @@ vocoder::vocoder(int samplerate_input, int bufferSize_input, const float* scaleF
   this->bufferSize = bufferSize_input;
   this->FreqRes = samplerate/bufferSize;
 };
+
 
 //Recursive binary searching
 int vocoder::binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
