@@ -46,4 +46,4 @@ def normalize(v):
     return v / norm
 
 wav.write('input.wav', 44100, timesig)
-wav.write('output.wav', 44100, normalize(inverseOut))
+wav.write('output.wav', 44100, inverseOut)

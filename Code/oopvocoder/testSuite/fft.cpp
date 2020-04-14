@@ -23,6 +23,9 @@ void fft::executefft(double *inputBuffer) {
 void fft::executeInverse_fft(fftw_complex* fourierSpectrum){
     memcpy(inverse_in, fourierSpectrum, sizeof(fftw_complex)*nBufferFrames);
     fftw_execute(inverse_plan);
+    for (int i =0; i<this->nBufferFrames; i++){
+      this->inverse_out[i] = this->inverse_out[i]/(double) nBufferFrames;
+    };
 };
 
 // // Static declared in header.
