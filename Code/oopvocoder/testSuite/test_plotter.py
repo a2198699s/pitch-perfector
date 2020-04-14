@@ -8,26 +8,26 @@ spectrumOut = np.loadtxt('spectOut.txt', delimiter = '\n')
 
 pyspec = abs(np.fft.fft(timesig))
 
-x_axis = np.arange(0, 44100, 44100/len(timesig))
+#x_axis = np.arange(0, 44100, 44100/len(timesig))
 
 plt.figure(1)
 plt.plot(timesig)
 plt.title('time series signal')
 
 plt.figure(2)
-plt.plot(x_axis, spectrumIn)
+plt.plot(spectrumIn)
 plt.title('Initial Freq Spectrum')
 
 plt.figure(3)
-plt.plot(x_axis, realSpectrum)
+plt.plot(realSpectrum)
 plt.title('real Spectrum')
 
 plt.figure(4)
-plt.plot(x_axis, spectrumOut)
+plt.plot(spectrumOut)
 plt.title('Shifted Spectrum')
 
 plt.figure(5)
-plt.plot(x_axis, pyspec)
+plt.plot(pyspec)
 plt.title('python spectrum')
 
 plt.show()

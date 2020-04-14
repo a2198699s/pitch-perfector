@@ -18,12 +18,12 @@ ofstream spectrumOut("spectOut.txt");
 const float C_Major[] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
 
 //generate sine waves and create sample dataset
-const int buffersize = 2048;
+const int buffersize = 2048*2;
 
 double* sinGen(){
   static double sinwave[buffersize] = {0};
   for (int i=0; i<buffersize; i++) {
-    sinwave[i] = (double) (10*sin(2 * 3.14 * i/44100 * 100)); // + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
+    sinwave[i] = (double) (10*sin(2 * 3.1415 * ((float)i/(float)44100) * 800)); // + 40*sin(i * 50) + 60*sin(i*450) + 10*sin(i * 530));
   }
   return sinwave;
 };

@@ -70,7 +70,7 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
     this->RealFourier[i] = fft_spectrum[i][0];
   };
 
-  //find sample no of highest peak excluding first sample(DC component)
+  //find sample no of highest peak excluding first sample(DC component) - need to make absolute first!!!!!
   this->baseSample = distance(this->RealFourier, max_element(this->RealFourier, this->RealFourier + this->bufferSize));
 
   // find freqency of highest peak
@@ -92,9 +92,9 @@ void vocoder::pitchShift() {
   //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
 
   //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
-  if (this->binDifference <= 0) {
-    cout << "shifting param: " << (this->binDifference) << '\n';
-    this->FourierTransform = (this->FourierTransform)+(this->binDifference);
+  if (this->binDifference >= 0) {
+    cout << "shifting param: " << (this->FourierTransform) << '\n';
+    this->FourierTransform = (this->FourierTransform)-(this->binDifference);
     for (int i = 0; i < 0-(this->binDifference) ; i++) {
       FourierTransform[i][0] = 0;
     };
