@@ -24,7 +24,7 @@ float vocoder::binary_search(const float* NotesInKey, float* note, int highest_i
   int midpoint = (lowest_index + highest_index)/2;
 
   //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
-  if (*note > (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)){
+  if (*note >= (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)){
     return NotesInKey[midpoint];
   }
   else {
