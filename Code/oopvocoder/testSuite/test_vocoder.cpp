@@ -85,17 +85,16 @@ cout << '\n' << "Test Pitch Shift Setup" << '\n';
   // vocodeObj.pitchShift();
   // fftw_complex* outSpectrum = vocodeObj.FourierTransform;
 
-  //testing vocoder methods:
 
 
 
   //outputs
-  // for (int i = 0; i < buffersize; i++){
-  //   timesignal << (testSignal[i]) << '\n';
-  //   spectrumIn << (*testSpectrum[i]) << '\n';
-  //   //spectrumOut << (*outSpectrum[i]) << '\n';
-  // };
-  // cout << **outSpectrum << '\n';
+  for (int i = 0; i < buffersize; i++){
+    timesignal << (testSignal[i]) << '\n';
+    spectrumIn << (*testSpectrum[i]) << '\n';
+    //spectrumOut << (*outSpectrum[i]) << '\n';
+  };
+  //cout << **outSpectrum << '\n';
 
   return 0;
 }

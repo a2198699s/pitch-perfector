@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 timesig = np.loadtxt('timesig.txt', delimiter = '\n')
 spectrumIn = abs(np.loadtxt('spectIn.txt', delimiter = '\n'))
-spectrumOut = abs(np.loadtxt('spectOut.txt', delimiter = '\n'))
+#spectrumOut = abs(np.loadtxt('spectOut.txt', delimiter = '\n'))
 
 pyspec = abs(np.fft.fft(timesig))
 
@@ -17,9 +17,9 @@ plt.figure(2)
 plt.plot(x_axis, spectrumIn)
 plt.title('Initial Freq Spectrum')
 
-plt.figure(3)
-plt.plot(x_axis, spectrumOut)
-plt.title('Shifted Spectrum')
+# plt.figure(3)
+# plt.plot(x_axis, spectrumOut)
+# plt.title('Shifted Spectrum')
 
 plt.figure(4)
 plt.plot(x_axis, pyspec)
