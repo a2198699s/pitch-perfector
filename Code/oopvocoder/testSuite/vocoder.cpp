@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <cmath>
 #include <algorithm>
 #include "vocoder.h"
 #include <fftw3.h>
@@ -14,7 +15,7 @@ vocoder::vocoder(int samplerate_input, int bufferSize_input, const float* scaleF
   this->samplerate = samplerate_input;
   this->scaleFreqs = scaleFreqs_input;
   this->bufferSize = bufferSize_input;
-  this->FreqRes = samplerate/bufferSize;
+  this->FreqRes = (float)samplerate/(float)bufferSize;
   this->RealFourier = (double*) malloc(sizeof(double)*this->bufferSize);
 };
 
@@ -58,7 +59,7 @@ float vocoder::noteFinder(const float* NotesInKey, float* note) {
 
 
 float vocoder::SampleToFreq(int sample) {
-  float freq = this->FreqRes * sample;
+  float freq = (this->FreqRes) * sample;
   return freq;
 };
 
@@ -67,7 +68,7 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   this->FourierTransform = fft_spectrum;
   //take real part - i think this is redundant and can use fft_spectrum[i][0] directly, saving time
   for (int i = 0; i < this->bufferSize; i++){
-    this->RealFourier[i] = fft_spectrum[i][0];
+    this->RealFourier[i] = abs(fft_spectrum[i][0]);
   };
 
   //find sample no of highest peak excluding first sample(DC component) - need to make absolute first!!!!!
@@ -93,15 +94,13 @@ void vocoder::pitchShift() {
 
   //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
   if (this->binDifference >= 0) {
-    cout << "shifting param: " << (this->FourierTransform) << '\n';
     this->FourierTransform = (this->FourierTransform)-(this->binDifference);
     for (int i = 0; i < 0-(this->binDifference) ; i++) {
       FourierTransform[i][0] = 0;
     };
   }
-  else {
-    FourierTransform = FourierTransform-(this->binDifference);
-    cout << "shifting param: " << 0-(this->binDifference) << '\n';
+  else { //broken somehow?
+    this->FourierTransform = (this->FourierTransform)-(this->binDifference);
     for (int i = bufferSize-(this->binDifference); i < bufferSize; i++) {
       FourierTransform[i][0] = 0;
     };

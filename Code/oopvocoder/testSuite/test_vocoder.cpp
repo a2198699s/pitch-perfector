@@ -75,7 +75,7 @@ cout << '\n' << "Sample to Freq Test" << '\n';
   cout << "Freq: " << sampToFreq << '\n';
   cout << "Freq Resolution: " << vocodeObj.FreqRes << '\n';
 
-//test pitchShift_setup - problems dealing with fft_complex type here
+//test pitchShift_setup - problems dealing with fft_complex type here - broken max element
 cout << '\n' << "Test Pitch Shift Setup" << '\n';
   vocodeObj.pitchShift_setup(testSpectrum);
 
