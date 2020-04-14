@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.io import wavfile as wav
 
 timesig = np.loadtxt('timesig.txt', delimiter = '\n')
 spectrumIn = np.loadtxt('spectIn.txt', delimiter = '\n')
@@ -36,3 +37,13 @@ plt.plot( pyspec)
 plt.title('python spectrum')
 
 plt.show()
+
+#write to wavs
+def normalize(v):
+    norm = np.linalg.norm(v)
+    if norm == 0:
+       return v
+    return v / norm
+
+wav.write('input.wav', 44100, timesig)
+wav.write('output.wav', 44100, normalize(inverseOut))
