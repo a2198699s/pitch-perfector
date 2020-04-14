@@ -17,7 +17,7 @@ ofstream spectrumOut("spectOut.txt");
 //test Key
 const float C_Major[] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
 
-//generate sin waves and create sample dataset
+//generate sine waves and create sample dataset
 const int buffersize = 1024;
 
 double* sinGen(){
@@ -43,7 +43,7 @@ int main(){
   vocoder vocodeObj = vocoder(44100, buffersize, C_Major);
 
 
-// Testing...
+// Testing
 
 //test noteFinder & Binary search
 cout << '\n' << "Note Finder Tests" << '\n';
@@ -97,21 +97,18 @@ cout << '\n' << "test pitch shift" << '\n';
   //test shifting
   fftw_complex* shiftedFFT = vocodeObj.FourierTransform;
 
-  // vocodeObj.pitchShift_setup(testSpectrum);
-  // vocodeObj.pitchShift();
-  // fftw_complex* outSpectrum = vocodeObj.FourierTransform;
 
-
-
-
-  //output plots
+//output plots
   for (int i = 0; i < buffersize; i++){
     timesignal << (testSignal[i]) << '\n';
-    spectrumIn << (*testSpectrum[i]) << '\n';
+    spectrumIn << (testSpectrum[i][0]) << '\n';
     realSpectrum << (vocodeObj.RealFourier[i]) << '\n';
-    spectrumOut << (*shiftedFFT[i]) << '\n';
+    spectrumOut << (shiftedFFT[i][0]) << '\n';
   };
-  //cout << **outSpectrum << '\n';
+
+
+//End to end test & performance benchmarking
+
 
   return 0;
 }

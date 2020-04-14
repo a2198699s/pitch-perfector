@@ -3,6 +3,9 @@
 #include "vocoder.h"
 #include <fftw3.h>
 
+#include <fstream>
+#include <iostream>
+
 using namespace std;
 
 //add a peak finder to this class?
@@ -62,7 +65,7 @@ float vocoder::SampleToFreq(int sample) {
 
 void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   this->FourierTransform = fft_spectrum;
-  //take real part
+  //take real part - i think this is redundant and can use fft_spectrum[i][0] directly, saving time
   for (int i = 0; i < this->bufferSize; i++){
     this->RealFourier[i] = fft_spectrum[i][0];
   };
@@ -85,19 +88,21 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
 
 
 void vocoder::pitchShift() {
-  //perform pitch shift
+  //perform pitch shift - shifting in the wrong direction currently...
   //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
 
   //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
   if (this->binDifference <= 0) {
+    cout << "shifting param: " << (this->binDifference) << '\n';
     this->FourierTransform = (this->FourierTransform)+(this->binDifference);
-    for (int i = bufferSize-(this->binDifference); i < bufferSize; i++) {
+    for (int i = 0; i < 0-(this->binDifference) ; i++) {
       FourierTransform[i][0] = 0;
     };
   }
   else {
     FourierTransform = FourierTransform-(this->binDifference);
-    for (int i = 0; i < 0-(this->binDifference) ; i++) {
+    cout << "shifting param: " << 0-(this->binDifference) << '\n';
+    for (int i = bufferSize-(this->binDifference); i < bufferSize; i++) {
       FourierTransform[i][0] = 0;
     };
   };
