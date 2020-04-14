@@ -9,10 +9,10 @@ using namespace std;
 
 //add a peak finder to this class?
 
-vocoder::vocoder(int samplerate_input, int bufferSize_input, void* scaleFreqs_input) {
+vocoder::vocoder(int samplerate_input, int bufferSize_input, const float* scaleFreqs_input) {
   this->samplerate = samplerate_input;
-  this->scaleFreqs = (float*) malloc(sizeof(float)*8);
-  this->scaleFreqs = (float*) scaleFreqs_input;
+  //this->scaleFreqs = (float*) malloc(sizeof(float)*8);
+  this->scaleFreqs = scaleFreqs_input;
   this->bufferSize = bufferSize_input;
   //hertz per sample?
   this->FreqRes = samplerate/bufferSize;
@@ -21,14 +21,12 @@ vocoder::vocoder(int samplerate_input, int bufferSize_input, void* scaleFreqs_in
 
 int vocoder::binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
 //recursive binary searching
-
   int midpoint = (lowest_index + highest_index)/2;
 
   //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
-  if (*note > (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)) {
+  if (*note > (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)){
     return NotesInKey[midpoint];
   }
-
   else {
     if (*note < NotesInKey[midpoint]) {
       highest_index = midpoint;
@@ -42,7 +40,6 @@ int vocoder::binary_search(const float* NotesInKey, float* note, int highest_ind
 
 // uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
 int vocoder::noteFinder(const float* NotesInKey, float* note) {
-
   //initial values for recursion
   int highest_index = 7;
   int lowest_index = 0;
@@ -65,13 +62,13 @@ float vocoder::SampleToFreq(int sample) {
   return freq;
 };
 
-int vocoder::NearestNote(float* freq) {
-  //find nearest note for and distance to it
-  //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
-
-  int newFrequency = noteFinder(this->scaleFreqs, freq);
-  return newFrequency;
-};
+// int vocoder::NearestNote(float* freq) {
+//   //find nearest note for and distance to it
+//   //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
+//
+//   int newFrequency = noteFinder(this->scaleFreqs, freq);
+//   return newFrequency;
+// };
 
 
 
@@ -89,7 +86,7 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
 
   // find nearest note and distance to it
   //THIS GIVES AN INDEX!!!
-  this->newFreq = this->scaleFreqs[NearestNote(&baseFreq)];
+  this->newFreq = this->scaleFreqs[noteFinder(this->scaleFreqs, &baseFreq)];
   float difference = (this->newFreq) - (this->baseFreq);
   //how many bins is this??
   //NEED to round this to int...

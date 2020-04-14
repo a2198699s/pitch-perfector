@@ -39,7 +39,7 @@ int main(){
   fftw_complex* testSpectrum = fourier.out;
 
   //make the vocoder object
-  vocoder vocodeObj = vocoder(44100, buffersize, (void*) C_Major);
+  vocoder vocodeObj = vocoder(44100, buffersize, C_Major);
 
 // Testing...
 
@@ -73,7 +73,9 @@ cout << '\n' << "Sample to Freq Test" << '\n';
   cout << "Freq: " << sampToFreq << '\n';
   cout << "Freq Resolution: " << vocodeObj.FreqRes << '\n';
 
-//test
+//test pitchShift_setup
+  cout << 'n' << "Test Pitch Shift Setup" << '\n';
+  
 
 
 
