@@ -41,6 +41,7 @@ int main(){
   //make the vocoder object
   vocoder vocodeObj = vocoder(44100, buffersize, C_Major);
 
+
 // Testing...
 
 //test noteFinder & Binary search
@@ -73,10 +74,11 @@ cout << '\n' << "Sample to Freq Test" << '\n';
   cout << "Freq: " << sampToFreq << '\n';
   cout << "Freq Resolution: " << vocodeObj.FreqRes << '\n';
 
-//test pitchShift_setup
-  cout << 'n' << "Test Pitch Shift Setup" << '\n';
-  
+//test pitchShift_setup - problems dealing with fft_complex type here...
+cout << '\n' << "Test Pitch Shift Setup" << '\n';
+  vocodeObj.pitchShift_setup(testSpectrum);
 
+  cout << "base sample: " << vocodeObj.baseSample << '\n';
 
 
   // vocodeObj.pitchShift_setup(testSpectrum);
