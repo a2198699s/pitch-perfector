@@ -74,12 +74,20 @@ cout << '\n' << "Sample to Freq Test" << '\n';
   cout << "Freq: " << sampToFreq << '\n';
   cout << "Freq Resolution: " << vocodeObj.FreqRes << '\n';
 
-//test pitchShift_setup - problems dealing with fft_complex type here...
+//test pitchShift_setup - problems dealing with fft_complex type here
 cout << '\n' << "Test Pitch Shift Setup" << '\n';
   vocodeObj.pitchShift_setup(testSpectrum);
 
+  //test peak finding functions (test removing complex part via plotting)
   cout << "base sample: " << vocodeObj.baseSample << '\n';
+  cout<< "base freq: " << vocodeObj.baseFreq << '\n';
 
+  //test new frequency Finder
+  cout << "new frequency target: " << vocodeObj.newFreq << '\n';
+
+  //test difference functions
+  cout << "freq difference: " << vocodeObj.difference << '\n';
+  cout << "bin difference: " << vocodeObj.binDifference << '\n';
 
   // vocodeObj.pitchShift_setup(testSpectrum);
   // vocodeObj.pitchShift();
@@ -92,7 +100,7 @@ cout << '\n' << "Test Pitch Shift Setup" << '\n';
   for (int i = 0; i < buffersize; i++){
     timesignal << (testSignal[i]) << '\n';
     spectrumIn << (*testSpectrum[i]) << '\n';
-    //spectrumOut << (*outSpectrum[i]) << '\n';
+    spectrumOut << (vocodeObj.RealFourier[i]) << '\n';
   };
   //cout << **outSpectrum << '\n';
 

@@ -12,11 +12,12 @@ vocoder::vocoder(int samplerate_input, int bufferSize_input, const float* scaleF
   this->scaleFreqs = scaleFreqs_input;
   this->bufferSize = bufferSize_input;
   this->FreqRes = samplerate/bufferSize;
+  this->RealFourier = (double*) malloc(sizeof(double)*this->bufferSize);
 };
 
 
 //Recursive binary searching
-int vocoder::binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
+float vocoder::binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
   int midpoint = (lowest_index + highest_index)/2;
 
   //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
@@ -35,7 +36,7 @@ int vocoder::binary_search(const float* NotesInKey, float* note, int highest_ind
 };
 
 //Uses binary search to find nearest note and catches initial edge cases {use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/}
-int vocoder::noteFinder(const float* NotesInKey, float* note) {
+float vocoder::noteFinder(const float* NotesInKey, float* note) {
   //initial values for recursion
   int highest_index = 7;
   int lowest_index = 0;
@@ -62,22 +63,24 @@ float vocoder::SampleToFreq(int sample) {
 // for sure this needs cleaning up
 void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   this->FourierTransform = fft_spectrum;
+  //take real part
+  for (int i = 0; i < this->bufferSize; i++){
+    this->RealFourier[i] = fft_spectrum[i][0];
+  };
 
   //find sample no of highest peak excluding first sample(DC component)
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!NEED TO CHECK THIS IS USING THE REAL COMPONENTS AND NOT THE COMPLEX ONES!!!!!!!!!!!!!!!!!!!!!!!
-  this->baseSample = distance(FourierTransform, max_element(FourierTransform, FourierTransform + (sizeof(FourierTransform)/sizeof(FourierTransform[0]))));
+  this->baseSample = distance(this->RealFourier, max_element(this->RealFourier, this->RealFourier + this->bufferSize));
 
   // find freqency of highest peak
-  this->baseFreq = SampleToFreq(baseSample);
+  this->baseFreq = SampleToFreq(this->baseSample);
 
   // find nearest note and distance to it
   //THIS GIVES AN INDEX!!!
-  this->newFreq = this->scaleFreqs[noteFinder(this->scaleFreqs, &baseFreq)];
-  float difference = (this->newFreq) - (this->baseFreq);
+  this->newFreq = noteFinder(this->scaleFreqs, &this->baseFreq);
+  this->difference = (this->newFreq) - (this->baseFreq);
   //how many bins is this??
   //NEED to round this to int...
-  this->binDifference = (int) difference*(this->FreqRes);
+  this->binDifference = (int) difference/(this->FreqRes);
 
   //output note here?
   //std::cout << difference << '\n' << binDifference;
