@@ -17,7 +17,7 @@ int dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBuffer
     (dispatcher->vocoderObj)->pitchShift();
     (dispatcher->fourierObj)->executeInverse_fft((dispatcher->vocoderObj)->FourierTransform);
 
-    inputBuffer = (void*) dispatcher->fourierObj->inverse_out;
+    inputBuffer = (void*) (dispatcher->fourierObj)->inverse_out;
     memcpy(outputBuffer, inputBuffer, sizeof(double)*nBufferFrames);
     return 0;
 };
