@@ -17,6 +17,7 @@ Window::Window() : gain(5), count(0)
 	// set up the thermometer
 	thermo = new QwtThermo; 
 	thermo->setFillBrush( QBrush(Qt::red) );
+	
 	//thermo->setRange(0, 20);
 	thermo->show();
 	int Fs = 44100;
@@ -38,14 +39,22 @@ Window::Window() : gain(5), count(0)
 	curve->setSamples(xData, yData, plotDataSize);
 	curve->attach(plot);
 
+	QwtText title("Audio Input");
+	plot->setTitle(title);
 	plot->replot();
 	plot->show();
 
 	curve2->setSamples(xData2, yData2, plotDataSize);
 	curve2->attach(plot2);
 
+	QwtText title2("Frequency Spectrum");
+	plot2->setTitle(title2);
 	plot2->replot();
 	plot2->show();
+
+	//Ui::CalculatorForm ui;
+	//ui.setupUi(widget);
+	//widget->show();
 
 	// set up the layout - knob above thermometer
 	vLayout = new QVBoxLayout;
@@ -58,6 +67,7 @@ Window::Window() : gain(5), count(0)
 	hLayout->addWidget(plot);
 
 	hLayout->addWidget(plot2);
+	hLayout->addWidget(thermo);
 
 
 	setLayout(hLayout);
@@ -94,14 +104,8 @@ void Window::timerEvent( QTimerEvent * )
 		yData2[i] = aStreamer->outputData[i][0] * aStreamer->outputData[i][0];
 	}
 	curve2->setSamples(xData2, yData2, plotDataSize);
-	plot2->replot();	
+	plot2->replot();
 }
-
-// 	memmove( yData2, yData2+1, (plotDataSize-1) * sizeof(double) );
-// 	yData2[plotDataSize-1] = aStreamer->inverseOut[plotDataSize-1];	
-// 	curve2->setSamples(xData2, yData2, plotDataSize);
-// 	plot2->replot();
-// }
 
 
 // this function can be used to change the gain of the A/D internal amplifier
