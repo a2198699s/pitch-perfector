@@ -63,8 +63,8 @@ int main() {
   }
  cleanup:
   if ( adac.isStreamOpen() ) adac.closeStream();
-  outputFile.close();
-  inputFile.close();
+  // outputFile.close();
+  // inputFile.close();
 
   //Delete our own objects and clean up here!!
 
