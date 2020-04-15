@@ -27,12 +27,3 @@ void fft::executeInverse_fft(fftw_complex* fourierSpectrum){
       this->inverse_out[i] = this->inverse_out[i]/(double) nBufferFrames;
     };
 };
-
-// // Static declared in header.
-// int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
-//     fft *fourier = (fft *) data;
-//     double *input = (double *) inputBuffer;
-//     fourier->executefft(input);
-//     memcpy(outputBuffer, inputBuffer, sizeof(double)*nBufferFrames);
-//     return 0;
-// };
