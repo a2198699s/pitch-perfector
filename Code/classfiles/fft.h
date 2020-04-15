@@ -17,8 +17,3 @@ class fft {
     void executefft(double* inputBuffer);
     void executeInverse_fft(fftw_complex* fourierSpectrum);
 };
-
-// class Dispatch  {
-//   public:
-//     static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data);
-// };

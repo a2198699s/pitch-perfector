@@ -1,5 +1,7 @@
 #include <fftw3.h>
 
+#pragma once
+
 class vocoder {
   public:
     float baseFreq;
