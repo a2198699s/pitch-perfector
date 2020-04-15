@@ -8,12 +8,7 @@
 
 
 fft::fft(int nBufferFrames) {
-    // in = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
-    // out = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
     my_plan = fftw_plan_dft_r2c_1d(nBufferFrames, in, out, FFTW_MEASURE);
-
-    // inverse_in = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
-    // inverse_out = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
     inverse_plan = fftw_plan_dft_c2r_1d(nBufferFrames, inverse_in, inverse_out, FFTW_MEASURE);
     frequencyResolution = 86;
     this->nBufferFrames = nBufferFrames; //need to set as object variable or it wont exist outwith this function!
@@ -79,26 +74,20 @@ void fft::executeInverse_fft(fftw_complex* fourierSpectrum){
 };
 
 
-double* fft::removeComplexPart(fftw_complex* fourierSpectrum, int size){
-    double* realPart = (double *) fftw_malloc(sizeof(double)*size);
-    for (int i=0; i<size; ++i){
-        realPart[i] = fourierSpectrum[i][0];
-    }
-    return realPart;
-}
-
 
 // 80 to 1000Hz is vocal range. 
 // 
-int fft::peakFinder(fftw_complex* fourierSpectrum){
+int fft::peakFinder(){
+
     // double* realSpectrum = this->removeComplexPart(fourierSpectrum, nBufferFrames);
-    int max = 0;
+    double max = 0;
     int maxIndex = 0;
 
-    for (int i=10; i<50; ++i) {
-        if (fourierSpectrum[i][0] > max) {
-            max = fourierSpectrum[i][0];
+    for (int i=0; i<FFT_BUFFER_SIZE; ++i) {
+        if (this->out[i][0] > max) {
+            max = this->out[i][0];
             maxIndex = i;
+            cout << maxIndex << " " << max << "\n";
         }
     }
     return maxIndex * frequencyResolution;
@@ -179,7 +168,7 @@ int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBuffer
 	double cMajor[8] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
     memcpy(fourier->in, inputBuffer, sizeof(double)*AUDIO_BUFFER_SIZE);
     fourier->executefft(fourier->in);
-    double peakFrequency = fourier->peakFinder(fourier->out);
+    double peakFrequency = fourier->peakFinder();
     double closestNoteFrequency = fourier->findClosestNote(cMajor, 8, peakFrequency);
     float difference = closestNoteFrequency - peakFrequency;
     int differenceIndex = fourier->FrequencyToIndex(difference);
