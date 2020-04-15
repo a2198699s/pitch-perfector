@@ -1,14 +1,16 @@
 #include "fft.h"
+#include "vocoder.h"
+#include "dispatch.h"
 #include <RtAudio.h>
 
 
-Dispatch::Dispatch(fft* fourierPtr, vocoder* vocoderPtr){
+dispatch::dispatch(fft* fourierPtr, vocoder* vocoderPtr){
     this->fourierObj = fourierPtr;
     this->vocoderObj = vocoderPtr;
 };
 
-int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
-    Dispatch* dispatcher = (Dispatch*) data;
+int dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
+    dispatch* dispatcher = (dispatch*) data;
 
     (dispatcher->fourierObj)->executefft((double*) inputBuffer);
     (dispatcher->vocoderObj)->pitchShift_setup((dispatcher->fourierObj)->out);

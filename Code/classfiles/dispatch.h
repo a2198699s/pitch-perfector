@@ -2,11 +2,11 @@
 #include "vocoder.h"
 #include <RtAudio.h>
 
-class Dispatch  {
+class dispatch  {
   public:
-    fft* fourierObj
-    vocoder* vocoderObj
+    fft* fourierObj;
+    vocoder* vocoderObj;
 
-    Dispatch(fft* fourierPtr, vocoder* vocoderPtr);
+    dispatch(fft* fourierPtr, vocoder* vocoderPtr);
     static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data);
 };
