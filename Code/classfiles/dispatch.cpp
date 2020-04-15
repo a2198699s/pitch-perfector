@@ -2,6 +2,8 @@
 #include "vocoder.h"
 #include "dispatch.h"
 #include <RtAudio.h>
+#include <cstdlib>
+#include <cstring>
 
 
 dispatch::dispatch(fft* fourierPtr, vocoder* vocoderPtr){

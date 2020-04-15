@@ -1,6 +1,8 @@
 #include "fft.h"
 #include "vocoder.h"
 #include <RtAudio.h>
+#include <cstdlib>
+#include <cstring>
 
 class dispatch  {
   public:
