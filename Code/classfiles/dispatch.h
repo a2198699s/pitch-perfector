@@ -2,6 +2,8 @@
 #include "vocoder.h"
 #include <RtAudio.h>
 
+#pragma once
+
 class dispatch  {
   public:
     fft* fourierObj;
