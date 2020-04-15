@@ -4,10 +4,10 @@
 class fft {        
   public:
     int nBufferFrames;
-    double* in;
-    fftw_complex *out;
-    fftw_complex* inverse_in;
-    double* inverse_out;
+    double in[512];
+    fftw_complex out[257];
+    fftw_complex inverse_in[257];
+    double inverse_out[512];
     fftw_plan my_plan;
     fftw_plan inverse_plan;
 
