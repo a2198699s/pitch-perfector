@@ -8,12 +8,12 @@
 
 
 fft::fft(int nBufferFrames) {
-    in = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
-    out = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
+    // in = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
+    // out = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
     my_plan = fftw_plan_dft_r2c_1d(nBufferFrames, in, out, FFTW_MEASURE);
 
-    inverse_in = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
-    inverse_out = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
+    // inverse_in = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
+    // inverse_out = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
     inverse_plan = fftw_plan_dft_c2r_1d(nBufferFrames, inverse_in, inverse_out, FFTW_MEASURE);
 
     this->nBufferFrames = nBufferFrames; //need to set as object variable or it wont exist outwith this function!
