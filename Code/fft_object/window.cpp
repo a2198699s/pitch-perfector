@@ -27,7 +27,10 @@ Window::Window() : gain(5), count(0)
 	{
 		xData[index] = index;
 		yData[index] = gain * sin( M_PI * index/50 );
-		xData2[index] = (Fs/plotDataSize)*index; 
+	}
+	for( int index=0; index<fftPlotDataSize; ++index )
+	{
+		xData2[index] = index; 
 		yData2[index] = 0;
 	}
 
@@ -96,14 +99,10 @@ void Window::timerEvent( QTimerEvent * )
 	plot->replot();
 
 	// Fill ydata2 up with the real part of fftw_complex.
-	for ( int i=0; i<plotDataSize; ++i ) {
-		if (aStreamer->outputData[i][0] < 0) {
-			yData2[i] = 0;
-			continue;
-		}
+	for ( int i=0; i<fftPlotDataSize; ++i ) {
 		yData2[i] = aStreamer->outputData[i][0] * aStreamer->outputData[i][0];
 	}
-	curve2->setSamples(xData2, yData2, plotDataSize);
+	curve2->setSamples(xData2, yData2, fftPlotDataSize);
 	plot2->replot();
 }
 

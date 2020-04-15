@@ -1,15 +1,20 @@
 #include <RtAudio.h>
 // # include "vocoder.h"
+const int AUDIO_BUFFER_SIZE = 512;
+const int FFT_BUFFER_SIZE = AUDIO_BUFFER_SIZE/2 + 1;   
 
 class fft {        
-  public:
+
+  public: 
     int nBufferFrames;
-    double in[512];
-    fftw_complex out[257];
-    fftw_complex inverse_in[257];
-    double inverse_out[512];
+    double in[AUDIO_BUFFER_SIZE];
+    fftw_complex out[FFT_BUFFER_SIZE];
+    fftw_complex inverse_in[FFT_BUFFER_SIZE];
+    double inverse_out[AUDIO_BUFFER_SIZE];
     fftw_plan my_plan;
     fftw_plan inverse_plan;
+    int frequencyResolution;
+
 
     fft(int nBufferFrames);
     void executefft(double* inputBuffer);

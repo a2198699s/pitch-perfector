@@ -15,18 +15,67 @@ fft::fft(int nBufferFrames) {
     // inverse_in = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
     // inverse_out = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
     inverse_plan = fftw_plan_dft_c2r_1d(nBufferFrames, inverse_in, inverse_out, FFTW_MEASURE);
-
+    frequencyResolution = 86;
     this->nBufferFrames = nBufferFrames; //need to set as object variable or it wont exist outwith this function!
 };
 
 void fft::executefft(double *inputBuffer) {
     memcpy(in, inputBuffer, sizeof(double)*nBufferFrames );
     fftw_execute(my_plan);
+    double frequencyResolution = 44100/nBufferFrames;
+    int scaler = 5;
+    int cut100Hz = 100/frequencyResolution;
+    int cut2000Hz = 2000/frequencyResolution;
+    int cut7000Hz = 7000/frequencyResolution;
+    int cut9000Hz = 9000/frequencyResolution;
+    int cut10000Hz = 10000/frequencyResolution;
+
+
+
+    // cout << cut100Hz << " " << cut2000Hz <<" " << cut7000Hz << " " << cut9000Hz << " " << cut10000Hz << "\n";
+
+    // 0Hz to 100Hz is 0.
+    for (int i=0; i<=cut100Hz; ++i) {
+        this->out[i][0] = 0;
+        this->out[i][1] = 0;
+    }
+
+    // 100Hz to 2000Hz is kept the same.
+    for (int i=cut100Hz; i<=cut2000Hz; ++i) {
+        this->out[i][0] = this->out[i][0] / scaler;
+        this->out[i][1] = this->out[i][1] / scaler;
+    }    
+
+    // 2000Hz to 7000Hz is multipled by 1.5. 
+    for (int i=cut2000Hz; i<=cut7000Hz; ++i) {
+        this->out[i][0] = this->out[i][0] * 3 / scaler;
+        this->out[i][1] = this->out[i][1] * 3 / scaler;
+    }    
+
+    // 7000Hz to 9000Hz is kept the same. 
+    for (int i=cut7000Hz; i<=cut9000Hz; ++i) {
+        this->out[i][0] = this->out[i][0] / scaler;
+        this->out[i][1] = this->out[i][1] / scaler;
+    }    
+
+    // 9000Hz to 10000Hz is multipled by 1.5. 
+    for (int i=cut9000Hz; i<=cut10000Hz; ++i) {
+        this->out[i][0] = this->out[i][0] * 3 / scaler;
+        this->out[i][1] = this->out[i][1] * 3 / scaler;
+    }    
+
+
+    // 10000Hz to END is set to 0. 
+    for (int i=cut10000Hz; i<=FFT_BUFFER_SIZE; ++i) {
+        this->out[i][0] = 0;
+        this->out[i][1] = 0;
+    }        
 };
 
 void fft::executeInverse_fft(fftw_complex* fourierSpectrum){
     memcpy(inverse_in, fourierSpectrum, sizeof(fftw_complex)*nBufferFrames);
     fftw_execute(inverse_plan);
+
 };
 
 
@@ -38,14 +87,17 @@ double* fft::removeComplexPart(fftw_complex* fourierSpectrum, int size){
     return realPart;
 }
 
+
+// 80 to 1000Hz is vocal range. 
+// 
 int fft::peakFinder(fftw_complex* fourierSpectrum){
-    double* realSpectrum = this->removeComplexPart(fourierSpectrum, nBufferFrames);
+    // double* realSpectrum = this->removeComplexPart(fourierSpectrum, nBufferFrames);
     int max = 0;
     int maxIndex = 0;
-    double frequencyResolution = 44100/nBufferFrames;
-    for (int i=0; i<nBufferFrames; ++i) {
-        if (realSpectrum[i] > max) {
-            max = realSpectrum[i];
+
+    for (int i=10; i<50; ++i) {
+        if (fourierSpectrum[i][0] > max) {
+            max = fourierSpectrum[i][0];
             maxIndex = i;
         }
     }
@@ -107,6 +159,7 @@ int fft::FrequencyToIndex(double frequency) {
 }
 
 void fft::shiftFrequencySpectrum(int shift) { 
+    if (abs(shift > 100) ) return;
     if (shift >= 0) {
         memmove(this->out+shift, this->out, sizeof(fftw_complex)*(nBufferFrames-shift));
     }
@@ -124,14 +177,13 @@ int Dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBuffer
     Dispatch* dispatchPtr = (Dispatch*) data;
     fft *fourier = dispatchPtr->fourierPtr;
 	double cMajor[8] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
-
-    double *input = (double *) inputBuffer;
-    fourier->executefft(input);
+    memcpy(fourier->in, inputBuffer, sizeof(double)*AUDIO_BUFFER_SIZE);
+    fourier->executefft(fourier->in);
     double peakFrequency = fourier->peakFinder(fourier->out);
     double closestNoteFrequency = fourier->findClosestNote(cMajor, 8, peakFrequency);
     float difference = closestNoteFrequency - peakFrequency;
     int differenceIndex = fourier->FrequencyToIndex(difference);
-    // cout << "Peak: " << peakFrequency << " Closest: " << closestNoteFrequency << " Difference: " << difference << " Freq Difference: " << differenceIndex << "\n";
+    cout << "Peak: " << peakFrequency << " Closest: " << closestNoteFrequency << " Difference: " << difference << " Freq Difference: " << differenceIndex << "\n";
     fourier->shiftFrequencySpectrum(differenceIndex);
     fourier->executeInverse_fft(fourier->out);
     memcpy(outputBuffer, fourier->inverse_out, sizeof(double)*nBufferFrames);

@@ -39,7 +39,7 @@ private:
 	QHBoxLayout  *hLayout;  // horizontal layout
 
 	static const int plotDataSize = 512;
-
+	static const int fftPlotDataSize = plotDataSize/2 + 1; 
 	// data arrays for the plot
 	double xData[plotDataSize];
 	double yData[plotDataSize];
