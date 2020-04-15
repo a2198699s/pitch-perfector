@@ -11,8 +11,8 @@
 
 using namespace std;
 
-ofstream outputFile("audio_out.txt");
-ofstream inputFile("input_data.txt");
+// ofstream outputFile("audio_out.txt");
+// ofstream inputFile("input_data.txt");
 
 //C major scale starting at C4 in Hertz (does this need to be referenced differently as a constant?)
 const float C_Major[] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
