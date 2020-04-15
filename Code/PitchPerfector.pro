@@ -6,7 +6,7 @@ CONFIG          += qt warn_on debug
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = QwtExample
+TARGET = PitchPerfector
 
 greaterThan(QT_MAJOR_VERSION, 4): LIBS += -lqwt-qt5 -lm -lrtaudio -lfftw3
 lessThan(QT_MAJOR_VERSION, 5): LIBS += -lqwt -lm -lrtaudio -lfftw3
