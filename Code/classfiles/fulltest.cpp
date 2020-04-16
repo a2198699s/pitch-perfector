@@ -29,10 +29,10 @@ int main() {
   // Set the same number of channels for both input and output.
   unsigned int bufferBytes, bufferFrames = 1024*2; // samples/Fs = bufferTime
   RtAudio::StreamParameters iParams, oParams;
-  iParams.deviceId = 0; // first available device
-  iParams.nChannels = 1;
-  oParams.deviceId = 0; // first available device
-  oParams.nChannels = 1;
+	iParams.deviceId = 3; // first available device
+	iParams.nChannels = 1;
+	oParams.deviceId = 0; // first available device
+	oParams.nChannels = 1;
 
 //Instantiate Classes
   int signed_bufferFrames = (int) bufferFrames;
