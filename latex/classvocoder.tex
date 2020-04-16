@@ -1,6 +1,10 @@
 \hypertarget{classvocoder}{\section{vocoder Class Reference}
 \label{classvocoder}\index{vocoder@{vocoder}}
 }
+
+
+{\ttfamily \#include $<$vocoder.\-h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -103,6 +107,11 @@ void \hyperlink{classvocoder_aa3d122aee6d6ae77ac5b04572e924dc0}{pitch\-Shift\-\_
 
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+/brief Performs the analysis and pitch sifting of input frequencies
+
+vocoder objects recieve frequency spectrums from the fft class and analyse them to find the fundamental frequency. Then the frequency spectrum is shifted to move the fundamental frequency to one of the notes in the key provided to the object's constructor. 
 
 \subsection{Member Function Documentation}
 \hypertarget{classvocoder_aa3d122aee6d6ae77ac5b04572e924dc0}{\index{vocoder@{vocoder}!pitch\-Shift\-\_\-setup@{pitch\-Shift\-\_\-setup}}

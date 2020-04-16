@@ -93,6 +93,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">vocoder Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="classfiles_2vocoder_8h_source.html">vocoder.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -195,7 +197,10 @@ double *&#160;</td><td class="memItemRight" valign="bottom"><b>RealFourier</b></
 float *&#160;</td><td class="memItemRight" valign="bottom"><b>scaleFreqs</b></td></tr>
 <tr class="separator:a723e95fc1b499d823033c6acf561b1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>/brief Performs the analysis and pitch sifting of input frequencies</p>
+<p>vocoder objects recieve frequency spectrums from the fft class and analyse them to find the fundamental frequency. Then the frequency spectrum is shifted to move the fundamental frequency to one of the notes in the key provided to the object's constructor. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aa3d122aee6d6ae77ac5b04572e924dc0"></a>
 <div class="memitem">
 <div class="memproto">
