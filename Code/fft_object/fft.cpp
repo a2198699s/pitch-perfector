@@ -5,6 +5,9 @@
 #include <math.h>
 #include "fft.h"
 #include "vocoder.h"
+#include <functional>
+#include <numeric>
+#include "helper.h"
 
 
 fft::fft(int nBufferFrames) {
@@ -12,6 +15,7 @@ fft::fft(int nBufferFrames) {
     inverse_plan = fftw_plan_dft_c2r_1d(nBufferFrames, inverse_in, inverse_out, FFTW_MEASURE);
     frequencyResolution = 86;
     this->nBufferFrames = nBufferFrames; //need to set as object variable or it wont exist outwith this function!
+    double maxinput = 0;
 };
 
 void fft::executefft(double *inputBuffer) {
@@ -87,7 +91,6 @@ int fft::peakFinder(){
         if (this->out[i][0] > max) {
             max = this->out[i][0];
             maxIndex = i;
-            cout << maxIndex << " " << max << "\n";
         }
     }
     return maxIndex * frequencyResolution;
@@ -148,7 +151,7 @@ int fft::FrequencyToIndex(double frequency) {
 }
 
 void fft::shiftFrequencySpectrum(int shift) { 
-    if (abs(shift > 100) ) return;
+    if (abs(shift > 5) ) return;
     if (shift >= 0) {
         memmove(this->out+shift, this->out, sizeof(fftw_complex)*(nBufferFrames-shift));
     }

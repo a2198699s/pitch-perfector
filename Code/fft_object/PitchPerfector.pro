@@ -13,5 +13,5 @@ lessThan(QT_MAJOR_VERSION, 5): LIBS += -lqwt -lm -lrtaudio -lfftw3
 
 INCLUDEPATH += /usr/include/rtaudio
 
-HEADERS += window.h audioStreamer.h fft.h vocoder.h
-SOURCES += main.cpp window.cpp audioStreamer.cpp fft.cpp vocoder.cpp
+HEADERS += window.h audioStreamer.h fft.h vocoder.h helper.h
+SOURCES += main.cpp window.cpp audioStreamer.cpp fft.cpp vocoder.cpp helper.cpp

@@ -14,6 +14,7 @@ class fft {
     fftw_plan my_plan;
     fftw_plan inverse_plan;
     int frequencyResolution;
+    double maxinput;
 
 
     fft(int nBufferFrames);
