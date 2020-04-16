@@ -2,6 +2,28 @@ dist: trusty
 sudo: false
 language: cpp
 
+# Blacklist
+branches:
+  except:
+    - gh-pages
+    
+# Environment variables
+env:
+  global:
+    - GH_REPO_NAME: pitch-perfector
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Documentation
+    - GH_REPO_REF: github.com/<your_name>/<your_repo>.git
+   
+# Install dependencies
+addons:
+  apt:
+    packages:
+      - doxygen
+      - doxygen-doc
+      - doxygen-latex
+      - doxygen-gui
+      - graphviz
+
 script: 
 - cmake .
 - cmake --build . -- -j2
@@ -32,12 +54,9 @@ script:
         else
             echo -e "\033[1;32m\xE2\x9C\x93 passed:\033[0m $1";
         fi
-   
+
+# Generate and deploy documentation
 after_success:
-  # Generate the docs only if master, the travis_build_docs is true and we can use secure variables
-  - >-
-    if [[ "$TRAVIS_BRANCH" = "master" && -n "$TRAVIS_BUILD_DOCS" && "$TRAVIS_PULL_REQUEST" = "false" ]] ; then
-      cd $PROJECT_DIR_ABS
-      source .ci/setup-ssh.sh || travis_terminate 1
-      .ci/generateDocumentation.sh || travis_terminate 1
-    fi
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh
