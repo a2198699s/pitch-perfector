@@ -9,13 +9,13 @@ add_custom_target(pitch_perfector COMMAND make run
 )
 
 
-add_subdirector(Code/fft_object)
+add_subdirectory(Code/fft_object)
 
 add_custom_target(PitchPerfector COMMAND make run
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/fft_object/
 )
 
-add_subdirector(Code/classfiles)
+add_subdirectory(Code/classfiles)
 
 add_custom_target(tester COMMAND make run
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/classfiles/
