@@ -92,17 +92,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">fft Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class for performing fourier transforms usinf FFTW3.  
+ <a href="classfft.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="classfiles_2fft_8h_source.html">fft.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5fff94ac07119207ddd05f628be5891d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fff94ac07119207ddd05f628be5891d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>fft</b> (int nBufferFrames)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfft.html#a5fff94ac07119207ddd05f628be5891d">fft</a> (int nBufferFrames)</td></tr>
+<tr class="memdesc:a5fff94ac07119207ddd05f628be5891d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the fftw3 plans for the object. <br/></td></tr>
 <tr class="separator:a5fff94ac07119207ddd05f628be5891d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47e58fd4f715ad89a6fad8df9d715bf4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47e58fd4f715ad89a6fad8df9d715bf4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>executefft</b> (double *inputBuffer)</td></tr>
+<tr class="memitem:a47e58fd4f715ad89a6fad8df9d715bf4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfft.html#a47e58fd4f715ad89a6fad8df9d715bf4">executefft</a> (double *inputBuffer)</td></tr>
 <tr class="separator:a47e58fd4f715ad89a6fad8df9d715bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a228bd861564c189cd7b6800c950a1c09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a228bd861564c189cd7b6800c950a1c09"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>executeInverse_fft</b> (fftw_complex *fourierSpectrum)</td></tr>
+<tr class="memitem:a228bd861564c189cd7b6800c950a1c09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfft.html#a228bd861564c189cd7b6800c950a1c09">executeInverse_fft</a> (fftw_complex *fourierSpectrum)</td></tr>
 <tr class="separator:a228bd861564c189cd7b6800c950a1c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fff94ac07119207ddd05f628be5891d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fff94ac07119207ddd05f628be5891d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>fft</b> (int nBufferFrames)</td></tr>
@@ -231,6 +235,44 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>maxinput</b></td></
 int&#160;</td><td class="memItemRight" valign="bottom"><b>flag</b></td></tr>
 <tr class="separator:a66afecdbae4bef314698644fc3f280de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for performing fourier transforms usinf FFTW3. </p>
+<p>Allows for the set-up of a fftw3 plan (the most time consuming part of the process) when the class instantiated, allowing the performance of forward and inverse fast fourier transforms with minimal computational cost inside the RtAudio Callback when the method are called. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a47e58fd4f715ad89a6fad8df9d715bf4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fft::executefft </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>inputBuffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Execute the forward fourier transform and update generate the frequncy spectrum for the data input </p>
+
+</div>
+</div>
+<a class="anchor" id="a228bd861564c189cd7b6800c950a1c09"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fft::executeInverse_fft </td>
+          <td>(</td>
+          <td class="paramtype">fftw_complex *&#160;</td>
+          <td class="paramname"><em>fourierSpectrum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Execute the inverse fourier transform to reconstruct a time-series signal from the input frequency spectrum. Data is then scaled back to the appropriate size. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/<a class="el" href="classfiles_2fft_8h_source.html">fft.h</a></li>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/old/macOS/vocoder/vocoding.cpp</li>

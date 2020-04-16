@@ -89,26 +89,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">fft.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;RtAudio.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;fftw3.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classfft.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfft.html">fft</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">int</span> nBufferFrames;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">double</span>* in;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    fftw_complex *out;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    fftw_complex* inverse_in;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">double</span>* inverse_out;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    fftw_plan my_plan;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    fftw_plan inverse_plan;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classfft.html">fft</a>(<span class="keywordtype">int</span> nBufferFrames);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> executefft(<span class="keywordtype">double</span>* inputBuffer);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> executeInverse_fft(fftw_complex* fourierSpectrum);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="ttc" id="classfft_html"><div class="ttname"><a href="classfft.html">fft</a></div><div class="ttdef"><b>Definition:</b> fft.h:6</div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;RtAudio.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;fftw3.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classfft.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfft.html">fft</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> nBufferFrames;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">double</span>* in;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    fftw_complex *out;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    fftw_complex* inverse_in;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">double</span>* inverse_out;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    fftw_plan my_plan;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    fftw_plan inverse_plan;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classfft.html#a5fff94ac07119207ddd05f628be5891d">fft</a>(<span class="keywordtype">int</span> nBufferFrames);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classfft.html#a47e58fd4f715ad89a6fad8df9d715bf4">executefft</a>(<span class="keywordtype">double</span>* inputBuffer);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classfft.html#a228bd861564c189cd7b6800c950a1c09">executeInverse_fft</a>(fftw_complex* fourierSpectrum);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="ttc" id="classfft_html_a5fff94ac07119207ddd05f628be5891d"><div class="ttname"><a href="classfft.html#a5fff94ac07119207ddd05f628be5891d">fft::fft</a></div><div class="ttdeci">fft(int nBufferFrames)</div><div class="ttdoc">Construct the fftw3 plans for the object. </div><div class="ttdef"><b>Definition:</b> fft.cpp:6</div></div>
+<div class="ttc" id="classfft_html"><div class="ttname"><a href="classfft.html">fft</a></div><div class="ttdoc">Class for performing fourier transforms usinf FFTW3. </div><div class="ttdef"><b>Definition:</b> fft.h:17</div></div>
+<div class="ttc" id="classfft_html_a228bd861564c189cd7b6800c950a1c09"><div class="ttname"><a href="classfft.html#a228bd861564c189cd7b6800c950a1c09">fft::executeInverse_fft</a></div><div class="ttdeci">void executeInverse_fft(fftw_complex *fourierSpectrum)</div><div class="ttdef"><b>Definition:</b> fft.cpp:23</div></div>
+<div class="ttc" id="classfft_html_a47e58fd4f715ad89a6fad8df9d715bf4"><div class="ttname"><a href="classfft.html#a47e58fd4f715ad89a6fad8df9d715bf4">fft::executefft</a></div><div class="ttdeci">void executefft(double *inputBuffer)</div><div class="ttdef"><b>Definition:</b> fft.cpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

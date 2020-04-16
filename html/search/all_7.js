@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window',['Window',['../classWindow.html',1,'']]]
+  ['vocoder',['Vocoder',['../classVocoder.html',1,'Vocoder'],['../classvocoder.html',1,'vocoder']]]
 ];

@@ -1,17 +1,24 @@
 \hypertarget{classfft}{\section{fft Class Reference}
 \label{classfft}\index{fft@{fft}}
 }
+
+
+Class for performing fourier transforms usinf F\-F\-T\-W3.  
+
+
+
+
+{\ttfamily \#include $<$fft.\-h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classfft_a5fff94ac07119207ddd05f628be5891d}{{\bfseries fft} (int n\-Buffer\-Frames)}\label{classfft_a5fff94ac07119207ddd05f628be5891d}
+\hypertarget{classfft_a5fff94ac07119207ddd05f628be5891d}{\hyperlink{classfft_a5fff94ac07119207ddd05f628be5891d}{fft} (int n\-Buffer\-Frames)}\label{classfft_a5fff94ac07119207ddd05f628be5891d}
 
+\begin{DoxyCompactList}\small\item\em Construct the fftw3 plans for the object. \end{DoxyCompactList}\item 
+void \hyperlink{classfft_a47e58fd4f715ad89a6fad8df9d715bf4}{executefft} (double $\ast$input\-Buffer)
 \item 
-\hypertarget{classfft_a47e58fd4f715ad89a6fad8df9d715bf4}{void {\bfseries executefft} (double $\ast$input\-Buffer)}\label{classfft_a47e58fd4f715ad89a6fad8df9d715bf4}
-
-\item 
-\hypertarget{classfft_a228bd861564c189cd7b6800c950a1c09}{void {\bfseries execute\-Inverse\-\_\-fft} (fftw\-\_\-complex $\ast$fourier\-Spectrum)}\label{classfft_a228bd861564c189cd7b6800c950a1c09}
-
+void \hyperlink{classfft_a228bd861564c189cd7b6800c950a1c09}{execute\-Inverse\-\_\-fft} (fftw\-\_\-complex $\ast$fourier\-Spectrum)
 \item 
 \hypertarget{classfft_a5fff94ac07119207ddd05f628be5891d}{{\bfseries fft} (int n\-Buffer\-Frames)}\label{classfft_a5fff94ac07119207ddd05f628be5891d}
 
@@ -140,6 +147,28 @@
 
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Class for performing fourier transforms usinf F\-F\-T\-W3. 
+
+Allows for the set-\/up of a fftw3 plan (the most time consuming part of the process) when the class instantiated, allowing the performance of forward and inverse fast fourier transforms with minimal computational cost inside the Rt\-Audio Callback when the method are called. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classfft_a47e58fd4f715ad89a6fad8df9d715bf4}{\index{fft@{fft}!executefft@{executefft}}
+\index{executefft@{executefft}!fft@{fft}}
+\subsubsection[{executefft}]{\setlength{\rightskip}{0pt plus 5cm}void fft\-::executefft (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{input\-Buffer}
+\end{DoxyParamCaption}
+)}}\label{classfft_a47e58fd4f715ad89a6fad8df9d715bf4}
+Execute the forward fourier transform and update generate the frequncy spectrum for the data input \hypertarget{classfft_a228bd861564c189cd7b6800c950a1c09}{\index{fft@{fft}!execute\-Inverse\-\_\-fft@{execute\-Inverse\-\_\-fft}}
+\index{execute\-Inverse\-\_\-fft@{execute\-Inverse\-\_\-fft}!fft@{fft}}
+\subsubsection[{execute\-Inverse\-\_\-fft}]{\setlength{\rightskip}{0pt plus 5cm}void fft\-::execute\-Inverse\-\_\-fft (
+\begin{DoxyParamCaption}
+\item[{fftw\-\_\-complex $\ast$}]{fourier\-Spectrum}
+\end{DoxyParamCaption}
+)}}\label{classfft_a228bd861564c189cd7b6800c950a1c09}
+Execute the inverse fourier transform to reconstruct a time-\/series signal from the input frequency spectrum. Data is then scaled back to the appropriate size. 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
