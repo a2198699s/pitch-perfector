@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.2)
 
 add_compile_options(-Wall -Wextra -Wpedantic)
 
-add_subdirectory(Code/GPIO)
-
 add_custom_target(pitch_perfector COMMAND make run
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/GPIO/
 )
