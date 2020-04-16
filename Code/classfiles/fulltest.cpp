@@ -65,6 +65,8 @@ int main() {
   }
 
   cout << "vocoder data - bin difference: " << vocode.binDifference << '\n';
+  cout << "fourier data - buffersize: " << fourier.nBufferFrames << '\n';
+  cout << "dispatch data - ptrs: " << dispatcher.fourierObj << '\n';
 
  cleanup:
   if ( adac.isStreamOpen() ) adac.closeStream();
