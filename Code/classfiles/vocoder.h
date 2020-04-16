@@ -1,3 +1,13 @@
+/** \class vocoder
+* /brief Performs the analysis and pitch sifting of input frequencies
+*
+* vocoder objects recieve frequency spectrums from the fft class and
+* analyse them to find the fundamental frequency. Then the frequency
+* spectrum is shifted to move the fundamental frequency to one of the
+* notes in the key provided to the object's constructor.
+*/
+
+
 #include <fftw3.h>
 
 #pragma once
