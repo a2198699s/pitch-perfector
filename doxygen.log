@@ -1,28 +1,28 @@
-Warning: ignoring unsupported tag `ALLOW_UNICODE_NAMES    =' at line 79, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `OUTPUT_TEXT_DIRECTION  =' at line 102, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `JAVADOC_BANNER         =' at line 208, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `OPTIMIZE_OUTPUT_SLICE  =' at line 300, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `TOC_INCLUDE_HEADINGS   =' at line 339, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `GROUP_NESTED_COMPOUNDS =' at line 396, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `EXTRACT_PRIV_VIRTUAL   =' at line 476, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `HIDE_COMPOUND_REFERENCE=' at line 573, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `WARN_AS_ERROR          =' at line 798, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `HTML_DYNAMIC_MENUS     =' at line 1274, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `HTML_FORMULA_FORMAT    =' at line 1546, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `FORMULA_MACROFILE      =' at line 1572, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `LATEX_MAKEINDEX_CMD    =' at line 1756, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `LATEX_EXTRA_STYLESHEET =' at line 1823, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `LATEX_TIMESTAMP        =' at line 1890, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `LATEX_EMOJI_DIRECTORY  =' at line 1898, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `RTF_SOURCE_CODE        =' at line 1964, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `MAN_SUBDIR             =' at line 1999, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `XML_NS_MEMB_FILE_SCOPE =' at line 2042, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `DOCBOOK_PROGRAMLISTING =' at line 2069, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `PLANTUML_JAR_PATH      =' at line 2483, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `PLANTUML_CFG_FILE      =' at line 2488, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: ignoring unsupported tag `PLANTUML_INCLUDE_PATH  =' at line 2493, file /home/travis/build/a2198699s/pitch-perfector/Documentation/Doxygen/Doxyfile
-Warning: tag INPUT: input source `../../../Code/' does not exist
-warning: source ../../../Code is not a readable file or directory... skipping.
+Warning: ignoring unsupported tag `ALLOW_UNICODE_NAMES    =' at line 79, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `OUTPUT_TEXT_DIRECTION  =' at line 102, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `JAVADOC_BANNER         =' at line 208, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `OPTIMIZE_OUTPUT_SLICE  =' at line 300, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `TOC_INCLUDE_HEADINGS   =' at line 339, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `GROUP_NESTED_COMPOUNDS =' at line 396, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `EXTRACT_PRIV_VIRTUAL   =' at line 476, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `HIDE_COMPOUND_REFERENCE=' at line 573, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `WARN_AS_ERROR          =' at line 798, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `HTML_DYNAMIC_MENUS     =' at line 1274, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `HTML_FORMULA_FORMAT    =' at line 1546, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `FORMULA_MACROFILE      =' at line 1572, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `LATEX_MAKEINDEX_CMD    =' at line 1756, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `LATEX_EXTRA_STYLESHEET =' at line 1823, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `LATEX_TIMESTAMP        =' at line 1890, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `LATEX_EMOJI_DIRECTORY  =' at line 1898, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `RTF_SOURCE_CODE        =' at line 1964, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `MAN_SUBDIR             =' at line 1999, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `XML_NS_MEMB_FILE_SCOPE =' at line 2042, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `DOCBOOK_PROGRAMLISTING =' at line 2069, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `PLANTUML_JAR_PATH      =' at line 2483, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `PLANTUML_CFG_FILE      =' at line 2488, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: ignoring unsupported tag `PLANTUML_INCLUDE_PATH  =' at line 2493, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
+Warning: tag INPUT: input source `Code/' does not exist
+warning: source Code is not a readable file or directory... skipping.
 Searching for include files...
 Searching for example files...
 Searching for images...
