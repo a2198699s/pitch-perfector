@@ -11,7 +11,7 @@ branches:
 env:
   global:
     - GH_REPO_NAME: pitch-perfector
-    - DOXYFILE: $TRAVIS_BUILD_DIR/Documentation/Doxygen/Doxyfile
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
     - GH_REPO_REF: github.com/a2198699s/pitch-perfector.git
    
 # Install dependencies
