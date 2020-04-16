@@ -23,6 +23,8 @@ This new shifted value is then output to a **speaker**
 
 For more information, see the project [Wiki](https://github.com/a2198699s/pitch-perfector/wiki)
 
+For code documentation, see the [Doxygen documentation](https://a2198699s.github.io/pitch-perfector/html/index.html) published on every commit 
+
 
 ## Licence
 
