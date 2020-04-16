@@ -1,10 +1,6 @@
-#ifndef VOCODER_H
-#define VOCODER_H
-
-#include <cstdlib>
 #include <fftw3.h>
-#include <algorithm>
-using namespace std;
+#include "fft.h"
+#pragma once
 
 class Vocoder {
   public:
@@ -12,21 +8,24 @@ class Vocoder {
     int baseSample;
     int samplerate;
     int bufferSize;
-    int binDifference;
-    float FreqRes;
-    const float* scaleFreqs;
+    float frequencyResolution;
+    const double* scaleFrequencies;
     float newFreq;
-    string Note;
-    fftw_complex* FourierTransform;
+    float difference;
+    int binDifference;
+    fftw_complex fourierSpectrum[257];
+    double peakFrequency;
+    double closestNoteFrequency;
 
-    Vocoder(int samplerate_input, int bufferSize_input, const float scaleFreqs_input[]);
-    int binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index);
-    int noteFinder(const float* NotesInKey, float* note);
+    Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies);
+    float binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index);
+    float noteFinder(const float* NotesInKey, float* note);
     float SampleToFreq(int sample);
-    int NearestNote(float* freq);
     void pitchShift_setup(fftw_complex* fft_spectrum);
     void pitchShift();
-
+    void findPeak();
+    double getClosest(double val1, double val2, double target);
+    double findClosestNote(const double notes[], int n, double target);
+    int FrequencyToIndex(double frequency);
+    void setFourierSpectrum(fftw_complex* fftSpectrum);
 };
-
-#endif // VOCODER_H

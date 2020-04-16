@@ -1,120 +1,122 @@
 #include <cstdlib>
+#include <cmath>
+#include <algorithm>
+#include "vocoder.h"
+#include "fft.h"
+#include <fftw3.h>
+#include <cstring>
 #include <fstream>
 #include <iostream>
-#include <fftw3.h>
-#include "vocoder.h"
 
+using namespace std;
 
-Vocoder::Vocoder(int samplerate_input, int bufferSize_input,  const float scaleFreqs_input[]) {
-  this->samplerate = samplerate_input;
-  this->scaleFreqs = scaleFreqs_input;
-  this->bufferSize = bufferSize_input;
-  this->binDifference = 0;
-  //hertz per sample?
-  this->FreqRes = samplerate/bufferSize;
+//add a peak finder to this class?
+
+Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies) {
+    this->samplerate = sampleRate;
+    this->scaleFrequencies = scaleFrequencies;
+    this->bufferSize = bufferSize;
+    this->frequencyResolution = (float)samplerate/(float)bufferSize;
 };
 
 
-int Vocoder::binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index) {
-//recursive binary searching
+double Vocoder::getClosest(double val1, double val2, double target) { 
+    if (target - val1 >= val2 - target) 
+        return val2; 
+    else
+        return val1; 
+} 
 
-  int midpoint = (lowest_index + highest_index)/2;
+// Adapted from https://www.geeksforgeeks.org/find-closest-number-array/
+// Returns the note closest to target in notes[] 
+double Vocoder::findClosestNote(const double notes[], int n, double target) { 
+    // Corner cases 
+    if (target <= notes[0]) 
+        return notes[0]; 
+    if (target >= notes[n - 1]) 
+        return notes[n - 1]; 
+  
+    // Doing binary search 
+    int i = 0, j = n, mid = 0; 
+    while (i < j) { 
+        mid = (i + j) / 2; 
+  
+        if (notes[mid] == target) 
+            return notes[mid]; 
+  
+        /* If target is less than array element, 
+            then search in left */
+        if (target < notes[mid]) { 
+  
+            // If target is greater than previous 
+            // to mid, return closest of two 
+            if (mid > 0 && target > notes[mid - 1]) 
+                return this->getClosest(notes[mid - 1], 
+                                  notes[mid], target); 
+            /* Repeat for left half */
+            j = mid; 
+        } 
+        // If target is greater than mid 
+        else { 
+            if (mid < n - 1 && target < notes[mid + 1]) 
+                return this->getClosest(notes[mid], 
+                                  notes[mid + 1], target); 
+            // update i 
+            i = mid + 1;  
+        } 
+    } 
+    // Only single element left after search 
+    return notes[mid]; 
+} 
 
-  //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
-  if (*note > (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)) {
-    return NotesInKey[midpoint];
-  }
-  else {
-    if (*note < NotesInKey[midpoint]) {
-      highest_index = midpoint;
-    };
-    if (*note > NotesInKey[midpoint]) {
-      lowest_index = midpoint;
-    };
-  return binary_search(NotesInKey, note, highest_index, lowest_index);
-  };
-};
-
-
-// uses binary search to find nearest note and catches initial edge cases - could be made into a method for the vocoder class
-int Vocoder::noteFinder(const float* NotesInKey, float* note) {
-
-  //initial values for recursion
-  int highest_index = (sizeof(*NotesInKey)/sizeof(float))-1;
-  int lowest_index = 0;
-
-  //edge cases
-  if (*note < NotesInKey[lowest_index]) {
-    return lowest_index;
-  };
-  if (*note > NotesInKey[highest_index]) {
-    return highest_index;
-  };
-  //use binary search to find nearest note
-  return binary_search(NotesInKey, note, highest_index, lowest_index);
-};
 
 
 float Vocoder::SampleToFreq(int sample) {
-  float freq = this->FreqRes * sample;
-  return freq;
+    float freq = (this->frequencyResolution) * sample;
+    return freq;
 };
 
+void Vocoder::findPeak(){
+    double max = 0;
+    int maxIndex = 0;
 
-int Vocoder::NearestNote(float* freq) {
-  //find nearest note for and distance to it
-  //use binary search since list of frequencies is ordered! https://www.geeksforgeeks.org/find-closest-number-array/
-  int newFrequency = noteFinder(scaleFreqs, freq);
-  return newFrequency;
-};
-
-
-// for sure this needs cleaning up
-void Vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
-  this->FourierTransform = fft_spectrum;
-
-  //find sample no of highest peak excluding first sample(DC component)
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!NEED TO CHECK THIS IS USING THE REAL COMPONENTS AND NOT THE COMPLEX ONES!!!!!!!!!!!!!!!!!!!!!!!
-  this->baseSample = distance(this->FourierTransform, max_element(this->FourierTransform, FourierTransform + (sizeof(FourierTransform)/sizeof(FourierTransform[0]))));
-
-  // find freqency of highest peak
-  this->baseFreq = SampleToFreq(baseSample);      
-
-  // find nearest note and distance to it
-  //THIS GIVES AN INDEX!!!
-  this->newFreq = scaleFreqs[NearestNote(&baseFreq)];
-  float difference = (this->newFreq) - (this->baseFreq);
-  //how many bins is this??
-  //NEED to round this to int...
-  this->binDifference = (int) difference*(this->FreqRes);
+    for (int i=0; i<FFT_BUFFER_SIZE; ++i) {
+        if (this->fourierSpectrum[i][0] > max) {
+            max = this->fourierSpectrum[i][0];
+            maxIndex = i;
+        }
+    }
+    this->peakFrequency = maxIndex * this->frequencyResolution;
+}
 
 
-  //output note here?
-  //std::cout << difference << '\n' << binDifference;
+void Vocoder::setFourierSpectrum(fftw_complex* fftSpectrum){
+    for (int i=0; i<FFT_BUFFER_SIZE; ++i) {
+        this->fourierSpectrum[i][0] = fftSpectrum[i][0];
+        this->fourierSpectrum[i][1] = fftSpectrum[i][1];      
+    }
+}
 
-  //Find all peaks to preserve the envelope
-  //peaks are defined as larger than the 2 bins on either side??
-};
+
+
+int Vocoder::FrequencyToIndex(double frequency) {
+    return round(frequency/this->frequencyResolution);
+}
+
 
 
 void Vocoder::pitchShift() {
-  //perform pitch shift
-  //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
+    this->findPeak();
+    this->closestNoteFrequency = this->findClosestNote(this->scaleFrequencies, 8, this->peakFrequency);
+    this->difference = this->closestNoteFrequency - this->peakFrequency;
+    this->binDifference = this->FrequencyToIndex(difference);
+    int shift = this->binDifference;
 
-  int size = 512;
-
-  //alternatively use a pointer reference and edit that to change where the fft is read from to change index? more efficient
-  if (binDifference <= 0) {
-    FourierTransform = FourierTransform+binDifference;
-    for (int i = size-binDifference; i < size; i++) {
-      *FourierTransform[i] = 0;
-    };
-  }
-  else {
-    FourierTransform = FourierTransform-binDifference;
-    for (int i = 0; i < 0-binDifference ; i++) {
-      *FourierTransform[i] = 0;
-    };
-  };
-};
+    if (abs(shift > 5) ) return;
+    if (shift >= 0) {
+        memmove(this->fourierSpectrum+shift, this->fourierSpectrum, sizeof(fftw_complex)*(FFT_BUFFER_SIZE-shift));
+    }
+    else {
+        memmove(this->fourierSpectrum, this->fourierSpectrum-shift, sizeof(fftw_complex)*(FFT_BUFFER_SIZE+shift)); 
+    }
+}
