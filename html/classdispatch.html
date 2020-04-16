@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This class handles the callback functionality from RtAudio.  
  <a href="classdispatch.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="dispatch_8h_source.html">dispatch.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="classfiles_2dispatch_8h_source.html">dispatch.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -105,6 +105,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdispatch.html#a641ec1136a8fdecb8b9ab51fa672a848">dispatch</a> (<a class="el" href="classfft.html">fft</a> *fourierPtr, <a class="el" href="classvocoder.html">vocoder</a> *vocoderPtr)</td></tr>
 <tr class="memdesc:a641ec1136a8fdecb8b9ab51fa672a848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collect pointers to objects to use in processing. <br/></td></tr>
 <tr class="separator:a641ec1136a8fdecb8b9ab51fa672a848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ed8ac03c8498d7f75619af8eaff3a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86ed8ac03c8498d7f75619af8eaff3a2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>dispatch</b> (<a class="el" href="classfft.html">fft</a> *fourierPtr, <a class="el" href="classVocoder.html">Vocoder</a> *vocoderPtr)</td></tr>
+<tr class="separator:a86ed8ac03c8498d7f75619af8eaff3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49638cdbc0fee44e411973f09fc64d83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49638cdbc0fee44e411973f09fc64d83"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>dispatch</b> (<a class="el" href="classfft.html">fft</a> *fourier_obj, <a class="el" href="classvocoder.html">vocoder</a> *vocoder_obj)</td></tr>
 <tr class="separator:a49638cdbc0fee44e411973f09fc64d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,15 +121,30 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <tr class="memitem:a2bc93711c1aee895c430aece41ec026a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bc93711c1aee895c430aece41ec026a"></a>
 static int&#160;</td><td class="memItemRight" valign="bottom"><b>caller</b> (void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data)</td></tr>
 <tr class="separator:a2bc93711c1aee895c430aece41ec026a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bc93711c1aee895c430aece41ec026a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bc93711c1aee895c430aece41ec026a"></a>
+static int&#160;</td><td class="memItemRight" valign="bottom"><b>caller</b> (void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data)</td></tr>
+<tr class="separator:a2bc93711c1aee895c430aece41ec026a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a7b449abb93c0499530bec56afe866f5a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b449abb93c0499530bec56afe866f5a"></a>
+<tr class="memitem:aa4276ec2461afbd1cb98fa4cd9721831"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4276ec2461afbd1cb98fa4cd9721831"></a>
 <a class="el" href="classfft.html">fft</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>fourierObj</b></td></tr>
-<tr class="separator:a7b449abb93c0499530bec56afe866f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:aa4276ec2461afbd1cb98fa4cd9721831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ccec21b2dce1224744ccaa8d1cafee5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ccec21b2dce1224744ccaa8d1cafee5"></a>
 <a class="el" href="classvocoder.html">vocoder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>vocoderObj</b></td></tr>
 <tr class="separator:a7ccec21b2dce1224744ccaa8d1cafee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a7c9726e0a90bdc0e2f2fddcd0ce151"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a7c9726e0a90bdc0e2f2fddcd0ce151"></a>
+<a class="el" href="classVocoder.html">Vocoder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>vocoderObj</b></td></tr>
+<tr class="separator:a9a7c9726e0a90bdc0e2f2fddcd0ce151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4716a8409d8ae147bd9035c279fb5dc2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4716a8409d8ae147bd9035c279fb5dc2"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>fftAudioIn</b> [512]</td></tr>
+<tr class="separator:a4716a8409d8ae147bd9035c279fb5dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687c3d15b82f8e36bf3aa8ef6b66d3b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a687c3d15b82f8e36bf3aa8ef6b66d3b2"></a>
+fftw_complex *&#160;</td><td class="memItemRight" valign="bottom"><b>fftSpectrum</b></td></tr>
+<tr class="separator:a687c3d15b82f8e36bf3aa8ef6b66d3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718894cd35b744d2d6f24f391571c735"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a718894cd35b744d2d6f24f391571c735"></a>
+double *&#160;</td><td class="memItemRight" valign="bottom"><b>fftInverseOut</b></td></tr>
+<tr class="separator:a718894cd35b744d2d6f24f391571c735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a756411664d900bf1cf31e7626c57a4d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a756411664d900bf1cf31e7626c57a4d4"></a>
 <a class="el" href="classfft.html">fft</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>fourierPtr</b></td></tr>
 <tr class="separator:a756411664d900bf1cf31e7626c57a4d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,7 +156,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>This class handles the callback functionality from RtAudio. </p>
 <p><a class="el" href="classDispatch.html">Dispatch</a> objects are used to collect the processing objects used (&lt;fft.h&gt; and &lt;vocoder.h&gt;) and utilise them to process the audio data from RtAudio by implementing a method compatable with the RtAudio callback format. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/<a class="el" href="dispatch_8h_source.html">dispatch.h</a></li>
+<li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/<a class="el" href="classfiles_2dispatch_8h_source.html">dispatch.h</a></li>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/vocoding.cpp</li>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/dispatch.cpp</li>
 </ul>

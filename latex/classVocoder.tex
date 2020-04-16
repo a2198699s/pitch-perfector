@@ -4,24 +4,37 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classVocoder_a561d0fe4ba2d6cea47405648a8c14e32}{{\bfseries Vocoder} (int samplerate\-\_\-input, int buffer\-Size\-\_\-input, const float scale\-Freqs\-\_\-input\mbox{[}$\,$\mbox{]})}\label{classVocoder_a561d0fe4ba2d6cea47405648a8c14e32}
+\hypertarget{classVocoder_a3b1ed9bc5de7892f86bd2673ce72fd6e}{{\bfseries Vocoder} (int sample\-Rate, int buffer\-Size, const double $\ast$scale\-Frequencies)}\label{classVocoder_a3b1ed9bc5de7892f86bd2673ce72fd6e}
 
 \item 
-\hypertarget{classVocoder_aaa67580c520b3714584dbebcc63ccbec}{int {\bfseries binary\-\_\-search} (const float $\ast$Notes\-In\-Key, float $\ast$note, int highest\-\_\-index, int lowest\-\_\-index)}\label{classVocoder_aaa67580c520b3714584dbebcc63ccbec}
+\hypertarget{classVocoder_a19c3f81b8451356f34601b6354e6d53e}{float {\bfseries binary\-\_\-search} (const float $\ast$Notes\-In\-Key, float $\ast$note, int highest\-\_\-index, int lowest\-\_\-index)}\label{classVocoder_a19c3f81b8451356f34601b6354e6d53e}
 
 \item 
-\hypertarget{classVocoder_a477a2c5170d9e513b582769dace8fddf}{int {\bfseries note\-Finder} (const float $\ast$Notes\-In\-Key, float $\ast$note)}\label{classVocoder_a477a2c5170d9e513b582769dace8fddf}
+\hypertarget{classVocoder_a52ea6ca3fa19f44bdbbacf07e0e72064}{float {\bfseries note\-Finder} (const float $\ast$Notes\-In\-Key, float $\ast$note)}\label{classVocoder_a52ea6ca3fa19f44bdbbacf07e0e72064}
 
 \item 
 \hypertarget{classVocoder_a6ac34c186396037e8546fd03b5a0b51a}{float {\bfseries Sample\-To\-Freq} (int sample)}\label{classVocoder_a6ac34c186396037e8546fd03b5a0b51a}
 
 \item 
-\hypertarget{classVocoder_a82f956fd497e7f1b21b0fed6647f2281}{int {\bfseries Nearest\-Note} (float $\ast$freq)}\label{classVocoder_a82f956fd497e7f1b21b0fed6647f2281}
+\hypertarget{classVocoder_a205b461f0bf7c3b1ffb0b8a89ccd5e72}{void {\bfseries pitch\-Shift\-\_\-setup} (fftw\-\_\-complex $\ast$fft\-\_\-spectrum)}\label{classVocoder_a205b461f0bf7c3b1ffb0b8a89ccd5e72}
 
 \item 
-void \hyperlink{classVocoder_a205b461f0bf7c3b1ffb0b8a89ccd5e72}{pitch\-Shift\-\_\-setup} (fftw\-\_\-complex $\ast$fft\-\_\-spectrum)
-\item 
 \hypertarget{classVocoder_a31c2f03502edb92a86ce799fbf4957f6}{void {\bfseries pitch\-Shift} ()}\label{classVocoder_a31c2f03502edb92a86ce799fbf4957f6}
+
+\item 
+\hypertarget{classVocoder_ad7e75d0c54cb9d2b1eb8f077050a6f81}{void {\bfseries find\-Peak} ()}\label{classVocoder_ad7e75d0c54cb9d2b1eb8f077050a6f81}
+
+\item 
+\hypertarget{classVocoder_ab736b53577e9ba92259a5c4074a0bf00}{double {\bfseries get\-Closest} (double val1, double val2, double target)}\label{classVocoder_ab736b53577e9ba92259a5c4074a0bf00}
+
+\item 
+\hypertarget{classVocoder_a0bc26c9977b46623e3c3fc3bc733ed24}{double {\bfseries find\-Closest\-Note} (const double notes\mbox{[}$\,$\mbox{]}, int n, double target)}\label{classVocoder_a0bc26c9977b46623e3c3fc3bc733ed24}
+
+\item 
+\hypertarget{classVocoder_aae99cff1d3e7fc029433998dc7fd0381}{int {\bfseries Frequency\-To\-Index} (double frequency)}\label{classVocoder_aae99cff1d3e7fc029433998dc7fd0381}
+
+\item 
+\hypertarget{classVocoder_a223d77b73ef3b2fa8be406e46f671441}{void {\bfseries set\-Fourier\-Spectrum} (fftw\-\_\-complex $\ast$fft\-Spectrum)}\label{classVocoder_a223d77b73ef3b2fa8be406e46f671441}
 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
@@ -39,35 +52,31 @@ void \hyperlink{classVocoder_a205b461f0bf7c3b1ffb0b8a89ccd5e72}{pitch\-Shift\-\_
 \hypertarget{classVocoder_a38c9aa4fad739f7577e51fc3d4891751}{int {\bfseries buffer\-Size}}\label{classVocoder_a38c9aa4fad739f7577e51fc3d4891751}
 
 \item 
-\hypertarget{classVocoder_acd33a5938c9167429b2a4cd8c58374ae}{int {\bfseries bin\-Difference}}\label{classVocoder_acd33a5938c9167429b2a4cd8c58374ae}
+\hypertarget{classVocoder_a5bd2da8b9a6b618be7828035dfb50f53}{float {\bfseries frequency\-Resolution}}\label{classVocoder_a5bd2da8b9a6b618be7828035dfb50f53}
 
 \item 
-\hypertarget{classVocoder_a37c560acdf34330a9b7d77d418da3229}{float {\bfseries Freq\-Res}}\label{classVocoder_a37c560acdf34330a9b7d77d418da3229}
-
-\item 
-\hypertarget{classVocoder_a5a93206230e57f5aee12de489dac2a31}{const float $\ast$ {\bfseries scale\-Freqs}}\label{classVocoder_a5a93206230e57f5aee12de489dac2a31}
+\hypertarget{classVocoder_a2cf377a9138da30b22b273f55915ea65}{const double $\ast$ {\bfseries scale\-Frequencies}}\label{classVocoder_a2cf377a9138da30b22b273f55915ea65}
 
 \item 
 \hypertarget{classVocoder_a77dcc19311b4905125bf609084b4ad2a}{float {\bfseries new\-Freq}}\label{classVocoder_a77dcc19311b4905125bf609084b4ad2a}
 
 \item 
-\hypertarget{classVocoder_a671b6ee1eecfa30c4b9f93b0e23364a5}{string {\bfseries Note}}\label{classVocoder_a671b6ee1eecfa30c4b9f93b0e23364a5}
+\hypertarget{classVocoder_a300f616506453a971cf21a7de35e2964}{float {\bfseries difference}}\label{classVocoder_a300f616506453a971cf21a7de35e2964}
 
 \item 
-\hypertarget{classVocoder_a87743dbc6e595d8fe1899d6987263008}{fftw\-\_\-complex $\ast$ {\bfseries Fourier\-Transform}}\label{classVocoder_a87743dbc6e595d8fe1899d6987263008}
+\hypertarget{classVocoder_acd33a5938c9167429b2a4cd8c58374ae}{int {\bfseries bin\-Difference}}\label{classVocoder_acd33a5938c9167429b2a4cd8c58374ae}
+
+\item 
+\hypertarget{classVocoder_a2884b2fe7d5303609ddeff6979bdbcd3}{fftw\-\_\-complex {\bfseries fourier\-Spectrum} \mbox{[}257\mbox{]}}\label{classVocoder_a2884b2fe7d5303609ddeff6979bdbcd3}
+
+\item 
+\hypertarget{classVocoder_abae7bb20fa180d030d6a96f08af48429}{double {\bfseries peak\-Frequency}}\label{classVocoder_abae7bb20fa180d030d6a96f08af48429}
+
+\item 
+\hypertarget{classVocoder_a6550fbf8de5847c7d5a6fcb90b4f3c2b}{double {\bfseries closest\-Note\-Frequency}}\label{classVocoder_a6550fbf8de5847c7d5a6fcb90b4f3c2b}
 
 \end{DoxyCompactItemize}
 
-
-\subsection{Member Function Documentation}
-\hypertarget{classVocoder_a205b461f0bf7c3b1ffb0b8a89ccd5e72}{\index{Vocoder@{Vocoder}!pitch\-Shift\-\_\-setup@{pitch\-Shift\-\_\-setup}}
-\index{pitch\-Shift\-\_\-setup@{pitch\-Shift\-\_\-setup}!Vocoder@{Vocoder}}
-\subsubsection[{pitch\-Shift\-\_\-setup}]{\setlength{\rightskip}{0pt plus 5cm}void Vocoder\-::pitch\-Shift\-\_\-setup (
-\begin{DoxyParamCaption}
-\item[{fftw\-\_\-complex $\ast$}]{fft\-\_\-spectrum}
-\end{DoxyParamCaption}
-)}}\label{classVocoder_a205b461f0bf7c3b1ffb0b8a89ccd5e72}
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\-N\-E\-E\-D T\-O C\-H\-E\-C\-K T\-H\-I\-S I\-S U\-S\-I\-N\-G T\-H\-E R\-E\-A\-L C\-O\-M\-P\-O\-N\-E\-N\-T\-S A\-N\-D N\-O\-T T\-H\-E C\-O\-M\-P\-L\-E\-X O\-N\-E\-S!!!!!!!!!!!!!!!!!!!!!!! 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 

@@ -95,26 +95,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a561d0fe4ba2d6cea47405648a8c14e32"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a561d0fe4ba2d6cea47405648a8c14e32"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Vocoder</b> (int samplerate_input, int bufferSize_input, const float scaleFreqs_input[])</td></tr>
-<tr class="separator:a561d0fe4ba2d6cea47405648a8c14e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa67580c520b3714584dbebcc63ccbec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa67580c520b3714584dbebcc63ccbec"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>binary_search</b> (const float *NotesInKey, float *note, int highest_index, int lowest_index)</td></tr>
-<tr class="separator:aaa67580c520b3714584dbebcc63ccbec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a477a2c5170d9e513b582769dace8fddf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a477a2c5170d9e513b582769dace8fddf"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>noteFinder</b> (const float *NotesInKey, float *note)</td></tr>
-<tr class="separator:a477a2c5170d9e513b582769dace8fddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1ed9bc5de7892f86bd2673ce72fd6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b1ed9bc5de7892f86bd2673ce72fd6e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Vocoder</b> (int sampleRate, int bufferSize, const double *scaleFrequencies)</td></tr>
+<tr class="separator:a3b1ed9bc5de7892f86bd2673ce72fd6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19c3f81b8451356f34601b6354e6d53e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19c3f81b8451356f34601b6354e6d53e"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>binary_search</b> (const float *NotesInKey, float *note, int highest_index, int lowest_index)</td></tr>
+<tr class="separator:a19c3f81b8451356f34601b6354e6d53e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52ea6ca3fa19f44bdbbacf07e0e72064"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52ea6ca3fa19f44bdbbacf07e0e72064"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>noteFinder</b> (const float *NotesInKey, float *note)</td></tr>
+<tr class="separator:a52ea6ca3fa19f44bdbbacf07e0e72064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ac34c186396037e8546fd03b5a0b51a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ac34c186396037e8546fd03b5a0b51a"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>SampleToFreq</b> (int sample)</td></tr>
 <tr class="separator:a6ac34c186396037e8546fd03b5a0b51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82f956fd497e7f1b21b0fed6647f2281"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82f956fd497e7f1b21b0fed6647f2281"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>NearestNote</b> (float *freq)</td></tr>
-<tr class="separator:a82f956fd497e7f1b21b0fed6647f2281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a205b461f0bf7c3b1ffb0b8a89ccd5e72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVocoder.html#a205b461f0bf7c3b1ffb0b8a89ccd5e72">pitchShift_setup</a> (fftw_complex *fft_spectrum)</td></tr>
+<tr class="memitem:a205b461f0bf7c3b1ffb0b8a89ccd5e72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a205b461f0bf7c3b1ffb0b8a89ccd5e72"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift_setup</b> (fftw_complex *fft_spectrum)</td></tr>
 <tr class="separator:a205b461f0bf7c3b1ffb0b8a89ccd5e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31c2f03502edb92a86ce799fbf4957f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31c2f03502edb92a86ce799fbf4957f6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift</b> ()</td></tr>
 <tr class="separator:a31c2f03502edb92a86ce799fbf4957f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7e75d0c54cb9d2b1eb8f077050a6f81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7e75d0c54cb9d2b1eb8f077050a6f81"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>findPeak</b> ()</td></tr>
+<tr class="separator:ad7e75d0c54cb9d2b1eb8f077050a6f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab736b53577e9ba92259a5c4074a0bf00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab736b53577e9ba92259a5c4074a0bf00"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>getClosest</b> (double val1, double val2, double target)</td></tr>
+<tr class="separator:ab736b53577e9ba92259a5c4074a0bf00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bc26c9977b46623e3c3fc3bc733ed24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bc26c9977b46623e3c3fc3bc733ed24"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>findClosestNote</b> (const double notes[], int n, double target)</td></tr>
+<tr class="separator:a0bc26c9977b46623e3c3fc3bc733ed24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae99cff1d3e7fc029433998dc7fd0381"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae99cff1d3e7fc029433998dc7fd0381"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>FrequencyToIndex</b> (double frequency)</td></tr>
+<tr class="separator:aae99cff1d3e7fc029433998dc7fd0381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a223d77b73ef3b2fa8be406e46f671441"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a223d77b73ef3b2fa8be406e46f671441"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setFourierSpectrum</b> (fftw_complex *fftSpectrum)</td></tr>
+<tr class="separator:a223d77b73ef3b2fa8be406e46f671441"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -130,43 +143,31 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>samplerate</b></td></t
 <tr class="memitem:a38c9aa4fad739f7577e51fc3d4891751"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38c9aa4fad739f7577e51fc3d4891751"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>bufferSize</b></td></tr>
 <tr class="separator:a38c9aa4fad739f7577e51fc3d4891751"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd33a5938c9167429b2a4cd8c58374ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd33a5938c9167429b2a4cd8c58374ae"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>binDifference</b></td></tr>
-<tr class="separator:acd33a5938c9167429b2a4cd8c58374ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37c560acdf34330a9b7d77d418da3229"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37c560acdf34330a9b7d77d418da3229"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>FreqRes</b></td></tr>
-<tr class="separator:a37c560acdf34330a9b7d77d418da3229"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a93206230e57f5aee12de489dac2a31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a93206230e57f5aee12de489dac2a31"></a>
-const float *&#160;</td><td class="memItemRight" valign="bottom"><b>scaleFreqs</b></td></tr>
-<tr class="separator:a5a93206230e57f5aee12de489dac2a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd2da8b9a6b618be7828035dfb50f53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bd2da8b9a6b618be7828035dfb50f53"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>frequencyResolution</b></td></tr>
+<tr class="separator:a5bd2da8b9a6b618be7828035dfb50f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf377a9138da30b22b273f55915ea65"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2cf377a9138da30b22b273f55915ea65"></a>
+const double *&#160;</td><td class="memItemRight" valign="bottom"><b>scaleFrequencies</b></td></tr>
+<tr class="separator:a2cf377a9138da30b22b273f55915ea65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77dcc19311b4905125bf609084b4ad2a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77dcc19311b4905125bf609084b4ad2a"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>newFreq</b></td></tr>
 <tr class="separator:a77dcc19311b4905125bf609084b4ad2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a671b6ee1eecfa30c4b9f93b0e23364a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a671b6ee1eecfa30c4b9f93b0e23364a5"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>Note</b></td></tr>
-<tr class="separator:a671b6ee1eecfa30c4b9f93b0e23364a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87743dbc6e595d8fe1899d6987263008"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87743dbc6e595d8fe1899d6987263008"></a>
-fftw_complex *&#160;</td><td class="memItemRight" valign="bottom"><b>FourierTransform</b></td></tr>
-<tr class="separator:a87743dbc6e595d8fe1899d6987263008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a300f616506453a971cf21a7de35e2964"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a300f616506453a971cf21a7de35e2964"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>difference</b></td></tr>
+<tr class="separator:a300f616506453a971cf21a7de35e2964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd33a5938c9167429b2a4cd8c58374ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd33a5938c9167429b2a4cd8c58374ae"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>binDifference</b></td></tr>
+<tr class="separator:acd33a5938c9167429b2a4cd8c58374ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2884b2fe7d5303609ddeff6979bdbcd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2884b2fe7d5303609ddeff6979bdbcd3"></a>
+fftw_complex&#160;</td><td class="memItemRight" valign="bottom"><b>fourierSpectrum</b> [257]</td></tr>
+<tr class="separator:a2884b2fe7d5303609ddeff6979bdbcd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abae7bb20fa180d030d6a96f08af48429"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abae7bb20fa180d030d6a96f08af48429"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>peakFrequency</b></td></tr>
+<tr class="separator:abae7bb20fa180d030d6a96f08af48429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6550fbf8de5847c7d5a6fcb90b4f3c2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6550fbf8de5847c7d5a6fcb90b4f3c2b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>closestNoteFrequency</b></td></tr>
+<tr class="separator:a6550fbf8de5847c7d5a6fcb90b4f3c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a205b461f0bf7c3b1ffb0b8a89ccd5e72"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Vocoder::pitchShift_setup </td>
-          <td>(</td>
-          <td class="paramtype">fftw_complex *&#160;</td>
-          <td class="paramname"><em>fft_spectrum</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!NEED TO CHECK THIS IS USING THE REAL COMPONENTS AND NOT THE COMPLEX ONES!!!!!!!!!!!!!!!!!!!!!!! </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/<a class="el" href="fft__object_2vocoder_8h_source.html">vocoder.h</a></li>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.cpp</li>

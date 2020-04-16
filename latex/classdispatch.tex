@@ -16,6 +16,9 @@ This class handles the callback functionality from Rt\-Audio.
 \hypertarget{classdispatch_a641ec1136a8fdecb8b9ab51fa672a848}{\hyperlink{classdispatch_a641ec1136a8fdecb8b9ab51fa672a848}{dispatch} (\hyperlink{classfft}{fft} $\ast$fourier\-Ptr, \hyperlink{classvocoder}{vocoder} $\ast$vocoder\-Ptr)}\label{classdispatch_a641ec1136a8fdecb8b9ab51fa672a848}
 
 \begin{DoxyCompactList}\small\item\em Collect pointers to objects to use in processing. \end{DoxyCompactList}\item 
+\hypertarget{classdispatch_a86ed8ac03c8498d7f75619af8eaff3a2}{{\bfseries dispatch} (\hyperlink{classfft}{fft} $\ast$fourier\-Ptr, \hyperlink{classVocoder}{Vocoder} $\ast$vocoder\-Ptr)}\label{classdispatch_a86ed8ac03c8498d7f75619af8eaff3a2}
+
+\item 
 \hypertarget{classdispatch_a49638cdbc0fee44e411973f09fc64d83}{{\bfseries dispatch} (\hyperlink{classfft}{fft} $\ast$fourier\-\_\-obj, \hyperlink{classvocoder}{vocoder} $\ast$vocoder\-\_\-obj)}\label{classdispatch_a49638cdbc0fee44e411973f09fc64d83}
 
 \end{DoxyCompactItemize}
@@ -27,14 +30,29 @@ This class handles the callback functionality from Rt\-Audio.
 \begin{DoxyCompactList}\small\item\em Callback function for Rt\-Audio. \end{DoxyCompactList}\item 
 \hypertarget{classdispatch_a2bc93711c1aee895c430aece41ec026a}{static int {\bfseries caller} (void $\ast$output\-Buffer, void $\ast$input\-Buffer, unsigned int n\-Buffer\-Frames, double stream\-Time, Rt\-Audio\-Stream\-Status status, void $\ast$data)}\label{classdispatch_a2bc93711c1aee895c430aece41ec026a}
 
+\item 
+\hypertarget{classdispatch_a2bc93711c1aee895c430aece41ec026a}{static int {\bfseries caller} (void $\ast$output\-Buffer, void $\ast$input\-Buffer, unsigned int n\-Buffer\-Frames, double stream\-Time, Rt\-Audio\-Stream\-Status status, void $\ast$data)}\label{classdispatch_a2bc93711c1aee895c430aece41ec026a}
+
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classdispatch_a7b449abb93c0499530bec56afe866f5a}{\hyperlink{classfft}{fft} $\ast$ {\bfseries fourier\-Obj}}\label{classdispatch_a7b449abb93c0499530bec56afe866f5a}
+\hypertarget{classdispatch_aa4276ec2461afbd1cb98fa4cd9721831}{\hyperlink{classfft}{fft} $\ast$ {\bfseries fourier\-Obj}}\label{classdispatch_aa4276ec2461afbd1cb98fa4cd9721831}
 
 \item 
 \hypertarget{classdispatch_a7ccec21b2dce1224744ccaa8d1cafee5}{\hyperlink{classvocoder}{vocoder} $\ast$ {\bfseries vocoder\-Obj}}\label{classdispatch_a7ccec21b2dce1224744ccaa8d1cafee5}
+
+\item 
+\hypertarget{classdispatch_a9a7c9726e0a90bdc0e2f2fddcd0ce151}{\hyperlink{classVocoder}{Vocoder} $\ast$ {\bfseries vocoder\-Obj}}\label{classdispatch_a9a7c9726e0a90bdc0e2f2fddcd0ce151}
+
+\item 
+\hypertarget{classdispatch_a4716a8409d8ae147bd9035c279fb5dc2}{double {\bfseries fft\-Audio\-In} \mbox{[}512\mbox{]}}\label{classdispatch_a4716a8409d8ae147bd9035c279fb5dc2}
+
+\item 
+\hypertarget{classdispatch_a687c3d15b82f8e36bf3aa8ef6b66d3b2}{fftw\-\_\-complex $\ast$ {\bfseries fft\-Spectrum}}\label{classdispatch_a687c3d15b82f8e36bf3aa8ef6b66d3b2}
+
+\item 
+\hypertarget{classdispatch_a718894cd35b744d2d6f24f391571c735}{double $\ast$ {\bfseries fft\-Inverse\-Out}}\label{classdispatch_a718894cd35b744d2d6f24f391571c735}
 
 \item 
 \hypertarget{classdispatch_a756411664d900bf1cf31e7626c57a4d4}{\hyperlink{classfft}{fft} $\ast$ {\bfseries fourier\-Ptr}}\label{classdispatch_a756411664d900bf1cf31e7626c57a4d4}
