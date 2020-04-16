@@ -93,11 +93,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">dispatch Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class handles the callback functionality from RtAudio.  
+ <a href="classdispatch.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="dispatch_8h_source.html">dispatch.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a641ec1136a8fdecb8b9ab51fa672a848"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a641ec1136a8fdecb8b9ab51fa672a848"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>dispatch</b> (<a class="el" href="classfft.html">fft</a> *fourierPtr, <a class="el" href="classvocoder.html">vocoder</a> *vocoderPtr)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdispatch.html#a641ec1136a8fdecb8b9ab51fa672a848">dispatch</a> (<a class="el" href="classfft.html">fft</a> *fourierPtr, <a class="el" href="classvocoder.html">vocoder</a> *vocoderPtr)</td></tr>
+<tr class="memdesc:a641ec1136a8fdecb8b9ab51fa672a848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collect pointers to objects to use in processing. <br/></td></tr>
 <tr class="separator:a641ec1136a8fdecb8b9ab51fa672a848"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49638cdbc0fee44e411973f09fc64d83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49638cdbc0fee44e411973f09fc64d83"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>dispatch</b> (<a class="el" href="classfft.html">fft</a> *fourier_obj, <a class="el" href="classvocoder.html">vocoder</a> *vocoder_obj)</td></tr>
@@ -109,7 +115,8 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a78e0b45ddb573d1b843ce02cd9092557"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78e0b45ddb573d1b843ce02cd9092557"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>caller</b> (void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data)</td></tr>
+static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdispatch.html#a78e0b45ddb573d1b843ce02cd9092557">caller</a> (void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data)</td></tr>
+<tr class="memdesc:a78e0b45ddb573d1b843ce02cd9092557"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for RtAudio. <br/></td></tr>
 <tr class="separator:a78e0b45ddb573d1b843ce02cd9092557"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bc93711c1aee895c430aece41ec026a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bc93711c1aee895c430aece41ec026a"></a>
 static int&#160;</td><td class="memItemRight" valign="bottom"><b>caller</b> (void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data)</td></tr>
@@ -136,7 +143,10 @@ Public Attributes</h2></td></tr>
 <a class="el" href="classvocoder.html">vocoder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>vocodePtr</b></td></tr>
 <tr class="separator:adf89bdb854ef17a8927bf7c506bfdc23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class handles the callback functionality from RtAudio. </p>
+<p><a class="el" href="classDispatch.html">Dispatch</a> objects are used to collect the processing objects used (&lt;fft.h&gt; and &lt;vocoder.h&gt;) and utilise them to process the audio data from RtAudio by implementing a method compatable with the RtAudio callback format. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/<a class="el" href="dispatch_8h_source.html">dispatch.h</a></li>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/old/vocoder/vocoding.cpp</li>
 <li>/home/travis/build/a2198699s/pitch-perfector/Code/old/unknown/duplex_fft/duplex_obj.cpp</li>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dispatch',['dispatch',['../classdispatch.html',1,'dispatch'],['../classDispatch.html',1,'Dispatch']]]
+  ['caller',['caller',['../classdispatch.html#a78e0b45ddb573d1b843ce02cd9092557',1,'dispatch']]]
 ];

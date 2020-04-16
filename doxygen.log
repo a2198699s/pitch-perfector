@@ -206,11 +206,6 @@ Preprocessing /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/testS
 /home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.h:5: warning: Compound vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/old/macOS/fft_object/window.h:15: warning: Compound Window is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/window.h:15: warning: Compound Window is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/vocoding.cpp:56: warning: Compound dispatch is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/old/vocoder/vocoding.cpp:191: warning: Compound dispatch is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/old/unknown/duplex_fft/duplex_obj.cpp:37: warning: Compound dispatch is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/old/macOS/vocoder/vocoding.cpp:210: warning: Compound dispatch is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/dispatch.h:7: warning: Compound dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/vocoding.cpp:22: warning: Compound fft is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/testSuite/fft.h:4: warning: Compound fft is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/fft.h:4: warning: Compound fft is not documented.
@@ -307,15 +302,13 @@ Generating code for file /home/travis/b/home/travis/build/a2198699s/pitch-perfec
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:19: warning: Member inputData (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:20: warning: Member outputData (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:21: warning: Member inverseOut (variable) of class audioStreamer is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/dispatch.h:12: warning: Member dispatch(fft *fourierPtr, vocoder *vocoderPtr) (function) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/old/vocoder/vocoding.cpp:196: warning: Member dispatch(fft *fourier_obj, vocoder *vocoder_obj) (function) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/vocoding.cpp:61: warning: Member dispatch(fft *fourier_obj, vocoder *vocoder_obj) (function) of class dispatch is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/dispatch.h:13: warning: Member caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) (function) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/old/macOS/vocoder/vocoding.cpp:212: warning: Member caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) (function) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/old/vocoder/vocoding.cpp:201: warning: Member caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) (function) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/vocoding.cpp:66: warning: Member caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) (function) of class dispatch is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/dispatch.h:9: warning: Member fourierObj (variable) of class dispatch is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/dispatch.h:10: warning: Member vocoderObj (variable) of class dispatch is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/dispatch.h:19: warning: Member fourierObj (variable) of class dispatch is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/dispatch.h:20: warning: Member vocoderObj (variable) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/old/vocoder/vocoding.cpp:193: warning: Member fourierPtr (variable) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/old/vocoder/vocoding.cpp:194: warning: Member vocodePtr (variable) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/fft.h:37: warning: Member Dispatch(fft *fourier_obj) (function) of class Dispatch is not documented.
@@ -471,5 +464,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 195/65536 hits=1064 misses=197
+lookup cache used 194/65536 hits=1061 misses=196
 finished...
