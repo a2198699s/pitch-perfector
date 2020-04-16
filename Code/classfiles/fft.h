@@ -1,11 +1,11 @@
 /** \class fft
-* \brief Class for performing fourier transforms usinf FFTW3
+* \brief Class for performing fourier transforms using FFTW3
 *
 * Allows for the set-up of a fftw3 plan (the most time consuming
 * part of the process) when the class instantiated, allowing the
 * performance of forward and inverse fast fourier transforms with
 * minimal computational cost inside the RtAudio Callback when the
-* method are called.
+* methods are called.
 */
 
 
