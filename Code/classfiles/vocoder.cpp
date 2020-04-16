@@ -92,13 +92,15 @@ void vocoder::pitchShift() {
   //perform pitch shift
   //without using phase vocoding this will distort signals but might be ok since adjuctments are small :)
 
-  if (this->binDifference >= 0) {
+  if (this->binDifference > 0) {
+    cout << "shifting up" << '\n';
     this->FourierTransform = (this->FourierTransform)-(this->binDifference);
     for (int i = 0; i < 0-(this->binDifference) ; i++) {
       FourierTransform[i][0] = 0;
     };
   }
   else { //possibly not working?
+    cout << "shifting down" << '\n';
     this->FourierTransform = (this->FourierTransform)-(this->binDifference);
     for (int i = bufferSize-(this->binDifference); i < bufferSize; i++) {
       FourierTransform[i][0] = 0;

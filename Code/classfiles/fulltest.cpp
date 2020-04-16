@@ -29,9 +29,9 @@ int main() {
   // Set the same number of channels for both input and output.
   unsigned int bufferBytes, bufferFrames = 1024*2; // samples/Fs = bufferTime
   RtAudio::StreamParameters iParams, oParams;
-	iParams.deviceId = 3; // first available device
+	iParams.deviceId = 0; // first available device
 	iParams.nChannels = 1;
-	oParams.deviceId = 0; // first available device
+	oParams.deviceId = 1; // first available device
 	oParams.nChannels = 1;
 
 //Instantiate Classes
@@ -48,6 +48,7 @@ int main() {
     e.printMessage();
     exit( 0 );
   }
+
   bufferBytes = bufferFrames * 2 * 4;
   try {
     adac.startStream();
@@ -57,10 +58,14 @@ int main() {
     // Stop the stream.
     adac.stopStream();
   }
+
   catch ( RtAudioError& e ) {
     e.printMessage();
     goto cleanup;
   }
+
+  cout << "vocoder data - bin difference: " << vocode.binDifference << '\n';
+
  cleanup:
   if ( adac.isStreamOpen() ) adac.closeStream();
   // outputFile.close();
