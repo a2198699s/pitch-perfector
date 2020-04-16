@@ -1,5 +1,5 @@
 /** \class vocoder
-* /brief Performs the analysis and pitch sifting of input frequencies
+* \brief Performs the analysis and pitch sifting of input frequencies
 *
 * vocoder objects recieve frequency spectrums from the fft class and
 * analyse them to find the fundamental frequency. Then the frequency
