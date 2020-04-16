@@ -21,8 +21,8 @@ Warning: ignoring unsupported tag `DOCBOOK_PROGRAMLISTING =' at line 2069, file 
 Warning: ignoring unsupported tag `PLANTUML_JAR_PATH      =' at line 2483, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
 Warning: ignoring unsupported tag `PLANTUML_CFG_FILE      =' at line 2488, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
 Warning: ignoring unsupported tag `PLANTUML_INCLUDE_PATH  =' at line 2493, file /home/travis/build/a2198699s/pitch-perfector/Doxyfile
-Warning: tag INPUT: input source `pitch-perfector/Code/' does not exist
-warning: source pitch-perfector/Code is not a readable file or directory... skipping.
+Warning: tag INPUT: input source `Code' does not exist
+warning: source Code is not a readable file or directory... skipping.
 Searching for include files...
 Searching for example files...
 Searching for images...
