@@ -32,7 +32,7 @@ void audioStreamer::run()
 
 	//Instantiate Classes
 	int signed_bufferFrames = (int) bufferFrames;
-	fft fourier(signed_bufferFrames);
+	fft fourier(signed_bufferFrames, samplingRate);
 	Vocoder vocode(samplingRate, signed_bufferFrames, cMajor);
 	dispatch dispatcher(&fourier, &vocode);
 	try {
