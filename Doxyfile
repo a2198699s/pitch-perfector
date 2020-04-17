@@ -1020,7 +1020,7 @@ FILTER_SOURCE_PATTERNS =
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE = /home/travis/build/a2198699s/pitch-perfector/README.md
+USE_MDFILE_AS_MAINPAGE = /home/travis/build/a2198699s/pitch-perfector/Documentation/DoxgenHomePage.md
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
