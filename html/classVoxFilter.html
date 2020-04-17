@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Pitch Perfector: Class List</title>
+<title>Pitch Perfector: VoxFilter Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,13 +61,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li class="current"><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,23 +81,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classVoxFilter-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Class List</div>  </div>
+<div class="title">VoxFilter Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classaudioStreamer.html" target="_self">audioStreamer</a></td><td class="desc"></td></tr>
-<tr id="row_1_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classdispatch.html" target="_self">dispatch</a></td><td class="desc">This class handles the callback functionality from RtAudio </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classDispatch.html" target="_self">Dispatch</a></td><td class="desc"></td></tr>
-<tr id="row_3_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classfft.html" target="_self">fft</a></td><td class="desc">Class for performing fourier transforms using FFTW3 </td></tr>
-<tr id="row_4_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classVocoder.html" target="_self">Vocoder</a></td><td class="desc"></td></tr>
-<tr id="row_5_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classvocoder.html" target="_self">vocoder</a></td><td class="desc">Performs the analysis and pitch sifting of input frequencies </td></tr>
-<tr id="row_6_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classVoxFilter.html" target="_self">VoxFilter</a></td><td class="desc"></td></tr>
-<tr id="row_7_"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classWindow.html" target="_self">Window</a></td><td class="desc"></td></tr>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ae0916e10079f346f17ab01a1a9ed55ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0916e10079f346f17ab01a1a9ed55ff"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>VoxFilter</b> (int samplingRate, float multiplier)</td></tr>
+<tr class="separator:ae0916e10079f346f17ab01a1a9ed55ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb06db2db581c453d6c233e4e99348c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affb06db2db581c453d6c233e4e99348c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>filter</b> (fftw_complex *fourierSpectrum)</td></tr>
+<tr class="separator:affb06db2db581c453d6c233e4e99348c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a1700ccea93b06ad54b705c3f0e72d5df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1700ccea93b06ad54b705c3f0e72d5df"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>samplingRate</b></td></tr>
+<tr class="separator:a1700ccea93b06ad54b705c3f0e72d5df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3001e05ab9d310b7dce2029d3abfa9cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3001e05ab9d310b7dce2029d3abfa9cd"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>multiplier</b></td></tr>
+<tr class="separator:a3001e05ab9d310b7dce2029d3abfa9cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- directory -->
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/<a class="el" href="voxFilter_8h_source.html">voxFilter.h</a></li>
+<li>/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/voxFilter.cpp</li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

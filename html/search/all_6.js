@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vocoder',['vocoder',['../classvocoder.html',1,'vocoder'],['../classVocoder.html',1,'Vocoder']]]
+  ['vocoder',['Vocoder',['../classVocoder.html',1,'Vocoder'],['../classvocoder.html',1,'vocoder']]],
+  ['voxfilter',['VoxFilter',['../classVoxFilter.html',1,'']]]
 ];
