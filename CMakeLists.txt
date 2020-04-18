@@ -19,4 +19,11 @@ add_custom_target(tester COMMAND make run
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/classfiles/
 )
 
+
+add_subdirectory(Code/rtaudio_probes/probe_devices)
+
+add_custom_target(audioProbe COMMAND make run
+                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/rtaudio_probes/probe_devices/
+)
+
 #add_executable(pitch_perfector main.cpp)
