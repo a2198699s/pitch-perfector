@@ -14,12 +14,8 @@ Window::Window() : gain(5), count(0)
 	// every time the knob is moved, the setGain function will be called
 	// connect( knob, SIGNAL(valueChanged(double)), SLOT(setGain(double)) );
 
-	// set up the thermometer
-	thermo = new QwtThermo; 
-	thermo->setFillBrush( QBrush(Qt::red) );
 	
 	//thermo->setRange(0, 20);
-	thermo->show();
 	int Fs = 44100;
 
 	// set up the initial plot data
@@ -33,6 +29,16 @@ Window::Window() : gain(5), count(0)
 		xData2[index] = index; 
 		yData2[index] = 0;
 	}
+
+	needle = new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Arrow);
+	dial = new QwtDial;
+	dial->setScaleArc(270, 90);
+	dial->setMode(QwtDial::RotateNeedle);
+	dial->show();
+
+	dial->setNeedle(needle);
+
+
 
 	curve = new QwtPlotCurve;
 	plot = new QwtPlot;
@@ -70,8 +76,9 @@ Window::Window() : gain(5), count(0)
 	hLayout->addWidget(plot);
 
 	hLayout->addWidget(plot2);
-	hLayout->addWidget(thermo);
+	// hLayout->addWidget(thermo);
 
+	hLayout->addWidget(dial);
 
 	setLayout(hLayout);
 

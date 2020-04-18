@@ -5,6 +5,9 @@
 #include <qwt/qwt_knob.h>
 #include <qwt/qwt_plot.h>
 #include <qwt/qwt_plot_curve.h>
+#include <qwt/qwt_dial.h>
+#include <qwt/qwt_dial_needle.h>
+
 
 #include <QBoxLayout>
 
@@ -31,6 +34,8 @@ private:
 	QwtThermo    *thermo;
 	QwtPlot      *plot;
 	QwtPlotCurve *curve;
+	QwtDial      *dial;
+	QwtDialSimpleNeedle    *needle;
 
 	QwtPlot      *plot2;
 	QwtPlotCurve *curve2;
