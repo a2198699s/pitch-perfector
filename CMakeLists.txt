@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 
+project(PitchPerfector VERSION 1.0)
+
+set(CMAKE_CXX_STANDARD 11)
+
 add_compile_options(-Wall -Wextra -Wpedantic)
 
 add_custom_target(pitch_perfector COMMAND make run
