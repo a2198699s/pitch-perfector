@@ -9,6 +9,7 @@ project(PitchPerfector)
 
 include_directories(.)
 include_directories(/usr/include)
+include_directories(/usr/include/qwt)
 include_directories(/usr/include/rtaudio)
 include_directories(/usr/lib/qt5)
 
@@ -19,4 +20,7 @@ add_executable(PitchPerfector main.cpp window.h audioStreamer.h fft.h vocoder.h 
 target_link_libraries(PitchPerfector Qt5::Widgets)
 target_link_libraries(PitchPerfector rtaudio)
 target_link_libraries(PitchPerfector fftw3)
-target_link_libraries(PitchPerfector qt5)
+target_link_libraries(PitchPerfector /usr/lib/qt5)
+target_link_libraries(PitchPerfector /usr/include/qwt)
+target_link_libraries(PitchPerfector /usr/lib)
+
