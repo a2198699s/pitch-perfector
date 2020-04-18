@@ -31,12 +31,16 @@ Window::Window() : gain(5), count(0)
 	}
 
 	needle = new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Arrow);
+	roundScale = new QwtRoundScaleDraw();
 	dial = new QwtDial;
 	dial->setScaleArc(270, 90);
+	dial->setScale(-1, 1.0);
+	dial->setScaleStepSize(1.0);
 	dial->setMode(QwtDial::RotateNeedle);
-	dial->show();
-
+	// dial->setScaleDraw(roundScale);
+	// needle->draw()
 	dial->setNeedle(needle);
+	dial->show();
 
 
 
