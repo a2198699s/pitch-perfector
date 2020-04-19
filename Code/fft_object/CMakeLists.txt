@@ -3,12 +3,13 @@ cmake_minimum_required(VERSION 3.2)
 add_compile_options(-Wall -Wextra -Wpedantic)
 
 project(PitchPerfector)
+
 #add_custom_target(target COMMAND qmake && make run
 #                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 #)
 
-execute_process(COMMAND chmod +x installDependencies.sh)
-execute_process(COMMAND ./installDependencies.sh)
+execute_process(COMMAND chmod +x ${CMAKE_CURRENT_SOURCE_DIR}/installDependencies.sh)
+execute_process(COMMAND .${CMAKE_CURRENT_SOURCE_DIR}/installDependencies.sh)
 
 #add_custom_target(install_dependencies COMMAND chmod +x installDependencies.sh && ./installDependencies.sh
 #                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
