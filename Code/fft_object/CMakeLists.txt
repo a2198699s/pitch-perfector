@@ -7,9 +7,12 @@ project(PitchPerfector)
 #                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 #)
 
-add_custom_target(install_dependencies COMMAND chmod +x installDependencies.sh && ./installDependencies.sh
-                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
+execute_process(COMMAND chmod +x installDependencies.sh)
+execute_process(COMMAND ./installDependencies.sh)
+
+#add_custom_target(install_dependencies COMMAND chmod +x installDependencies.sh && ./installDependencies.sh
+#                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+#)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -24,9 +27,9 @@ endif()
 #install(TARGETS librtaudio-dev)
 #install(TARGETS libfftw3-dev)
 
-##find_package(Qt5 5.1.0 CONFIG REQUIRED Core Widgets Gui)
-#find_package(Qt5 CONFIG REQUIRED Core Gui Widgets)
-##find_package(Qt5 COMPONENTS REQUIRED Core Gui Widgets)
+#find_package(Qt5 5.1.0 CONFIG REQUIRED Core Widgets Gui)
+find_package(Qt5 CONFIG REQUIRED Core Gui Widgets)
+#find_package(Qt5 COMPONENTS REQUIRED Core Gui Widgets)
 
 include_directories(.)
 include_directories(/usr/include)
