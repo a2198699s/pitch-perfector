@@ -54,6 +54,12 @@ if (Qwt_FOUND AND NOT TARGET Qwt::Qwt)
                         INTERFACE_INCLUDE_DIRECTORIES "${QWT_INCLUDE_DIRS}"
                         IMPORTED_LOCATION "${QWT_LIBRARIES}")
 endif ()
+
+mark_as_advanced (
+  QWT_LIBRARY
+  QWT_INCLUDE_DIR
+)
+
 # -------------------------------------------
 
 set(CMAKE_AUTOMOC ON)
