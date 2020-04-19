@@ -8,10 +8,11 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 
 add_subdirectory(Code/fft_object)
 
-add_custom_target(PPerfector COMMAND make all
+#add_custom_target(PPerfector COMMAND make all
+#                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/fft_object/
+#)
+add_custom_target(target COMMAND qmake && make run
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/fft_object/
-)
-
 
 #add_subdirectory(Code/rtaudio_probes/probe_devices)
 
