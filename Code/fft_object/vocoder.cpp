@@ -9,6 +9,9 @@
 #include <iostream>
 
 using namespace std;
+const double A4 = 440.0;
+const double C0 = A4*pow(2, -4.75);
+const std::string notes[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
 //add a peak finder to this class?
 
@@ -19,6 +22,12 @@ Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies)
     this->frequencyResolution = (float)samplerate/(float)bufferSize;
 };
 
+std::string Vocoder::frequencyToNote(double freq) { 
+    int stepsFromC0 = round(12*log2(freq/C0));
+    int octave = stepsFromC0 / 12;
+    int n = stepsFromC0 % 12;
+    return (notes[n] + std::to_string(octave));
+}
 
 double Vocoder::getClosest(double val1, double val2, double target) { 
     if (target - val1 >= val2 - target) 
@@ -98,11 +107,9 @@ void Vocoder::setFourierSpectrum(fftw_complex* fftSpectrum){
 }
 
 
-
 int Vocoder::FrequencyToIndex(double frequency) {
     return round(frequency/this->frequencyResolution);
 }
-
 
 
 void Vocoder::pitchShift() {
@@ -111,6 +118,7 @@ void Vocoder::pitchShift() {
     this->difference = this->closestNoteFrequency - this->peakFrequency;
     this->binDifference = this->FrequencyToIndex(difference);
     int shift = this->binDifference;
+    this->currentNote = this->frequencyToNote(this->closestNoteFrequency);
 
     if (abs(shift > 5) ) return;
     if (shift >= 0) {

@@ -8,6 +8,7 @@
 #include <qwt/qwt_dial.h>
 #include <qwt/qwt_dial_needle.h>
 #include <qwt/qwt_round_scale_draw.h>
+#include <qwt/qwt_text_label.h>
 
 
 #include <QBoxLayout>
@@ -36,10 +37,14 @@ private:
 	QwtPlot      *plot;
 	QwtPlotCurve *curve;
 	QwtDial      *dial;
-	QwtDialSimpleNeedle    *needle;
- 	QwtRoundScaleDraw *roundScale; 
 	QwtPlot      *plot2;
 	QwtPlotCurve *curve2;
+	QwtTextLabel *currentNoteText; 
+
+	QwtDialSimpleNeedle *needle;
+ 	QwtRoundScaleDraw *roundScale; 
+
+
 	// layout elements from Qt itself http://qt-project.org/doc/qt-4.8/classes.html
 	QVBoxLayout  *vLayout;  // vertical layout
 	QHBoxLayout  *hLayout;  // horizontal layout

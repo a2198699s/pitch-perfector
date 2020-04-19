@@ -1,6 +1,7 @@
 #include "window.h"
 #include "audioStreamer.h"
-
+#include <iostream>  
+#include <string>  
 #include <cmath>  // for sine stuff
 
 
@@ -30,17 +31,23 @@ Window::Window() : gain(5), count(0)
 		yData2[index] = 0;
 	}
 
+	currentNoteText = new QwtTextLabel();
+	currentNoteText->setText("HELLO");
+
+
 	needle = new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Arrow);
 	roundScale = new QwtRoundScaleDraw();
 	dial = new QwtDial;
 	dial->setScaleArc(270, 90);
-	dial->setScale(-1, 1.0);
+	dial->setScale(-1, 1);
 	dial->setScaleStepSize(1.0);
 	dial->setMode(QwtDial::RotateNeedle);
 	// dial->setScaleDraw(roundScale);
 	// needle->draw()
 	dial->setNeedle(needle);
+	dial->setReadOnly(true);
 	dial->show();
+
 
 
 
@@ -83,6 +90,7 @@ Window::Window() : gain(5), count(0)
 	// hLayout->addWidget(thermo);
 
 	hLayout->addWidget(dial);
+	hLayout->addWidget(currentNoteText);
 
 	setLayout(hLayout);
 
@@ -102,6 +110,11 @@ Window::~Window() {
 void Window::timerEvent( QTimerEvent * )
 {
 	++count;
+	std::cout << aStreamer->currentNote;
+	std::string hi ("Hello");
+	dial->setValue(count);
+	currentNoteText->setText(hi.c_str());
+
 
 	// add the new input to the plot
 	memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );

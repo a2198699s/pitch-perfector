@@ -24,10 +24,10 @@ void audioStreamer::run()
 
 	unsigned int bufferFrames = 512; // samples/Fs = bufferTime 
 	RtAudio::StreamParameters iParams, oParams;
-	iParams.deviceId = 3; // first available device
-	iParams.nChannels = 1;
+	iParams.deviceId = 0; // first available device
+	iParams.nChannels = 2;
 	oParams.deviceId = 0; // first available device
-	oParams.nChannels = 1;
+	oParams.nChannels = 2;
 	int samplingRate = 44100;
 
 	//Instantiate Classes
@@ -50,6 +50,7 @@ void audioStreamer::run()
 		std::cout << "\nRunning ... press <enter> to quit.\n";
 		inputData = dispatcher.fourierObj->in;
 		outputData = dispatcher.fourierObj->out;
+		currentNote = dispatcher.vocoderObj->currentNote;
 		// inverseOut = fourier.inverse_out;
 		std::cin.get(input);
 		// Stop the stream.
