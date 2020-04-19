@@ -11,6 +11,7 @@
 
 #include <RtAudio.h>
 #include <fftw3.h>
+#include "voxFilter.h"
 
 #pragma once
 
