@@ -33,7 +33,7 @@ void audioStreamer::run()
 	//Instantiate Classes
 	int signed_bufferFrames = (int) bufferFrames;
 	fft fourier(signed_bufferFrames, samplingRate);
-	vocoder vocoder(samplingRate, signed_bufferFrames, cMajor);
+	Vocoder vocode = Vocoder(samplingRate, signed_bufferFrames, cMajor);
 	dispatch dispatcher(&fourier, &vocode);
 	try {
 		adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, samplingRate, &bufferFrames, &dispatch::caller, (void *)&dispatcher );
