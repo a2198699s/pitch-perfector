@@ -16,7 +16,7 @@ class Vocoder {
     fftw_complex fourierSpectrum[257];
     double peakFrequency;
     double closestNoteFrequency;
-    std::string currentNote;
+    char currentNote[2];
 
     Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies);
     float binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index);
@@ -29,6 +29,7 @@ class Vocoder {
     double findClosestNote(const double notes[], int n, double target);
     int FrequencyToIndex(double frequency);
     void setFourierSpectrum(fftw_complex* fftSpectrum);
-    std::string frequencyToNote(double freq);
+    const char* frequencyToNote(double freq);
+    char* getNote();
 
 };

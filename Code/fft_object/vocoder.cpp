@@ -15,18 +15,18 @@ const string notes[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", 
 
 //add a peak finder to this class?
 
-Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies) {
+Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies) : currentNote("A") {
     this->samplerate = sampleRate;
     this->scaleFrequencies = scaleFrequencies;
     this->bufferSize = bufferSize;
     frequencyResolution = (float)samplerate/(float)bufferSize;
 };
 
-string Vocoder::frequencyToNote(double freq) { 
+const char* Vocoder::frequencyToNote(double freq) { 
     int stepsFromC0 = round(12*log2(freq/C0));
     int octave = stepsFromC0 / 12;
     int n = stepsFromC0 % 12;
-    return (notes[n] + std::to_string(octave));
+    return (notes[n] + std::to_string(octave)).c_str();
 }
 
 double Vocoder::getClosest(double val1, double val2, double target) { 
@@ -111,15 +111,14 @@ int Vocoder::FrequencyToIndex(double frequency) {
     return round(frequency/frequencyResolution);
 }
 
-
 void Vocoder::pitchShift() {
     findPeak();
     closestNoteFrequency = findClosestNote(scaleFrequencies, 8, peakFrequency);
     difference = closestNoteFrequency - peakFrequency;
     binDifference = FrequencyToIndex(difference);
     int shift = binDifference;
-    currentNote = frequencyToNote(closestNoteFrequency);
-
+    const char* newNote = frequencyToNote(closestNoteFrequency);
+    memcpy(currentNote, newNote, sizeof(char)*2);
     if (abs(shift > 5) ) return;
     if (shift >= 0) {
         memmove(fourierSpectrum+shift, fourierSpectrum, sizeof(fftw_complex)*(FFT_BUFFER_SIZE-shift));
