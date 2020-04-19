@@ -2,6 +2,7 @@
 #include <fftw3.h>
 #include <cstring>
 #include <RtAudio.h>
+#include "voxFilter.h"
 
 fft::fft(int nBufferFrames, int samplingRate) {
     in = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
