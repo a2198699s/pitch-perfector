@@ -14,7 +14,7 @@ using namespace std;
 
 void audioStreamer::run()
 {
-	const double cMajor[8] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
+	const float cMajor[8] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
 
 	RtAudio adac;
 	if ( adac.getDeviceCount() < 1 ) {
@@ -33,7 +33,7 @@ void audioStreamer::run()
 	//Instantiate Classes
 	int signed_bufferFrames = (int) bufferFrames;
 	fft fourier(signed_bufferFrames, samplingRate);
-	Vocoder vocode = Vocoder(samplingRate, signed_bufferFrames, cMajor);
+	vocoder vocode = vocoder(samplingRate, signed_bufferFrames, cMajor);
 	dispatch dispatcher(&fourier, &vocode);
 	try {
 		adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, samplingRate, &bufferFrames, &dispatch::caller, (void *)&dispatcher );
