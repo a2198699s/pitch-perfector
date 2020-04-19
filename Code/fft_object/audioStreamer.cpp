@@ -14,7 +14,7 @@ using namespace std;
 
 void audioStreamer::run()
 {
-	const float cMajor[8] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
+	const double cMajor[8] = {261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25};
 
 	RtAudio adac;
 	if ( adac.getDeviceCount() < 1 ) {

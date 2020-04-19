@@ -25,7 +25,7 @@ class fft {
     fftw_plan inverse_plan;
 
     /// Construct the fftw3 plans for the object
-    fft(int nBufferFrames, int samplingRate);
+    fft(int nBufferFrames);
 
     /** Execute the forward fourier transform and update
     * generate the frequncy spectrum for the data input
