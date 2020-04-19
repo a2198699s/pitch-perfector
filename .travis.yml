@@ -27,8 +27,11 @@ addons:
       - jackd
       - librtaudio-dev 
       - qtdeclarative5-dev-tools
-      #- qwt-qt5-dev    - 
-
+      - qt5-default
+      - qtmultimedia5-dev
+      - qttools5-dev-tools
+      - qttools5-dev # to get Qt5LinguistToolsConfig.cmake
+      
 script: 
 - cmake .
 - cmake --build . -- -j2
