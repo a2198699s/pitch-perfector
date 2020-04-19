@@ -1,7 +1,7 @@
 #include "window.h"
 #include "audioStreamer.h"
-#include <iostream>  
-#include <string>  
+#include <iostream>
+#include <string>
 #include <cmath>  // for sine stuff
 
 
@@ -15,7 +15,7 @@ Window::Window() : gain(5), count(0)
 	// every time the knob is moved, the setGain function will be called
 	// connect( knob, SIGNAL(valueChanged(double)), SLOT(setGain(double)) );
 
-	
+
 	//thermo->setRange(0, 20);
 	int Fs = 44100;
 
@@ -27,7 +27,7 @@ Window::Window() : gain(5), count(0)
 	}
 	for( int index=0; index<fftPlotDataSize; ++index )
 	{
-		xData2[index] = index; 
+		xData2[index] = index;
 		yData2[index] = 0;
 	}
 
@@ -112,6 +112,7 @@ void Window::timerEvent( QTimerEvent * )
 	++count;
 	std::string hi ("Hello");
 	dial->setValue(count);
+	cout << aStreamer->currentNote << '\n';
 	currentNoteText->setText(std::to_string(aStreamer->currentNote).c_str());
 
 	// currentNoteText->setText(std::to_string(count).c_str());
