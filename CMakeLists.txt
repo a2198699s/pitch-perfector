@@ -6,11 +6,6 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_compile_options(-Wall -Wextra -Wpedantic)
 
-add_custom_target(pitch_perfector COMMAND make run
-                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/GPIO/
-)
-
-
 add_subdirectory(Code/fft_object)
 
 add_custom_target(PPerfector COMMAND make
@@ -18,8 +13,8 @@ add_custom_target(PPerfector COMMAND make
 )
 
 
-add_subdirectory(Code/rtaudio_probes/probe_devices)
+#add_subdirectory(Code/rtaudio_probes/probe_devices)
 
-add_custom_target(audioProbe COMMAND make run
-                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/rtaudio_probes/probe_devices/
-)
+#add_custom_target(audioProbe COMMAND make run
+#                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Code/rtaudio_probes/probe_devices/
+#)
