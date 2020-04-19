@@ -27,7 +27,7 @@ addons:
       - jackd
       - librtaudio-dev 
       - qtdeclarative5-dev-tools
-      - qwt-qt5-dev    - 
+      #- qwt-qt5-dev    - 
 
 script: 
 - cmake .
