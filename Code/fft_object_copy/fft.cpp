@@ -22,7 +22,7 @@ fft::fft(int nBufferFrames, int samplingRate) {
 void fft::executefft(double *inputBuffer) {
     memcpy(in, inputBuffer, sizeof(double)*nBufferFrames );
     fftw_execute(my_plan);
-    this->vfilter->filter(this->out);
+    (this->vfilter)->filter(this->out);
 };
 
 void fft::executeInverse_fft(fftw_complex* fourierSpectrum){
