@@ -11,6 +11,7 @@ class dispatch  {
     double fftAudioIn[512];
     fftw_complex* fftSpectrum;
     double* fftInverseOut;
+    std::string currentNote;
     
     dispatch(fft* fourierPtr, Vocoder* vocoderPtr);
     static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data);

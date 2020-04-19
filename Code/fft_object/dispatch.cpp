@@ -18,7 +18,7 @@ int dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBuffer
     (dispatcher->vocoderObj)->setFourierSpectrum((dispatcher->fourierObj)->out);
     (dispatcher->vocoderObj)->pitchShift();
     (dispatcher->fourierObj)->executeInverse_fft((dispatcher->vocoderObj)->fourierSpectrum);
- 
+    dispatcher->currentNote = (dispatcher->vocoderObj)->currentNote;
 
     memcpy(outputBuffer, (dispatcher->fourierObj)->inverse_out, sizeof(double)*AUDIO_BUFFER_SIZE);
 

@@ -19,7 +19,7 @@ public:
 	double *inputData;
 	fftw_complex *outputData;
 	double *inverseOut;
-	double currentNote;
+	std::string currentNote;
 
 private:
 	bool running;
