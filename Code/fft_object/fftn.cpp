@@ -1,9 +1,9 @@
 #include "fftn.h"
 #include <fftw3.h>
 #include <cstring>
-#include <RtAudio.h> 
+#include <RtAudio.h>
 
-fft::fft(int nBufferFrames) {
+fft::fft(int nBufferFrames, int samplingRate) {
     in = (double *) fftw_malloc(sizeof(double)*nBufferFrames);
     out = (fftw_complex *) fftw_malloc(sizeof(fftw_complex)*nBufferFrames);
     my_plan = fftw_plan_dft_r2c_1d(nBufferFrames, in, out, FFTW_MEASURE);

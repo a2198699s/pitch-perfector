@@ -1,5 +1,5 @@
-#include "fft.h"
-#include "vocoder.h"
+#include "fftn.h"
+#include "vocodern.h"
 #include "dispatch.h"
 #include <RtAudio.h>
 #include <cstdlib>
@@ -13,15 +13,15 @@ dispatch::dispatch(fft* fourierPtr, Vocoder* vocoderPtr){
 
 int dispatch::caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data) {
     dispatch* dispatcher = (dispatch*) data;
-    
+
     (dispatcher->fourierObj)->executefft((double*) inputBuffer);
     (dispatcher->vocoderObj)->setFourierSpectrum((dispatcher->fourierObj)->out);
     (dispatcher->vocoderObj)->pitchShift();
     (dispatcher->fourierObj)->executeInverse_fft((dispatcher->vocoderObj)->fourierSpectrum);
- 
+
 
     memcpy(outputBuffer, (dispatcher->fourierObj)->inverse_out, sizeof(double)*AUDIO_BUFFER_SIZE);
 
     return 0;
-    
+
 };
