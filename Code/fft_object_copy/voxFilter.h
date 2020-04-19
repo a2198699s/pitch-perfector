@@ -13,6 +13,7 @@ class VoxFilter {
         VoxFilter(int samplingRate, float multiplier);
         void filter(fftw_complex* fourierSpectrum);
 
+        int nBufferFrames;
         int samplingRate;
         float multiplier;
 
