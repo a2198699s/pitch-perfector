@@ -11,7 +11,7 @@
 using namespace std;
 const double A4 = 440.0;
 const double C0 = A4*pow(2, -4.75);
-const std::string notes[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+const string notes[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
 //add a peak finder to this class?
 
@@ -19,10 +19,10 @@ Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies)
     this->samplerate = sampleRate;
     this->scaleFrequencies = scaleFrequencies;
     this->bufferSize = bufferSize;
-    this->frequencyResolution = (float)samplerate/(float)bufferSize;
+    frequencyResolution = (float)samplerate/(float)bufferSize;
 };
 
-std::string Vocoder::frequencyToNote(double freq) { 
+string Vocoder::frequencyToNote(double freq) { 
     int stepsFromC0 = round(12*log2(freq/C0));
     int octave = stepsFromC0 / 12;
     int n = stepsFromC0 % 12;
@@ -60,7 +60,7 @@ double Vocoder::findClosestNote(const double notes[], int n, double target) {
             // If target is greater than previous 
             // to mid, return closest of two 
             if (mid > 0 && target > notes[mid - 1]) 
-                return this->getClosest(notes[mid - 1], 
+                return getClosest(notes[mid - 1], 
                                   notes[mid], target); 
             /* Repeat for left half */
             j = mid; 
@@ -68,7 +68,7 @@ double Vocoder::findClosestNote(const double notes[], int n, double target) {
         // If target is greater than mid 
         else { 
             if (mid < n - 1 && target < notes[mid + 1]) 
-                return this->getClosest(notes[mid], 
+                return getClosest(notes[mid], 
                                   notes[mid + 1], target); 
             // update i 
             i = mid + 1;  
@@ -81,7 +81,7 @@ double Vocoder::findClosestNote(const double notes[], int n, double target) {
 
 
 float Vocoder::SampleToFreq(int sample) {
-    float freq = (this->frequencyResolution) * sample;
+    float freq = (frequencyResolution) * sample;
     return freq;
 };
 
@@ -90,41 +90,41 @@ void Vocoder::findPeak(){
     int maxIndex = 0;
 
     for (int i=0; i<FFT_BUFFER_SIZE; ++i) {
-        if (this->fourierSpectrum[i][0] > max) {
-            max = this->fourierSpectrum[i][0];
+        if (fourierSpectrum[i][0] > max) {
+            max = fourierSpectrum[i][0];
             maxIndex = i;
         }
     }
-    this->peakFrequency = maxIndex * this->frequencyResolution;
+    peakFrequency = maxIndex * this->frequencyResolution;
 }
 
 
 void Vocoder::setFourierSpectrum(fftw_complex* fftSpectrum){
     for (int i=0; i<FFT_BUFFER_SIZE; ++i) {
-        this->fourierSpectrum[i][0] = fftSpectrum[i][0];
-        this->fourierSpectrum[i][1] = fftSpectrum[i][1];      
+        fourierSpectrum[i][0] = fftSpectrum[i][0];
+        fourierSpectrum[i][1] = fftSpectrum[i][1];      
     }
 }
 
 
 int Vocoder::FrequencyToIndex(double frequency) {
-    return round(frequency/this->frequencyResolution);
+    return round(frequency/frequencyResolution);
 }
 
 
 void Vocoder::pitchShift() {
-    this->findPeak();
-    this->closestNoteFrequency = this->findClosestNote(this->scaleFrequencies, 8, this->peakFrequency);
-    this->difference = this->closestNoteFrequency - this->peakFrequency;
-    this->binDifference = this->FrequencyToIndex(difference);
-    int shift = this->binDifference;
-    this->currentNote = this->frequencyToNote(this->closestNoteFrequency);
+    findPeak();
+    closestNoteFrequency = findClosestNote(scaleFrequencies, 8, peakFrequency);
+    difference = closestNoteFrequency - peakFrequency;
+    binDifference = FrequencyToIndex(difference);
+    int shift = binDifference;
+    currentNote = frequencyToNote(closestNoteFrequency);
 
     if (abs(shift > 5) ) return;
     if (shift >= 0) {
-        memmove(this->fourierSpectrum+shift, this->fourierSpectrum, sizeof(fftw_complex)*(FFT_BUFFER_SIZE-shift));
+        memmove(fourierSpectrum+shift, fourierSpectrum, sizeof(fftw_complex)*(FFT_BUFFER_SIZE-shift));
     }
     else {
-        memmove(this->fourierSpectrum, this->fourierSpectrum-shift, sizeof(fftw_complex)*(FFT_BUFFER_SIZE+shift)); 
+        memmove(fourierSpectrum, fourierSpectrum-shift, sizeof(fftw_complex)*(FFT_BUFFER_SIZE+shift)); 
     }
 }

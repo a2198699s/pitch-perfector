@@ -33,7 +33,7 @@ void audioStreamer::run()
 	//Instantiate Classes
 	int signed_bufferFrames = (int) bufferFrames;
 	fft fourier(signed_bufferFrames, samplingRate);
-	Vocoder vocode(samplingRate, signed_bufferFrames, cMajor);
+	Vocoder vocode = Vocoder(samplingRate, signed_bufferFrames, cMajor);
 	dispatch dispatcher(&fourier, &vocode);
 	try {
 		adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, samplingRate, &bufferFrames, &dispatch::caller, (void *)&dispatcher );
@@ -50,7 +50,7 @@ void audioStreamer::run()
 		std::cout << "\nRunning ... press <enter> to quit.\n";
 		inputData = dispatcher.fourierObj->in;
 		outputData = dispatcher.fourierObj->out;
-		currentNote = dispatcher.vocoderObj->currentNote;
+		currentNote = dispatcher.vocoderObj->binDifference;
 		// inverseOut = fourier.inverse_out;
 		std::cin.get(input);
 		// Stop the stream.

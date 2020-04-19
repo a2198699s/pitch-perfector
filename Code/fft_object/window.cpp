@@ -110,12 +110,11 @@ Window::~Window() {
 void Window::timerEvent( QTimerEvent * )
 {
 	++count;
-	std::cout << aStreamer->currentNote;
 	std::string hi ("Hello");
 	dial->setValue(count);
-	currentNoteText->setText(hi.c_str());
+	currentNoteText->setText(std::to_string(aStreamer->currentNote).c_str());
 
-
+	// currentNoteText->setText(std::to_string(count).c_str());
 	// add the new input to the plot
 	memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
 	yData[plotDataSize-1] = aStreamer->inputData[plotDataSize-1];
