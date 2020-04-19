@@ -42,7 +42,7 @@ void VoxFilter::filter(fftw_complex* fourierSpectrum) {
     }
 
     // 10000Hz to END is set to 0.
-    for (int i=cut10000Hz; i<=nBufferFrames; ++i) {
+    for (int i=cut10000Hz; i<=this->nBufferFrames; ++i) {
         fourierSpectrum[i][0] = 0;
         fourierSpectrum[i][1] = 0;
     }
