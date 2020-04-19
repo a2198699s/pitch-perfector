@@ -23,6 +23,11 @@ addons:
       - doxygen-latex
       - doxygen-gui
       - graphviz
+      - libfftw3-dev
+      - jackd
+      - librtaudio-dev 
+      - qtdeclarative5-dev-tools
+      - qwt-qt5-dev    - 
 
 script: 
 - cmake .
