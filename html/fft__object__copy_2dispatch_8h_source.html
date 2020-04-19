@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Pitch Perfector: /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/dispatch.h Source File</title>
+<title>Pitch Perfector: /home/travis/build/a2198699s/pitch-perfector/Code/fft_object_copy/dispatch.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="dir_3779f6693f5cdefaa024ff84596494b8.html">fft_object</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="dir_790a87ec16fdc6eabf32f9effb2466eb.html">fft_object_copy</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -88,26 +88,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">dispatch.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;fft.h&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;vocoder.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;RtAudio.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">class </span><a class="code" href="classdispatch.html">dispatch</a>  {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classfft.html">fft</a>* fourierObj;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classVocoder.html">Vocoder</a>* vocoderObj;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">double</span> fftAudioIn[512];</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    fftw_complex* fftSpectrum;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">double</span>* fftInverseOut;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::string currentNote;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classdispatch.html#a641ec1136a8fdecb8b9ab51fa672a848">dispatch</a>(<a class="code" href="classfft.html">fft</a>* fourierPtr, <a class="code" href="classVocoder.html">Vocoder</a>* vocoderPtr);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classdispatch.html#a78e0b45ddb573d1b843ce02cd9092557">caller</a>(<span class="keywordtype">void</span> *outputBuffer, <span class="keywordtype">void</span> *inputBuffer, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nBufferFrames, <span class="keywordtype">double</span> streamTime, RtAudioStreamStatus status, <span class="keywordtype">void</span> *data);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;fft.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;vocoder.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;RtAudio.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">class </span><a class="code" href="classdispatch.html">dispatch</a>  {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classfft.html">fft</a>* fourierObj;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classvocoder.html">vocoder</a>* vocoderObj;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classdispatch.html#a641ec1136a8fdecb8b9ab51fa672a848">dispatch</a>(<a class="code" href="classfft.html">fft</a>* fourierPtr, <a class="code" href="classvocoder.html">vocoder</a>* vocoderPtr);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classdispatch.html#a78e0b45ddb573d1b843ce02cd9092557">caller</a>(<span class="keywordtype">void</span> *outputBuffer, <span class="keywordtype">void</span> *inputBuffer, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nBufferFrames, <span class="keywordtype">double</span> streamTime, RtAudioStreamStatus status, <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
 <div class="ttc" id="classdispatch_html"><div class="ttname"><a href="classdispatch.html">dispatch</a></div><div class="ttdoc">This class handles the callback functionality from RtAudio. </div><div class="ttdef"><b>Definition:</b> dispatch.h:17</div></div>
-<div class="ttc" id="classVocoder_html"><div class="ttname"><a href="classVocoder.html">Vocoder</a></div><div class="ttdef"><b>Definition:</b> vocoder.h:5</div></div>
+<div class="ttc" id="classvocoder_html"><div class="ttname"><a href="classvocoder.html">vocoder</a></div><div class="ttdoc">Performs the analysis and pitch sifting of input frequencies. </div><div class="ttdef"><b>Definition:</b> vocoder.h:15</div></div>
 <div class="ttc" id="classdispatch_html_a641ec1136a8fdecb8b9ab51fa672a848"><div class="ttname"><a href="classdispatch.html#a641ec1136a8fdecb8b9ab51fa672a848">dispatch::dispatch</a></div><div class="ttdeci">dispatch(fft *fourierPtr, vocoder *vocoderPtr)</div><div class="ttdoc">Collect pointers to objects to use in processing. </div><div class="ttdef"><b>Definition:</b> dispatch.cpp:9</div></div>
 <div class="ttc" id="classfft_html"><div class="ttname"><a href="classfft.html">fft</a></div><div class="ttdoc">Class for performing fourier transforms using FFTW3. </div><div class="ttdef"><b>Definition:</b> fft.h:17</div></div>
 <div class="ttc" id="classdispatch_html_a78e0b45ddb573d1b843ce02cd9092557"><div class="ttname"><a href="classdispatch.html#a78e0b45ddb573d1b843ce02cd9092557">dispatch::caller</a></div><div class="ttdeci">static int caller(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data)</div><div class="ttdoc">Callback function for RtAudio. </div><div class="ttdef"><b>Definition:</b> dispatch.cpp:14</div></div>
