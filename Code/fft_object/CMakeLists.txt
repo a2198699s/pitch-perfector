@@ -18,8 +18,9 @@ endif()
 #install(TARGETS librtaudio-dev)
 #install(TARGETS libfftw3-dev)
 
-find_package(Qt5 5.1.0 CONFIG REQUIRED Core Widgets Gui)
+#find_package(Qt5 5.1.0 CONFIG REQUIRED Core Widgets Gui)
 #find_package(Qt5 COMPONENTS REQUIRED Core Gui Widgets)
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 include_directories(.)
 include_directories(/usr/include)
