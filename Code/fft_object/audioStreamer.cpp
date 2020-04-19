@@ -6,8 +6,8 @@
 #include <cstdlib>
 #include <cstring>
 #include <fftw3.h>
-#include "fft.h"
-#include "vocoder.h"
+#include "fftn.h"
+#include "vocodern.h"
 #include "dispatch.h"
 
 using namespace std;
