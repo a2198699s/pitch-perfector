@@ -14,7 +14,7 @@ fft::fft(int nBufferFrames, int samplingRate) {
     inverse_plan = fftw_plan_dft_c2r_1d(nBufferFrames, inverse_in, inverse_out, FFTW_MEASURE);
 
     static VoxFilter vfilter = VoxFilter(samplingRate, 0.2, nBufferFrames);
-    this->vfilter = vfilter;
+    this->vfilter = &vfilter;
 
     this->nBufferFrames = nBufferFrames; //need to set as object variable or it wont exist outwith this function!
 };

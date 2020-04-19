@@ -25,7 +25,7 @@ class fft {
     fftw_plan my_plan;
     fftw_plan inverse_plan;
 
-    VoxFilter vfilter;
+    VoxFilter* vfilter;
 
     /// Construct the fftw3 plans for the object
     fft(int nBufferFrames, int samplingRate);
