@@ -106,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    fftw_complex fourierSpectrum[257];</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">double</span> peakFrequency;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">double</span> closestNoteFrequency;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::string currentNote;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">char</span> currentNote[2];</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classVocoder.html">Vocoder</a>(<span class="keywordtype">int</span> sampleRate, <span class="keywordtype">int</span> bufferSize, <span class="keyword">const</span> <span class="keywordtype">double</span>* scaleFrequencies);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">float</span> binary_search(<span class="keyword">const</span> <span class="keywordtype">float</span>* NotesInKey, <span class="keywordtype">float</span>* note, <span class="keywordtype">int</span> highest_index, <span class="keywordtype">int</span> lowest_index);</div>
@@ -119,9 +119,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">double</span> findClosestNote(<span class="keyword">const</span> <span class="keywordtype">double</span> notes[], <span class="keywordtype">int</span> n, <span class="keywordtype">double</span> target);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> FrequencyToIndex(<span class="keywordtype">double</span> frequency);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> setFourierSpectrum(fftw_complex* fftSpectrum);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::string frequencyToNote(<span class="keywordtype">double</span> freq);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* frequencyToNote(<span class="keywordtype">double</span> freq);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">char</span>* getNote();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
 <div class="ttc" id="classVocoder_html"><div class="ttname"><a href="classVocoder.html">Vocoder</a></div><div class="ttdef"><b>Definition:</b> vocoder.h:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
