@@ -7,5 +7,4 @@ sudo apt-get install jackd
 sudo apt-get install librtaudio-dev
 sudo apt-get install qtdeclarative5-dev-tools
 sudo apt-get install libqwt-qt5-dev
-sudo apt-get install qtbase5-dev
-sudo apt-get install qtdeclarative5-devsudo apt-get install qtdeclarative5-dev
+
