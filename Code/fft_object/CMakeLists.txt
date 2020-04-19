@@ -7,7 +7,7 @@ project(PitchPerfector)
 #                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 #)
 
-add_custom_target(pitch_perfector COMMAND chmod +x installDependencies.sh && ./installDependencies.sh
+add_custom_target(install_dependencies COMMAND chmod +x installDependencies.sh && ./installDependencies.sh
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
