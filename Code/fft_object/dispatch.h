@@ -7,7 +7,7 @@
 class dispatch  {
   public:
     fft* fourierObj;
-    Vocoder* vocoderObj;
+    vocoder* vocoderObj;
     double fftAudioIn[512];
     fftw_complex* fftSpectrum;
     double* fftInverseOut;
