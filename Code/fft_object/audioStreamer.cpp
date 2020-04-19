@@ -22,7 +22,7 @@ void audioStreamer::run()
 		exit( 0 );
 	}
 
-	unsigned int bufferFrames = 512; // samples/Fs = bufferTime 
+	unsigned int bufferFrames = 512; // samples/Fs = bufferTime
 	RtAudio::StreamParameters iParams, oParams;
 	iParams.deviceId = 0; // first available device
 	iParams.nChannels = 2;
@@ -48,9 +48,9 @@ void audioStreamer::run()
 		adac.startStream();
 		char input;
 		std::cout << "\nRunning ... press <enter> to quit.\n";
-		inputData = dispatcher.fourierObj->in;
-		outputData = dispatcher.fourierObj->out;
-		currentNote = dispatcher.vocoderObj->binDifference;
+		inputData = fourier.in;
+		outputData = fourier.out;
+		currentNote = vocode.binDifference;
 		// inverseOut = fourier.inverse_out;
 		std::cin.get(input);
 		// Stop the stream.
@@ -72,8 +72,3 @@ void audioStreamer::quit()
 	running = false;
 	exit(0);
 }
-
-
-
-
-
