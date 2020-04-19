@@ -112,7 +112,7 @@ void Window::timerEvent( QTimerEvent * )
 	++count;
 	std::string hi ("Hello");
 	dial->setValue(count);
-	cout << aStreamer->currentNote << '\n';
+	std::cout << aStreamer->currentNote << '\n';
 	currentNoteText->setText(std::to_string(aStreamer->currentNote).c_str());
 
 	// currentNoteText->setText(std::to_string(count).c_str());

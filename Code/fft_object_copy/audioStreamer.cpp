@@ -51,7 +51,7 @@ void audioStreamer::run()
 		inputData = fourier.in;
 		outputData = fourier.out;
 		currentNote = vocode.binDifference;
-		cout << "Note Difference: " << vocode.binDifference << '\n';
+		cout << "Note Difference: " << currentNote << '\n';
 		// inverseOut = fourier.inverse_out;
 		std::cin.get(input);
 		// Stop the stream.
