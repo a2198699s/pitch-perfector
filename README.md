@@ -33,6 +33,7 @@ For more information, see the project [Wiki](https://github.com/a2198699s/pitch-
 For code documentation, see the [Doxygen documentation](https://a2198699s.github.io/pitch-perfector/html/index.html) published on every commit 
 
 Project Twitter: [@PerfectorPitch](https://twitter.com/PerfectorPitch)
+
 Project YouTube: [Pitch Perfector](https://www.youtube.com/channel/UCyVIknnXCnTIX-vixUphqTg)
 
 ## Licence
