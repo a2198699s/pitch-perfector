@@ -19,6 +19,13 @@ fft::fft(int nBufferFrames, int samplingRate) {
     this->nBufferFrames = nBufferFrames; //need to set as object variable or it wont exist outwith this function!
 };
 
+// void fft::setFourierSpectrum(fftw_complex* fftSpectrum){
+//     for (int i=0; i<nBufferFrames; ++i) {
+//         fourierSpectrum[i][0] = fftSpectrum[i][0];
+//         fourierSpectrum[i][1] = fftSpectrum[i][1];
+//     }
+// }
+
 void fft::executefft(double *inputBuffer) {
     memcpy(in, inputBuffer, sizeof(double)*nBufferFrames );
     fftw_execute(my_plan);

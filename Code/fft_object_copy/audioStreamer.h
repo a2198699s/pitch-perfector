@@ -19,7 +19,7 @@ public:
 	double *inputData;
 	fftw_complex *outputData;
 	double *inverseOut;
-	double currentNote;
+	char* currentNote;
 
 private:
 	bool running;

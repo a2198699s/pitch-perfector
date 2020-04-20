@@ -25,15 +25,15 @@ void audioStreamer::run()
 	unsigned int bufferFrames = 512; // samples/Fs = bufferTime
 	RtAudio::StreamParameters iParams, oParams;
 	iParams.deviceId = 0; // first available device
-	iParams.nChannels = 2;
+	iParams.nChannels = 1;
 	oParams.deviceId = 0; // first available device
-	oParams.nChannels = 2;
+	oParams.nChannels = 1;
 	int samplingRate = 44100;
 
 	//Instantiate Classes
 	int signed_bufferFrames = (int) bufferFrames;
 	fft fourier(signed_bufferFrames, samplingRate);
-	vocoder vocode = vocoder(samplingRate, signed_bufferFrames, cMajor);
+	vocoder vocode(samplingRate, signed_bufferFrames, cMajor);
 	dispatch dispatcher(&fourier, &vocode);
 	try {
 		adac.openStream( &oParams, &iParams, RTAUDIO_FLOAT64, samplingRate, &bufferFrames, &dispatch::caller, (void *)&dispatcher );
@@ -50,9 +50,7 @@ void audioStreamer::run()
 		std::cout << "\nRunning ... press <enter> to quit.\n";
 		inputData = fourier.in;
 		outputData = fourier.out;
-		currentNote = vocode.binDifference;
-		cout << "Note Difference: " << currentNote << '\n';
-		// inverseOut = fourier.inverse_out;
+		currentNote = cMajor[(vocode.baseSample)+(vocode.binDifference)];
 		std::cin.get(input);
 		// Stop the stream.
 		if (!running) adac.stopStream();
