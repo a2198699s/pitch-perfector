@@ -259,7 +259,8 @@ Generating code for file /home/tra/home/travis/build/a2198699s/pitch-perfector/C
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:19: warning: Member inputData (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:20: warning: Member outputData (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:21: warning: Member inverseOut (variable) of class audioStreamer is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:22: warning: Member currentNote (variable) of class audioStreamer is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:22: warning: Member distanceToNote (variable) of class audioStreamer is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:23: warning: Member currentNote (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object_copy/audioStreamer.h:22: warning: Member currentNote (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/dispatch.h:16: warning: Member dispatch(fft *fourierPtr, Vocoder *vocoderPtr) (function) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/vocoding.cpp:61: warning: Member dispatch(fft *fourier_obj, vocoder *vocoder_obj) (function) of class dispatch is not documented.
@@ -301,19 +302,19 @@ Generating code for file /home/tra/home/travis/build/a2198699s/pitch-perfector/C
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/fft.h:21: warning: Member voxFilter (variable) of class fft is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object_copy/fft.h:28: warning: Member vfilter (variable) of class fft is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/fft.h:9: warning: Member flag (variable) of class fft is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:21: warning: Member Vocoder(int sampleRate, int bufferSize, const double *scaleFrequencies) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:22: warning: Member binary_search(const float *NotesInKey, float *note, int highest_index, int lowest_index) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:23: warning: Member noteFinder(const float *NotesInKey, float *note) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:24: warning: Member SampleToFreq(int sample) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:25: warning: Member pitchShift_setup(fftw_complex *fft_spectrum) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:26: warning: Member pitchShift() (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:27: warning: Member findPeak() (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:28: warning: Member getClosest(double val1, double val2, double target) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:29: warning: Member findClosestNote(const double notes[], int n, double target) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:30: warning: Member FrequencyToIndex(double frequency) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:31: warning: Member setFourierSpectrum(fftw_complex *fftSpectrum) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:32: warning: Member frequencyToNote(double freq) (function) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:33: warning: Member getNote() (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:22: warning: Member Vocoder(int sampleRate, int bufferSize, const double *scaleFrequencies) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:23: warning: Member binary_search(const float *NotesInKey, float *note, int highest_index, int lowest_index) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:24: warning: Member noteFinder(const float *NotesInKey, float *note) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:25: warning: Member SampleToFreq(int sample) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:26: warning: Member pitchShift_setup(fftw_complex *fft_spectrum) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:27: warning: Member pitchShift() (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:28: warning: Member findPeak() (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:29: warning: Member getClosest(double val1, double val2, double target) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:30: warning: Member findClosestNote(const double notes[], int n, double target) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:31: warning: Member FrequencyToIndex(double frequency) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:32: warning: Member setFourierSpectrum(fftw_complex *fftSpectrum) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:33: warning: Member frequencyToNote(double freq) (function) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:34: warning: Member getNote() (function) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:7: warning: Member baseFreq (variable) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:8: warning: Member baseSample (variable) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:9: warning: Member samplerate (variable) of class Vocoder is not documented.
@@ -326,7 +327,7 @@ Generating code for file /home/tra/home/travis/build/a2198699s/pitch-perfector/C
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:16: warning: Member fourierSpectrum[257] (variable) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:17: warning: Member peakFrequency (variable) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:18: warning: Member closestNoteFrequency (variable) of class Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:19: warning: Member currentNote[2] (variable) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:19: warning: Member currentNote[4] (variable) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.h:29: warning: Member vocoder(int samplerate_input, int bufferSize_input, const float *scaleFreqs_input) (function) of class vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.h:30: warning: Member binary_search(const float *NotesInKey, float *note, int highest_index, int lowest_index) (function) of class vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.h:31: warning: Member noteFinder(const float *NotesInKey, float *note) (function) of class vocoder is not documented.
@@ -409,5 +410,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 221/65536 hits=1235 misses=224
+lookup cache used 224/65536 hits=1244 misses=227
 finished...
