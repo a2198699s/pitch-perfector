@@ -259,7 +259,7 @@ Generating code for file /home/tra/home/travis/build/a2198699s/pitch-perfector/C
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:19: warning: Member inputData (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:20: warning: Member outputData (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:21: warning: Member inverseOut (variable) of class audioStreamer is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:22: warning: Member distanceToNote (variable) of class audioStreamer is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:22: warning: Member currentNoteFrequency (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:23: warning: Member currentNote (variable) of class audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/dispatch.h:16: warning: Member dispatch(fft *fourierPtr, Vocoder *vocoderPtr) (function) of class dispatch is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/oopvocoder/vocoding.cpp:61: warning: Member dispatch(fft *fourier_obj, vocoder *vocoder_obj) (function) of class dispatch is not documented.
@@ -327,6 +327,7 @@ Generating code for file /home/tra/home/travis/build/a2198699s/pitch-perfector/C
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:17: warning: Member peakFrequency (variable) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:18: warning: Member closestNoteFrequency (variable) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:19: warning: Member currentNote[4] (variable) of class Vocoder is not documented.
+/home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:20: warning: Member peakFrequencyPointer (variable) of class Vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.h:29: warning: Member vocoder(int samplerate_input, int bufferSize_input, const float *scaleFreqs_input) (function) of class vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.h:30: warning: Member binary_search(const float *NotesInKey, float *note, int highest_index, int lowest_index) (function) of class vocoder is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.h:31: warning: Member noteFinder(const float *NotesInKey, float *note) (function) of class vocoder is not documented.
@@ -409,5 +410,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 224/65536 hits=1245 misses=227
+lookup cache used 227/65536 hits=1250 misses=230
 finished...
