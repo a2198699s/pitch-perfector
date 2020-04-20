@@ -8,8 +8,8 @@ project(PitchPerfector)
 #                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 #)
 
-execute_process(COMMAND chmod +x ${CMAKE_CURRENT_SOURCE_DIR}/installDependencies.sh)
-execute_process(COMMAND .${CMAKE_CURRENT_SOURCE_DIR}/installDependencies.sh)
+#execute_process(COMMAND chmod +x ${CMAKE_CURRENT_SOURCE_DIR}/installDependencies.sh)
+#execute_process(COMMAND .${CMAKE_CURRENT_SOURCE_DIR}/installDependencies.sh)
 
 #add_custom_target(install_dependencies COMMAND chmod +x installDependencies.sh && ./installDependencies.sh
 #                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -90,7 +90,5 @@ add_executable(PitchPerfector main.cpp window.h audioStreamer.h fft.h vocoder.h 
 target_link_libraries(PitchPerfector Qt5::Widgets)
 target_link_libraries(PitchPerfector rtaudio)
 target_link_libraries(PitchPerfector fftw3)
-target_link_libraries(PitchPerfector qwt)
 target_link_libraries(PitchPerfector /usr/lib/libqwt-qt5.so)
-
 
