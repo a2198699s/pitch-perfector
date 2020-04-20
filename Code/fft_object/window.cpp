@@ -72,25 +72,19 @@ Window::Window() : gain(5), count(0)
 	plot2->replot();
 	plot2->show();
 
-	//Ui::CalculatorForm ui;
-	//ui.setupUi(widget);
-	//widget->show();
-
-	// set up the layout - knob above thermometer
-	vLayout = new QVBoxLayout;
-	// vLayout->addWidget(knob);
-	// vLayout->addWidget(thermo);
+	dialLayout = new QVBoxLayout;
+	dialLayout->setSizeConstraint(QLayout::SetMinimumSize);
+	dialLayout->addWidget(currentNoteText);
+	dialLayout->addWidget(dial);	
 
 	// plot to the left of knob and thermometer
 	hLayout = new QHBoxLayout;
-	hLayout->addLayout(vLayout);
 	hLayout->addWidget(plot);
 
 	hLayout->addWidget(plot2);
-	// hLayout->addWidget(thermo);
+	hLayout->addLayout(dialLayout);
 
-	hLayout->addWidget(dial);
-	hLayout->addWidget(currentNoteText);
+
 
 	setLayout(hLayout);
 
@@ -110,8 +104,6 @@ Window::~Window() {
 void Window::timerEvent( QTimerEvent * )
 {
 	++count;
-	std::string hi ("Hello");
-	dial->setValue(count);
 	currentNoteText->setText(aStreamer->currentNote);
 
 	// currentNoteText->setText(std::to_string(count).c_str());

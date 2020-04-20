@@ -11,11 +11,11 @@
 using namespace std;
 const double A4 = 440.0;
 const double C0 = A4*pow(2, -4.75);
-const string notes[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+const string notes[12] = {"C ", "C#", "D ", "D#", "E ", "F ", "F#", "G ", "G#", "A ", "A#", "B "};
 
 //add a peak finder to this class?
 
-Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies) : currentNote("A") {
+Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies) : currentNote("AAA") {
     this->samplerate = sampleRate;
     this->scaleFrequencies = scaleFrequencies;
     this->bufferSize = bufferSize;
@@ -116,9 +116,12 @@ void Vocoder::pitchShift() {
     closestNoteFrequency = findClosestNote(scaleFrequencies, 8, peakFrequency);
     difference = closestNoteFrequency - peakFrequency;
     binDifference = FrequencyToIndex(difference);
+    // differencePointer = &difference;
+
     int shift = binDifference;
     const char* newNote = frequencyToNote(closestNoteFrequency);
-    memcpy(currentNote, newNote, sizeof(char)*2);
+    memcpy(currentNote, newNote, sizeof(char)*4);
+
     if (abs(shift > 5) ) return;
     if (shift >= 0) {
         memmove(fourierSpectrum+shift, fourierSpectrum, sizeof(fftw_complex)*(FFT_BUFFER_SIZE-shift));

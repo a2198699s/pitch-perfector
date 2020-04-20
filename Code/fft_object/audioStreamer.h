@@ -19,6 +19,7 @@ public:
 	double *inputData;
 	fftw_complex *outputData;
 	double *inverseOut;
+	float* distanceToNote;
 	char* currentNote;
 
 private:

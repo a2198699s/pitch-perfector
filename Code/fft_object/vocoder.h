@@ -16,7 +16,8 @@ class Vocoder {
     fftw_complex fourierSpectrum[257];
     double peakFrequency;
     double closestNoteFrequency;
-    char currentNote[2];
+    char currentNote[4];
+    // float* differencePointer;
 
     Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies);
     float binary_search(const float* NotesInKey, float* note, int highest_index, int lowest_index);

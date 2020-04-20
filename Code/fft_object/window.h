@@ -40,6 +40,7 @@ private:
 	QwtPlot      *plot2;
 	QwtPlotCurve *curve2;
 	QwtTextLabel *currentNoteText; 
+	QPainter 	 *dialNoteText;
 
 	QwtDialSimpleNeedle *needle;
  	QwtRoundScaleDraw *roundScale; 
@@ -48,6 +49,7 @@ private:
 	// layout elements from Qt itself http://qt-project.org/doc/qt-4.8/classes.html
 	QVBoxLayout  *vLayout;  // vertical layout
 	QHBoxLayout  *hLayout;  // horizontal layout
+	QVBoxLayout  *dialLayout;
 
 	static const int plotDataSize = 512;
 	static const int fftPlotDataSize = plotDataSize/2 + 1; 
