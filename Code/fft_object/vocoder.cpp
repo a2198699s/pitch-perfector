@@ -15,7 +15,7 @@ const string notes[12] = {"C ", "C#", "D ", "D#", "E ", "F ", "F#", "G ", "G#", 
 
 //add a peak finder to this class?
 
-Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies) : currentNote("AAA") {
+Vocoder::Vocoder(int sampleRate, int bufferSize, const double* scaleFrequencies) : currentNote("") {
     this->samplerate = sampleRate;
     this->scaleFrequencies = scaleFrequencies;
     this->bufferSize = bufferSize;

@@ -32,7 +32,6 @@ Window::Window() : gain(5), count(0)
 	}
 
 	currentNoteText = new QwtTextLabel();
-	currentNoteText->setText("HELLO");
 
 
 	needle = new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Arrow);
@@ -102,10 +101,10 @@ Window::~Window() {
 
 void Window::timerEvent( QTimerEvent * )
 {
-	int lowerVal = round(getFrequencyBelow(*(aStreamer->currentNoteFrequency)));
-	int  higherVal  = round(getFrequencyAbove(*(aStreamer->currentNoteFrequency)));
-	dial->setScale(lowerVal, higherVal);
-	dial->setValue(*(aStreamer->currentNoteFrequency));
+	// int lowerVal = round(getFrequencyBelow(*(aStreamer->currentNoteFrequency)));
+	// int  higherVal  = round(getFrequencyAbove(*(aStreamer->currentNoteFrequency)));
+	// dial->setScale(lowerVal, higherVal);
+	// dial->setValue(*(aStreamer->currentNoteFrequency));
 	currentNoteText->setText(aStreamer->currentNote);
 
 	// currentNoteText->setText(std::to_string(count).c_str());
