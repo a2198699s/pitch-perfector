@@ -24,6 +24,8 @@ The **I2S ADC** in the Adafruit microphone converts this audio to I2S format whi
   
 This new shifted value is then output to a **speaker** 
 
+Utilised the **FFTW3** and **RtAudio** packages for real-time pitch shifting
+
 ![System Diagram](Documentation/Images/Schematic/Schematic.PNG)
 
 For more information, see the project [Wiki](https://github.com/a2198699s/pitch-perfector/wiki)
