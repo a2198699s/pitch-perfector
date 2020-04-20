@@ -18,23 +18,11 @@ This class handles the callback functionality from Rt\-Audio.
 \begin{DoxyCompactList}\small\item\em Collect pointers to objects to use in processing. \end{DoxyCompactList}\item 
 \hypertarget{classdispatch_a86ed8ac03c8498d7f75619af8eaff3a2}{{\bfseries dispatch} (\hyperlink{classfft}{fft} $\ast$fourier\-Ptr, \hyperlink{classVocoder}{Vocoder} $\ast$vocoder\-Ptr)}\label{classdispatch_a86ed8ac03c8498d7f75619af8eaff3a2}
 
-\item 
-\hypertarget{classdispatch_a641ec1136a8fdecb8b9ab51fa672a848}{\hyperlink{classdispatch_a641ec1136a8fdecb8b9ab51fa672a848}{dispatch} (\hyperlink{classfft}{fft} $\ast$fourier\-Ptr, \hyperlink{classvocoder}{vocoder} $\ast$vocoder\-Ptr)}\label{classdispatch_a641ec1136a8fdecb8b9ab51fa672a848}
-
-\begin{DoxyCompactList}\small\item\em Collect pointers to objects to use in processing. \end{DoxyCompactList}\item 
-\hypertarget{classdispatch_a49638cdbc0fee44e411973f09fc64d83}{{\bfseries dispatch} (\hyperlink{classfft}{fft} $\ast$fourier\-\_\-obj, \hyperlink{classvocoder}{vocoder} $\ast$vocoder\-\_\-obj)}\label{classdispatch_a49638cdbc0fee44e411973f09fc64d83}
-
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classdispatch_a78e0b45ddb573d1b843ce02cd9092557}{static int \hyperlink{classdispatch_a78e0b45ddb573d1b843ce02cd9092557}{caller} (void $\ast$output\-Buffer, void $\ast$input\-Buffer, unsigned int n\-Buffer\-Frames, double stream\-Time, Rt\-Audio\-Stream\-Status status, void $\ast$data)}\label{classdispatch_a78e0b45ddb573d1b843ce02cd9092557}
-
-\begin{DoxyCompactList}\small\item\em Callback function for Rt\-Audio. \end{DoxyCompactList}\item 
-\hypertarget{classdispatch_a2bc93711c1aee895c430aece41ec026a}{static int {\bfseries caller} (void $\ast$output\-Buffer, void $\ast$input\-Buffer, unsigned int n\-Buffer\-Frames, double stream\-Time, Rt\-Audio\-Stream\-Status status, void $\ast$data)}\label{classdispatch_a2bc93711c1aee895c430aece41ec026a}
-
-\item 
-\hypertarget{classdispatch_a2bc93711c1aee895c430aece41ec026a}{static int \hyperlink{classdispatch_a2bc93711c1aee895c430aece41ec026a}{caller} (void $\ast$output\-Buffer, void $\ast$input\-Buffer, unsigned int n\-Buffer\-Frames, double stream\-Time, Rt\-Audio\-Stream\-Status status, void $\ast$data)}\label{classdispatch_a2bc93711c1aee895c430aece41ec026a}
 
 \begin{DoxyCompactList}\small\item\em Callback function for Rt\-Audio. \end{DoxyCompactList}\item 
 \hypertarget{classdispatch_a2bc93711c1aee895c430aece41ec026a}{static int {\bfseries caller} (void $\ast$output\-Buffer, void $\ast$input\-Buffer, unsigned int n\-Buffer\-Frames, double stream\-Time, Rt\-Audio\-Stream\-Status status, void $\ast$data)}\label{classdispatch_a2bc93711c1aee895c430aece41ec026a}
@@ -46,7 +34,7 @@ This class handles the callback functionality from Rt\-Audio.
 \hypertarget{classdispatch_aa4276ec2461afbd1cb98fa4cd9721831}{\hyperlink{classfft}{fft} $\ast$ {\bfseries fourier\-Obj}}\label{classdispatch_aa4276ec2461afbd1cb98fa4cd9721831}
 
 \item 
-\hypertarget{classdispatch_a8d5d8c94f4da11fbc52fe35f7376dcf5}{\hyperlink{classvocoder}{vocoder} $\ast$ {\bfseries vocoder\-Obj}}\label{classdispatch_a8d5d8c94f4da11fbc52fe35f7376dcf5}
+\hypertarget{classdispatch_a7ccec21b2dce1224744ccaa8d1cafee5}{\hyperlink{classvocoder}{vocoder} $\ast$ {\bfseries vocoder\-Obj}}\label{classdispatch_a7ccec21b2dce1224744ccaa8d1cafee5}
 
 \item 
 \hypertarget{classdispatch_a9a7c9726e0a90bdc0e2f2fddcd0ce151}{\hyperlink{classVocoder}{Vocoder} $\ast$ {\bfseries vocoder\-Obj}}\label{classdispatch_a9a7c9726e0a90bdc0e2f2fddcd0ce151}
@@ -63,22 +51,15 @@ This class handles the callback functionality from Rt\-Audio.
 \item 
 \hypertarget{classdispatch_a65f2ec3280356247955e42a3e2e07b51}{std\-::string {\bfseries current\-Note}}\label{classdispatch_a65f2ec3280356247955e42a3e2e07b51}
 
-\item 
-\hypertarget{classdispatch_a756411664d900bf1cf31e7626c57a4d4}{\hyperlink{classfft}{fft} $\ast$ {\bfseries fourier\-Ptr}}\label{classdispatch_a756411664d900bf1cf31e7626c57a4d4}
-
-\item 
-\hypertarget{classdispatch_ac5c5c76c34783dfc1a0e29935272e99f}{\hyperlink{classvocoder}{vocoder} $\ast$ {\bfseries vocode\-Ptr}}\label{classdispatch_ac5c5c76c34783dfc1a0e29935272e99f}
-
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This class handles the callback functionality from Rt\-Audio. 
 
-\hyperlink{classDispatch}{Dispatch} objects are used to collect the processing objects used ($<$fft.\-h$>$ and $<$vocoder.\-h$>$) and utilise them to process the audio data from Rt\-Audio by implementing a method compatable with the Rt\-Audio callback format. 
+Dispatch objects are used to collect the processing objects used ($<$fft.\-h$>$ and $<$vocoder.\-h$>$) and utilise them to process the audio data from Rt\-Audio by implementing a method compatable with the Rt\-Audio callback format. 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
 /home/travis/build/a2198699s/pitch-\/perfector/\-Code/classfiles/dispatch.\-h\item 
-/home/travis/build/a2198699s/pitch-\/perfector/\-Code/oopvocoder/vocoding.\-cpp\item 
 /home/travis/build/a2198699s/pitch-\/perfector/\-Code/classfiles/dispatch.\-cpp\end{DoxyCompactItemize}

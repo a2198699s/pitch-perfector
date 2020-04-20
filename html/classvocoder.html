@@ -85,7 +85,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classvocoder-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -103,23 +102,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e51f2bff73fdb41cb326e0743170b15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e51f2bff73fdb41cb326e0743170b15"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>vocoder</b> (int samplerate_input, int bufferSize_input, const float *scaleFreqs_input)</td></tr>
 <tr class="separator:a5e51f2bff73fdb41cb326e0743170b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a516a5e099509664b6b328a9d055adcd7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a516a5e099509664b6b328a9d055adcd7"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>binary_search</b> (const float *NotesInKey, float *note, int highest_index, int lowest_index)</td></tr>
-<tr class="separator:a516a5e099509664b6b328a9d055adcd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1c52677bdf6c7233f667c3905539716"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1c52677bdf6c7233f667c3905539716"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>noteFinder</b> (const float *NotesInKey, float *note)</td></tr>
-<tr class="separator:ac1c52677bdf6c7233f667c3905539716"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b3a6e386d3a18f9366320e5743d33b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b3a6e386d3a18f9366320e5743d33b1"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>SampleToFreq</b> (int sample)</td></tr>
-<tr class="separator:a2b3a6e386d3a18f9366320e5743d33b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3d122aee6d6ae77ac5b04572e924dc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvocoder.html#aa3d122aee6d6ae77ac5b04572e924dc0">pitchShift_setup</a> (fftw_complex *fft_spectrum)</td></tr>
-<tr class="separator:aa3d122aee6d6ae77ac5b04572e924dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa218678a51da7429066c32e59edd5057"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa218678a51da7429066c32e59edd5057"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift</b> ()</td></tr>
-<tr class="separator:aa218678a51da7429066c32e59edd5057"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e51f2bff73fdb41cb326e0743170b15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e51f2bff73fdb41cb326e0743170b15"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>vocoder</b> (int samplerate_input, int bufferSize_input, const float *scaleFreqs_input)</td></tr>
-<tr class="separator:a5e51f2bff73fdb41cb326e0743170b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a0b1f788e03878de287d7f6163208a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a0b1f788e03878de287d7f6163208a9"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>binary_search</b> (const float *NotesInKey, float *note, int highest_index, int lowest_index)</td></tr>
 <tr class="separator:a7a0b1f788e03878de287d7f6163208a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,30 +135,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift_setup</b> 
 <tr class="memitem:aa218678a51da7429066c32e59edd5057"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa218678a51da7429066c32e59edd5057"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift</b> ()</td></tr>
 <tr class="separator:aa218678a51da7429066c32e59edd5057"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a759189527108a2f32b992406b8210db8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a759189527108a2f32b992406b8210db8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>vocoder</b> (int samplerate_input, int bufferSize_input, void *scaleFreqs_input)</td></tr>
-<tr class="separator:a759189527108a2f32b992406b8210db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b3a6e386d3a18f9366320e5743d33b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b3a6e386d3a18f9366320e5743d33b1"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>SampleToFreq</b> (int sample)</td></tr>
-<tr class="separator:a2b3a6e386d3a18f9366320e5743d33b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b1e51e28458338abc0eeaac00c1842f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b1e51e28458338abc0eeaac00c1842f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>NearestNote</b> (float *freq)</td></tr>
-<tr class="separator:a8b1e51e28458338abc0eeaac00c1842f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3d122aee6d6ae77ac5b04572e924dc0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3d122aee6d6ae77ac5b04572e924dc0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift_setup</b> (fftw_complex *fft_spectrum)</td></tr>
-<tr class="separator:aa3d122aee6d6ae77ac5b04572e924dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa218678a51da7429066c32e59edd5057"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa218678a51da7429066c32e59edd5057"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift</b> ()</td></tr>
-<tr class="separator:aa218678a51da7429066c32e59edd5057"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a54dbb5d460704f880382d2ae7e64e14a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54dbb5d460704f880382d2ae7e64e14a"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>binary_search</b> (const float *NotesInKey, float *note, int highest_index, int lowest_index)</td></tr>
-<tr class="separator:a54dbb5d460704f880382d2ae7e64e14a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a450b5c7824587e81db5aa4c056ba6934"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a450b5c7824587e81db5aa4c056ba6934"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>noteFinder</b> (const float *NotesInKey, float *note)</td></tr>
-<tr class="separator:a450b5c7824587e81db5aa4c056ba6934"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -213,34 +171,13 @@ fftw_complex *&#160;</td><td class="memItemRight" valign="bottom"><b>FourierTran
 <tr class="memitem:aa7b3406cd1595cc8b23c34a4364bde4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7b3406cd1595cc8b23c34a4364bde4d"></a>
 double *&#160;</td><td class="memItemRight" valign="bottom"><b>RealFourier</b></td></tr>
 <tr class="separator:aa7b3406cd1595cc8b23c34a4364bde4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a723e95fc1b499d823033c6acf561b1ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a723e95fc1b499d823033c6acf561b1ea"></a>
-float *&#160;</td><td class="memItemRight" valign="bottom"><b>scaleFreqs</b></td></tr>
-<tr class="separator:a723e95fc1b499d823033c6acf561b1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Performs the analysis and pitch sifting of input frequencies. </p>
 <p>vocoder objects recieve frequency spectrums from the fft class and analyse them to find the fundamental frequency. Then the frequency spectrum is shifted to move the fundamental frequency to one of the notes in the key provided to the object's constructor. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aa3d122aee6d6ae77ac5b04572e924dc0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vocoder::pitchShift_setup </td>
-          <td>(</td>
-          <td class="paramtype">fftw_complex *&#160;</td>
-          <td class="paramname"><em>fft_spectrum</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!NEED TO CHECK THIS IS USING THE REAL COMPONENTS AND NOT THE COMPLEX ONES!!!!!!!!!!!!!!!!!!!!!!! </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/<a class="el" href="classfiles_2vocoder_8h_source.html">vocoder.h</a></li>
-<li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.cpp</li>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/testSuite/<a class="el" href="classfiles_2testSuite_2vocoder_8h_source.html">vocoder.h</a></li>
+<li>/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/testSuite/vocoder.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
