@@ -76,7 +76,7 @@ endif()
 #install(TARGETS libfftw3-dev)
 
 #find_package(Qt5 5.1.0 CONFIG REQUIRED Core Widgets Gui)
-#find_package(Qt5 CONFIG REQUIRED Core Gui Widgets)
+find_package(Qt5 CONFIG REQUIRED Core Gui Widgets)
 #find_package(Qt5 COMPONENTS REQUIRED Core Gui Widgets)
 
 include_directories(.)
@@ -87,7 +87,7 @@ include_directories(/usr/lib)
 
 add_executable(PitchPerfector main.cpp window.h audioStreamer.h fft.h vocoder.h helper.h dispatch.h voxFilter.h window.cpp audioStreamer.cpp fft.cpp vocoder.cpp helper.cpp dispatch.cpp voxFilter.cpp)
 
-#target_link_libraries(PitchPerfector Qt5::Widgets)
+target_link_libraries(PitchPerfector Qt5::Widgets)
 target_link_libraries(PitchPerfector rtaudio)
 target_link_libraries(PitchPerfector fftw3)
 target_link_libraries(PitchPerfector qwt)
