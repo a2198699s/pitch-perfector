@@ -3,7 +3,7 @@
 #include <iostream>  
 #include <string>  
 #include <cmath>  // for sine stuff
-
+#include "helper.h"
 
 Window::Window() : gain(5), count(0)
 {
@@ -40,7 +40,6 @@ Window::Window() : gain(5), count(0)
 	dial = new QwtDial;
 	dial->setScaleArc(270, 90);
 	dial->setScale(-1, 1);
-	dial->setScaleStepSize(1.0);
 	dial->setMode(QwtDial::RotateNeedle);
 	// dial->setScaleDraw(roundScale);
 	// needle->draw()
@@ -103,7 +102,10 @@ Window::~Window() {
 
 void Window::timerEvent( QTimerEvent * )
 {
-	++count;
+	int lowerVal = round(getFrequencyBelow(*(aStreamer->currentNoteFrequency)));
+	int  higherVal  = round(getFrequencyAbove(*(aStreamer->currentNoteFrequency)));
+	dial->setScale(lowerVal, higherVal);
+	dial->setValue(*(aStreamer->currentNoteFrequency));
 	currentNoteText->setText(aStreamer->currentNote);
 
 	// currentNoteText->setText(std::to_string(count).c_str());

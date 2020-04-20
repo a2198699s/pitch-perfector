@@ -9,7 +9,7 @@
 #include "fft.h"
 #include "vocoder.h"
 #include "dispatch.h"
-
+#include "helper.h"
 using namespace std;
 
 void audioStreamer::run()
@@ -51,6 +51,8 @@ void audioStreamer::run()
 		inputData = fourier.in;
 		outputData = fourier.out;
 		currentNote = vocode.currentNote;
+		// currentNoteFrequency = vocode.peakFrequencyPointer;
+		currentNoteFrequency = &(vocode.peakFrequency);
 		std::cin.get(input);
 		// Stop the stream.
 		if (!running) adac.stopStream();

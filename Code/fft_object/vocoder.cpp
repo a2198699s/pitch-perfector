@@ -116,12 +116,10 @@ void Vocoder::pitchShift() {
     closestNoteFrequency = findClosestNote(scaleFrequencies, 8, peakFrequency);
     difference = closestNoteFrequency - peakFrequency;
     binDifference = FrequencyToIndex(difference);
-    // differencePointer = &difference;
-
-    int shift = binDifference;
     const char* newNote = frequencyToNote(closestNoteFrequency);
     memcpy(currentNote, newNote, sizeof(char)*4);
 
+    int shift = binDifference;
     if (abs(shift > 5) ) return;
     if (shift >= 0) {
         memmove(fourierSpectrum+shift, fourierSpectrum, sizeof(fftw_complex)*(FFT_BUFFER_SIZE-shift));
