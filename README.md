@@ -5,6 +5,13 @@
 A Raspberry Pi real-time pitch-shifting microphone project.
 Stay Tuned...
 
+## Install Guide
+
+Clone and cd into pitch-perfector
+1. `cmake .`
+2. `make`
+3. `./Code/fft_object/PitchPerfector`
+
 ## System Overview
 
 The **MEMS microphone** converts the vocal (from ~100Hz up to ~3.5kHz) input into an analoge signal  
