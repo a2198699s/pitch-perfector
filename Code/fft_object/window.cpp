@@ -112,7 +112,7 @@ void Window::timerEvent( QTimerEvent * )
 	++count;
 	std::string hi ("Hello");
 	dial->setValue(count);
-	currentNoteText->setText(aStreamer->val);
+	currentNoteText->setText(aStreamer->currentNote);
 
 	// currentNoteText->setText(std::to_string(count).c_str());
 	// add the new input to the plot
