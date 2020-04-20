@@ -16,9 +16,7 @@ Clone and cd into pitch-perfector
 
 The **MEMS microphone** converts the vocal (from ~100Hz up to ~3.5kHz) input into an analoge signal  
   
-The **I2S ADC** in the Adafruit microphone converts this audio to I2S format which is understood by the Raspberry Pi with a datarate of 240kbps   
-  
-**Digital filtering** is then performed on the input using an IIR filter implemented in C++  
+The **I2S ADC** in the Adafruit microphone converts this audio to I2S format which is understood by the Raspberry Pi with a datarate of 240kbps    
   
 **Frequency analysis** is performed by applying a fourier transform and identifying the base frequency    
   
