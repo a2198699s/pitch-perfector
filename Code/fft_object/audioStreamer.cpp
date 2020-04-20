@@ -26,7 +26,7 @@ void audioStreamer::run()
 	RtAudio::StreamParameters iParams, oParams;
 	iParams.deviceId = 0; // first available device
 	iParams.nChannels = 1;
-	oParams.deviceId = 0; // first available device
+	oParams.deviceId = 1; // first available device
 	oParams.nChannels = 1;
 	int samplingRate = 44100;
 
