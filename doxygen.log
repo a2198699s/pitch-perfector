@@ -166,9 +166,6 @@ Preprocessing /home/travis/build/a2198699s/pitch-perfector/Code/home/travis/buil
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object_copy/audioStreamer.h:9: warning: Compound audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/audioStreamer.h:9: warning: Compound audioStreamer is not documented.
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/vocoder.h:5: warning: Compound Vocoder is not documented.
-/home/travis/build/a2198699s/pitch-perfector/Code/classfiles/vocoder.cpp:66: warning: no matching class member found for 
-  int vocoder::findPeak()
-
 /home/travis/build/a2198699s/pitch-perfector/Code/fft_object/fft.cpp:13: warning: no matching class member found for 
   void fft::executefft(double[AUDIO_BUFFER_SIZE] inputBuffer[AUDIO_BUFFER_SIZE])
 Possible candidates:
@@ -413,5 +410,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 227/65536 hits=1251 misses=230
+lookup cache used 227/65536 hits=1250 misses=230
 finished...
