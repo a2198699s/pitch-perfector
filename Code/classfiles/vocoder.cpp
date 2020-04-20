@@ -25,7 +25,7 @@ float vocoder::binary_search(const float* NotesInKey, float* note, int highest_i
   int midpoint = (lowest_index + highest_index)/2;
 
   //could give a rounding error here that means some frequencies are never evaluated? ie freqs that fall between the gaps of the catchment bins
-  if (*note >= (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1]))/2)  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint]))/2)){
+  if (*note >= (NotesInKey[midpoint] - ((NotesInKey[midpoint])-(NotesInKey[midpoint-1])))  && *note < ((NotesInKey[midpoint]) + ((NotesInKey[midpoint+1]) - (NotesInKey[midpoint])))){
     return NotesInKey[midpoint];
   }
   else {
@@ -63,18 +63,6 @@ float vocoder::SampleToFreq(int sample) {
   return freq;
 };
 
-int vocoder::findPeak(){
-    double max = 0;
-    int maxIndex = 0;
-
-    for (int i=0; i<bufferSize; ++i) {
-        if (FourierTransform[i][0] > max) {
-            max = FourierTransform[i][0];
-            maxIndex = i;
-        }
-    }
-    return = maxIndex;
-}
 
 void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   this->FourierTransform = fft_spectrum;
@@ -84,7 +72,7 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   };
 
   //find sample no of highest peak excluding first sample(DC component) - need to make absolute first!!!!!
-  this->baseSample = findPeak();
+  this->baseSample = distance(this->RealFourier, max_element(this->RealFourier, this->RealFourier + this->bufferSize));
 
   // find freqency of highest peak
   this->baseFreq = SampleToFreq(this->baseSample);

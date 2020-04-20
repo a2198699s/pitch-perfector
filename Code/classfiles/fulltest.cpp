@@ -27,7 +27,7 @@ int main() {
     exit( 0 );
   }
   // Set the same number of channels for both input and output.
-  unsigned int bufferBytes, bufferFrames = 1024*2; // samples/Fs = bufferTime
+  unsigned int bufferBytes, bufferFrames = 512*2; // samples/Fs = bufferTime
   RtAudio::StreamParameters iParams, oParams;
 	iParams.deviceId = 0; // first available device
 	iParams.nChannels = 1;
