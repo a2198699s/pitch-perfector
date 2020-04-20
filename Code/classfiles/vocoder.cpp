@@ -63,6 +63,18 @@ float vocoder::SampleToFreq(int sample) {
   return freq;
 };
 
+int vocoder::findPeak(){
+    double max = 0;
+    int maxIndex = 0;
+
+    for (int i=0; i<bufferSize; ++i) {
+        if (FourierTransform[i][0] > max) {
+            max = FourierTransform[i][0];
+            maxIndex = i;
+        }
+    }
+    return = maxIndex;
+}
 
 void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   this->FourierTransform = fft_spectrum;
@@ -72,7 +84,7 @@ void vocoder::pitchShift_setup(fftw_complex* fft_spectrum) {
   };
 
   //find sample no of highest peak excluding first sample(DC component) - need to make absolute first!!!!!
-  this->baseSample = distance(this->RealFourier, max_element(this->RealFourier, this->RealFourier + this->bufferSize));
+  this->baseSample = findPeak();
 
   // find freqency of highest peak
   this->baseFreq = SampleToFreq(this->baseSample);
